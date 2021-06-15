@@ -10,14 +10,16 @@ import UIKit
 class User {
     
     let username: String
+    let password: String
     let profilePic: UIImage
     let location: String
     let bio: String?
     let instrument: String
     let experienceLevel: String
     
-    init(username: String, profilePic: UIImage, location: String, bio: String, instrument: String, experienceLevel: String){
+    init(username: String, password: String, profilePic: UIImage, location: String, bio: String, instrument: String, experienceLevel: String){
         self.username = username
+        self.password = password
         self.profilePic = profilePic
         self.location = location
         self.bio = bio
