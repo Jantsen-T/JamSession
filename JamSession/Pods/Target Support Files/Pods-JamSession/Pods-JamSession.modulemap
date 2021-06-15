@@ -1,0 +1,6 @@
+framework module Pods_JamSession {
+  umbrella header "Pods-JamSession-umbrella.h"
+
+  export *
+  module * { export * }
+}
