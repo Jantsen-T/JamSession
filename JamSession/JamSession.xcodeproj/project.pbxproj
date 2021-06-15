@@ -10,13 +10,13 @@
 		5E2BBCA9763C3B8758693AB6 /* Pods_JamSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */; };
 		C0839D192679439000FF1369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D182679439000FF1369 /* AppDelegate.swift */; };
 		C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D1A2679439000FF1369 /* SceneDelegate.swift */; };
-		C0839D1D2679439000FF1369 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D1C2679439000FF1369 /* ViewController.swift */; };
 		C0839D202679439000FF1369 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0839D1E2679439000FF1369 /* Main.storyboard */; };
 		C0839D222679439200FF1369 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0839D212679439200FF1369 /* Assets.xcassets */; };
 		C0839D252679439200FF1369 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0839D232679439200FF1369 /* LaunchScreen.storyboard */; };
 		C0839D30267946B300FF1369 /* GoogleService-Info (2).plist in Resources */ = {isa = PBXBuildFile; fileRef = C0839D2F267946B300FF1369 /* GoogleService-Info (2).plist */; };
 		C0839D3626794B8700FF1369 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D3526794B8700FF1369 /* User.swift */; };
 		C0839D3A26794BC000FF1369 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D3926794BC000FF1369 /* PlaceholderViewController.swift */; };
+		C0839D3E2679547F00FF1369 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D3D2679547F00FF1369 /* Friend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,6 @@
 		C0839D152679439000FF1369 /* JamSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0839D182679439000FF1369 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0839D1A2679439000FF1369 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C0839D1C2679439000FF1369 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C0839D1F2679439000FF1369 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0839D212679439200FF1369 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0839D242679439200FF1369 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +33,7 @@
 		C0839D2F267946B300FF1369 /* GoogleService-Info (2).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (2).plist"; sourceTree = "<group>"; };
 		C0839D3526794B8700FF1369 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0839D3926794BC000FF1369 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
+		C0839D3D2679547F00FF1369 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				C0839D3526794B8700FF1369 /* User.swift */,
+				C0839D3D2679547F00FF1369 /* Friend.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -100,7 +101,6 @@
 		C0839D3226794B4500FF1369 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C0839D1C2679439000FF1369 /* ViewController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -272,8 +272,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0839D3626794B8700FF1369 /* User.swift in Sources */,
-				C0839D1D2679439000FF1369 /* ViewController.swift in Sources */,
 				C0839D192679439000FF1369 /* AppDelegate.swift in Sources */,
+				C0839D3E2679547F00FF1369 /* Friend.swift in Sources */,
 				C0839D3A26794BC000FF1369 /* PlaceholderViewController.swift in Sources */,
 				C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */,
 			);
