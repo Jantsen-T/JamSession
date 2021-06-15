@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BF63F0E2679587C00E6DC97 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF63F0D2679587C00E6DC97 /* Map.swift */; };
 		5E2BBCA9763C3B8758693AB6 /* Pods_JamSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */; };
 		C0839D192679439000FF1369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D182679439000FF1369 /* AppDelegate.swift */; };
 		C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D1A2679439000FF1369 /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BF63F0D2679587C00E6DC97 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9329E72305D2502E8773DA8F /* Pods-JamSession.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.debug.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.debug.xcconfig"; sourceTree = "<group>"; };
 		B7BE5C5E5FF3D09208A8D825 /* Pods-JamSession.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.release.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.release.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				C0839D3526794B8700FF1369 /* User.swift */,
 				C0839D3D2679547F00FF1369 /* Friend.swift */,
+				3BF63F0D2679587C00E6DC97 /* Map.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				C0839D192679439000FF1369 /* AppDelegate.swift in Sources */,
 				C0839D3E2679547F00FF1369 /* Friend.swift in Sources */,
 				C0839D3A26794BC000FF1369 /* PlaceholderViewController.swift in Sources */,
+				3BF63F0E2679587C00E6DC97 /* Map.swift in Sources */,
 				C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
