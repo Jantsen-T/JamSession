@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var firstNameTextField: UITextField!
     
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +43,24 @@ class SignUpViewController: UIViewController {
         
         if error != nil {
             // there is something wrong with the fields, show error message
+            showError(error!)
+        }
+        else {
+            Auth.auth().createUser(withEmail: <#T##String#>, password: <#T##String#>) { result, error in
+                <#code#>
+            }
             
         }
+        
+        
+    }
+    
+    
+    func showError(_ message: String) {
+        
+        errorLabel.text = message
+        errorLabel.alpha = 1
+        
     }
     
     /*
