@@ -8,6 +8,7 @@ class User: Equatable{
     let username: String
     let profilePic: UIImage
     let uuid: String
+    var blocked: [String]
     var friends: [String] = []
     let location: String
     let bio: String?
@@ -23,7 +24,7 @@ class User: Equatable{
     }
     let experienceLevel: String
     
-    init(username: String, profilePic: UIImage, location: String, bio: String, instrument: String, experienceLevel: String, UUID: String, friends: [String] = []){
+    init(username: String, profilePic: UIImage, location: String, bio: String, instrument: String, experienceLevel: String, UUID: String, friends: [String] = [], blocked: [String]=[]){
         self.username = username
         self.profilePic = profilePic
         self.location = location
@@ -32,6 +33,7 @@ class User: Equatable{
         self.experienceLevel = experienceLevel
         uuid = UUID
         self.friends = friends
+        self.blocked=blocked
     }
     func toFireObj()->[String: Any]{
         var dict: [String: Any] = [:]
@@ -41,6 +43,7 @@ class User: Equatable{
         dict["bio"] = self.bio
         dict["uuid"] = self.uuid
         dict["instrument"] = self.instrument
+        dict["blocked"] = self.blocked
         dict["friends"] = self.friends
         dict["experienceLevel"] = self.experienceLevel
         return dict
@@ -54,10 +57,11 @@ extension User{
               let friendsy = s["friends"] as? [String],
               let profilePic = s["profilePic"] as? Data,
               let instrument = s["instrument"] as? String,
+              let blocked = s["blocked"] as? [String],
               let location = s["location"] as? String,
               let username = s["username"] as? String,
               let uuid = s["uuid"] as? String else { return nil        }
         guard let pfp = UIImage(data: profilePic) else { return nil}
-        return User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instrument, experienceLevel: experienceLevel, UUID: uuid, friends: friendsy)
+        return User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instrument, experienceLevel: experienceLevel, UUID: uuid, friends: friendsy, blocked: blocked)
     }
 }
