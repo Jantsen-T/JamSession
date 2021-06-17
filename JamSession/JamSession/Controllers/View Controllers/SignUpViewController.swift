@@ -9,13 +9,17 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
+
 class SignUpViewController: UIViewController {
     
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var instrumentTextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
     
+    @IBOutlet weak var bioTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +51,9 @@ class SignUpViewController: UIViewController {
             let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let location = locationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let instrument = instrumentTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let bio = bioTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             
             Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -58,7 +65,7 @@ class SignUpViewController: UIViewController {
                     //User created successfully
                     
                     let db = Firestore.firestore()
-                    db.collection("Users").document(result!.user.uid).setData(["Firstname" : firstName, "uid" : result!.user.uid]) { error in
+                    db.collection("Users").document(result!.user.uid).setData(["Firstname" : firstName, "Location" : location, "Instrument" : instrument, "Bio" : bio, "uid" : result!.user.uid]) { error in
                         if error != nil {
                             self.showError("error saving user data")
                         }
