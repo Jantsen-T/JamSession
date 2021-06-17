@@ -44,28 +44,12 @@ class SignUpViewController: UIViewController {
         }
         else {
             //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
-            let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let username = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            
-            Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                if let error = error {
-                    print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-                    self.showError("Error creating user")
-                }
-                else {
-                    //User created successfully
-                    
-                    let db = Firestore.firestore()
-                    db.collection("Users").document(result!.user.uid).setData(["Firstname" : firstName, "uid" : result!.user.uid]) { error in
-                        if error != nil {
-                            self.showError("error saving user data")
-                        }
-                    }
-                    //transition to home screen in the UI after the user was created succssfully
-                    self.transitionToHome()
-                }
+            UserController.sharedInstance.authUser(email: email, password: password, username: username){
+                self.showToast(message: "i logged u in")
             }
         }
     }
