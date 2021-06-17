@@ -28,3 +28,9 @@ enum UserError: LocalizedError {
     }
     
 }
+enum ManErr: LocalizedError{
+    case cannotlogin
+    case noSuchUser
+    case firebaseError(Error)
+    case tooManySameUsername
+}

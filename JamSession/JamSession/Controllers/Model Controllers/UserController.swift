@@ -45,4 +45,33 @@ class UserController {
             completion(user)
         }
     }
+    func grabUserFromUsername(username: String, completion: @escaping(Result<User, ManErr>)->Void){
+        let userRef = db.collection("Users")
+        let query = userRef.whereField("username", isEqualTo: username)
+        query.getDocuments { snap, err in
+            if let err = err{
+                return completion(.failure(.firebaseError(err)))
+            }
+            guard let snap = snap else { return completion(.failure(.noSuchUser))}
+            if snap.count > 1{
+                return completion(.failure(.tooManySameUsername))
+            }
+            if snap.count == 0{
+                return completion(.failure(.noSuchUser))
+            }
+            let stringAny = snap.documents[0].data()
+            guard let user = User.fromStringAny(stringAny) else { return completion(.failure(.noSuchUser))}
+            return completion(.success(user))
+        }
+    }
+    func dbContainsUsername(username: String, completion:@escaping(Bool)->Void){
+        self.grabUserFromUsername(username: username) { result in
+            switch result{
+            case .success(_):
+                return completion(true)
+            case .failure(_):
+                return completion(false)
+            }
+        }
+    }
 }// End of class

@@ -43,14 +43,21 @@ class SignUpViewController: UIViewController {
             showError(error)
         }
         else {
+            
             //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
             let username = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            UserController.sharedInstance.authUser(email: email, password: password, username: username){
-                self.showToast(message: "i logged u in")
+            UserController.sharedInstance.dbContainsUsername(username: username) { val in
+                if val == false{
+                    UserController.sharedInstance.authUser(email: email, password: password, username: username){
+                        self.showToast(message: "i logged u in")
+                    }
+                }else{
+                    self.presentErrorToUser(localizedError: "Username Taken")
+                }
             }
+            
         }
     }
     
