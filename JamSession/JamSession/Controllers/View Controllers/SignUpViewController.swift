@@ -15,6 +15,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +48,7 @@ class SignUpViewController: UIViewController {
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
+            
             Auth.auth().createUser(withEmail: email, password: password) { result, error in
                 if let error = error {
                     print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
@@ -54,6 +56,7 @@ class SignUpViewController: UIViewController {
                 }
                 else {
                     //User created successfully
+                    
                     let db = Firestore.firestore()
                     db.collection("Users").document(result!.user.uid).setData(["Firstname" : firstName, "uid" : result!.user.uid]) { error in
                         if error != nil {
