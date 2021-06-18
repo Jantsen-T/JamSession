@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03016586267A3B1000BF1D7C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03016585267A3B1000BF1D7C /* UserController.swift */; };
+		039B8302267BE1D500AA86D9 /* extenty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B8301267BE1D500AA86D9 /* extenty.swift */; };
 		5E2BBCA9763C3B8758693AB6 /* Pods_JamSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */; };
 		C0839D192679439000FF1369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D182679439000FF1369 /* AppDelegate.swift */; };
 		C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D1A2679439000FF1369 /* SceneDelegate.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		03016585267A3B1000BF1D7C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		039B8301267BE1D500AA86D9 /* extenty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extenty.swift; sourceTree = "<group>"; };
 		8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9329E72305D2502E8773DA8F /* Pods-JamSession.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.debug.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.debug.xcconfig"; sourceTree = "<group>"; };
 		B7BE5C5E5FF3D09208A8D825 /* Pods-JamSession.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.release.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				C0839D4426795C1B00FF1369 /* Errors.swift */,
 				C0839D482679637A00FF1369 /* PasswordTest.swift */,
+				039B8301267BE1D500AA86D9 /* extenty.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03016586267A3B1000BF1D7C /* UserController.swift in Sources */,
+				039B8302267BE1D500AA86D9 /* extenty.swift in Sources */,
 				C0839D492679637A00FF1369 /* PasswordTest.swift in Sources */,
 				C0839D3626794B8700FF1369 /* User.swift in Sources */,
 				C0839D192679439000FF1369 /* AppDelegate.swift in Sources */,
@@ -461,7 +465,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jantsentanner.JamSession;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -481,7 +485,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jantsentanner.JamSession;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

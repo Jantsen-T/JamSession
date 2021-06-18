@@ -1,15 +1,9 @@
-//
-//  User.swift
-//  JamSession
-//
-//  Created by Jantsen Tanner on 6/15/21.
-//
 import UIKit
-
 class User: Equatable{
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.uuid == rhs.uuid
     }
+    
     
     let username: String
     let profilePic: UIImage
@@ -18,7 +12,7 @@ class User: Equatable{
     let location: String
     let bio: String?
     let instrument: String
-    var friendRequests: [FriendRequest] = [] {
+    var friendRequests: [FriendRequest]=[]{
         willSet{
             if newValue.count > friendRequests.count{
                 print("adding a request")
@@ -29,7 +23,7 @@ class User: Equatable{
     }
     let experienceLevel: String
     
-    init(username: String, profilePic: UIImage, location: String, bio: String, instrument: String, experienceLevel: String, UUID: String = UUID().uuidString, friends: [String] = []){
+    init(username: String, profilePic: UIImage, location: String, bio: String, instrument: String, experienceLevel: String, UUID: String, friends: [String] = []){
         self.username = username
         self.profilePic = profilePic
         self.location = location

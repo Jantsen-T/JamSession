@@ -48,13 +48,15 @@ class SignUpViewController: UIViewController {
         }
         else {
             //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
-            let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let username = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let location = locationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let instrument = instrumentTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let bio = bioTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
+            
+<<<<<<< HEAD
             
             Auth.auth().createUser(withEmail: email, password: password) { result, error in
                 if let error = error {
@@ -73,25 +75,12 @@ class SignUpViewController: UIViewController {
                     //transition to home screen in the UI after the user was created succssfully
                     self.transitionToHome()
                 }
+=======
+            UserController.sharedInstance.authUser(email: email, password: password, username: username){
+                self.showToast(message: "i logged u in")
+>>>>>>> a1b877dca6df3868ec45e0caa5f379d494fcd38e
             }
         }
     }
     
-    func showError(_ message: String) {
-        errorLabel.text = message
-        errorLabel.alpha = 1
-    }
     
-    func transitionToHome() {
-        
-    }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-}
