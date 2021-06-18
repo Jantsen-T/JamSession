@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-HamIntercessionFriendRequestsTest/Pods-HamIntercessionFriendRequestsTest-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInAppMessaging/InAppMessagingDisplayResources.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle

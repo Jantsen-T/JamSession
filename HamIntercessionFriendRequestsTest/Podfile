@@ -1,0 +1,22 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+<<<<<<< HEAD:JamSession/Podfile
+target 'JamSession' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for JamSession
+
+pod 'Firebase/Core'
+=======
+target 'HamIntercessionFriendRequestsTest' do
+  pod 'Firebase/Core'
+
+>>>>>>> 7fdd8b4054e7619a6aa02086550eaa940542f0dc:HamIntercessionFriendRequestsTest/Podfile
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Firebase/Analytics'
+pod 'Firebase/InAppMessaging'
+pod 'Firebase/Storage'
+end
