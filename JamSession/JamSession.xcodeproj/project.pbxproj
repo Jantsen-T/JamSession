@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03016586267A3B1000BF1D7C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03016585267A3B1000BF1D7C /* UserController.swift */; };
+		03016588267A3D8200BF1D7C /* FriendRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03016587267A3D8200BF1D7C /* FriendRequestController.swift */; };
 		5E2BBCA9763C3B8758693AB6 /* Pods_JamSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */; };
 		C0839D192679439000FF1369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D182679439000FF1369 /* AppDelegate.swift */; };
 		C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D1A2679439000FF1369 /* SceneDelegate.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		03016585267A3B1000BF1D7C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		03016587267A3D8200BF1D7C /* FriendRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestController.swift; sourceTree = "<group>"; };
 		8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9329E72305D2502E8773DA8F /* Pods-JamSession.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.debug.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.debug.xcconfig"; sourceTree = "<group>"; };
 		B7BE5C5E5FF3D09208A8D825 /* Pods-JamSession.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.release.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				03016585267A3B1000BF1D7C /* UserController.swift */,
+				03016587267A3D8200BF1D7C /* FriendRequestController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03016586267A3B1000BF1D7C /* UserController.swift in Sources */,
+				03016588267A3D8200BF1D7C /* FriendRequestController.swift in Sources */,
 				C0839D492679637A00FF1369 /* PasswordTest.swift in Sources */,
 				C0839D3626794B8700FF1369 /* User.swift in Sources */,
 				C0839D192679439000FF1369 /* AppDelegate.swift in Sources */,

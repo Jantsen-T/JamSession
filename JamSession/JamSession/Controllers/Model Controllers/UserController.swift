@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 class UserController {
     
@@ -8,7 +9,12 @@ class UserController {
     
     func createUserWith(username: String, password: String, profilePic: UIImage, location: String, insturment: String, experienceLevel: String, completion: @escaping (Result<User?, UserError>) -> Void) {
         
-//        let newUser = User(username: username, password: password, profilePic: profilePic, location: location, instrument: insturment, experienceLevel: experienceLevel)
+        //        let newUser = User(username: username, password: password, profilePic: profilePic, location: location, instrument: insturment, experienceLevel: experienceLevel)
         
     }
+    
+    func populateTestData(){
+        
+    }
+    
 }// End of class
