@@ -12,7 +12,7 @@ class UserController {
     weak var presentationDelegate: presDelegate?
     
     
-    static let shared = UserController()
+    static let sharedInstance = UserController()
         var currentUser: User?{didSet{
          //   ViewController.shared?.userAppeared()
             let userbase = db.collection("Users")
