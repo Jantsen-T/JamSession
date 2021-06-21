@@ -110,7 +110,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let unfriendAction = UIContextualAction(style: .normal, title: "ignore") { action, view, handler in
                 let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
                 if let str = str{
-                    UserController.shared.grabUserFromUuid(username: str) { result in
+                    UserController.shared.grabUserFromUuid(uuid: str) { result in
                         switch result{
                         case .success(let user):
                             guard let cu = UserController.shared.currentUser else { return}
@@ -124,7 +124,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let blockAction = UIContextualAction(style: .destructive, title: "block") { action, view, handler in
                 let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
                 if let str = str{
-                    UserController.shared.grabUserFromUuid(username: str) { result in
+                    UserController.shared.grabUserFromUuid(uuid: str) { result in
                         switch result{
                         case .success(let user):
                             UserController.shared.unfriendUser(user: user)
@@ -148,7 +148,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }else{
             return
         }
-        UserController.shared.grabUserFromUuid(username: un) { res in
+        UserController.shared.grabUserFromUuid(uuid: un) { res in
             switch res{
             case .success(let userr):
                 UserController.shared.acceptFriendRequest(originatingUser: userr, receivingUser: UserController.shared.currentUser!)

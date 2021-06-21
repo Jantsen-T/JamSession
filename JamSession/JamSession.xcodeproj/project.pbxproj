@@ -11,6 +11,14 @@
 		03412B0F2680E7E800B045A4 /* Jantsen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B0E2680E7E800B045A4 /* Jantsen.storyboard */; };
 		03412B112680EE2000B045A4 /* tanman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B102680EE2000B045A4 /* tanman.storyboard */; };
 		03412B132680EE4600B045A4 /* borp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B122680EE4600B045A4 /* borp.storyboard */; };
+		03412B162680F1BB00B045A4 /* EventQuickLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */; };
+		03412B182680F27400B045A4 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B172680F27400B045A4 /* Event.swift */; };
+		03412B1A26810ECE00B045A4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B1926810ECE00B045A4 /* LocationManager.swift */; };
+		03412B1D268114D300B045A4 /* SearchEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B1C268114D300B045A4 /* SearchEventsViewController.swift */; };
+		03412B202681162300B045A4 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B1F2681162300B045A4 /* EventController.swift */; };
+		03412B2326811CB600B045A4 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B2226811CB600B045A4 /* EventTableViewCell.swift */; };
+		03412B252681266100B045A4 /* ChatAndMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B242681266100B045A4 /* ChatAndMessage.swift */; };
+		03412B272681282900B045A4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B262681282900B045A4 /* ChatViewController.swift */; };
 		039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */; };
 		5E2BBCA9763C3B8758693AB6 /* Pods_JamSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */; };
 		C0825B682680FAD6004C099C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B672680FAD6004C099C /* LoginController.swift */; };
@@ -36,6 +44,14 @@
 		03412B0E2680E7E800B045A4 /* Jantsen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Jantsen.storyboard; sourceTree = "<group>"; };
 		03412B102680EE2000B045A4 /* tanman.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tanman.storyboard; sourceTree = "<group>"; };
 		03412B122680EE4600B045A4 /* borp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = borp.storyboard; sourceTree = "<group>"; };
+		03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventQuickLookViewController.swift; sourceTree = "<group>"; };
+		03412B172680F27400B045A4 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		03412B1926810ECE00B045A4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		03412B1C268114D300B045A4 /* SearchEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventsViewController.swift; sourceTree = "<group>"; };
+		03412B1F2681162300B045A4 /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		03412B2226811CB600B045A4 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		03412B242681266100B045A4 /* ChatAndMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAndMessage.swift; sourceTree = "<group>"; };
+		03412B262681282900B045A4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtensions.swift; sourceTree = "<group>"; };
 		8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9329E72305D2502E8773DA8F /* Pods-JamSession.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.debug.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +93,9 @@
 			children = (
 				03016585267A3B1000BF1D7C /* UserController.swift */,
 				C0825B672680FAD6004C099C /* LoginController.swift */,
+				03412B1926810ECE00B045A4 /* LocationManager.swift */,
+				03412B1F2681162300B045A4 /* EventController.swift */,
+				03412B242681266100B045A4 /* ChatAndMessage.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -103,6 +122,34 @@
 				03412B122680EE4600B045A4 /* borp.storyboard */,
 			);
 			path = borp;
+			sourceTree = "<group>";
+		};
+		03412B142680F10100B045A4 /* borp */ = {
+			isa = PBXGroup;
+			children = (
+				03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */,
+				03412B1C268114D300B045A4 /* SearchEventsViewController.swift */,
+				03412B262681282900B045A4 /* ChatViewController.swift */,
+			);
+			path = borp;
+			sourceTree = "<group>";
+		};
+		03412B1E2681153F00B045A4 /* not to be effed wit */ = {
+			isa = PBXGroup;
+			children = (
+				C0DB3D9A267BE65E0022E5B1 /* THEStoryboard.storyboard */,
+				C0839D1E2679439000FF1369 /* Main.storyboard */,
+				C0839D232679439200FF1369 /* LaunchScreen.storyboard */,
+			);
+			path = "not to be effed wit";
+			sourceTree = "<group>";
+		};
+		03412B2126811C9E00B045A4 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				03412B2226811CB600B045A4 /* EventTableViewCell.swift */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		C0839D0C2679439000FF1369 = {
@@ -152,6 +199,7 @@
 			children = (
 				C0839D3526794B8700FF1369 /* User.swift */,
 				C0839D3D2679547F00FF1369 /* Friend.swift */,
+				03412B172680F27400B045A4 /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,6 +216,7 @@
 		C0839D3426794B7600FF1369 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				03412B142680F10100B045A4 /* borp */,
 				C0839D3926794BC000FF1369 /* PlaceholderViewController.swift */,
 				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
 				C0825B6B2680FC30004C099C /* FriendsController.swift */,
@@ -179,6 +228,7 @@
 		C0839D3726794B8F00FF1369 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				03412B2126811C9E00B045A4 /* Custom Views */,
 				C0839D3826794B9E00FF1369 /* Storyboards */,
 			);
 			path = Views;
@@ -187,12 +237,10 @@
 		C0839D3826794B9E00FF1369 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				03412B1E2681153F00B045A4 /* not to be effed wit */,
 				03412B0D2680E74700B045A4 /* borp */,
 				03412B0C2680E74200B045A4 /* Tanner */,
 				03412B0B2680E73A00B045A4 /* Jantsen */,
-				C0839D232679439200FF1369 /* LaunchScreen.storyboard */,
-				C0839D1E2679439000FF1369 /* Main.storyboard */,
-				C0DB3D9A267BE65E0022E5B1 /* THEStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -345,12 +393,20 @@
 			files = (
 				C0825B682680FAD6004C099C /* LoginController.swift in Sources */,
 				C0825B6C2680FC30004C099C /* FriendsController.swift in Sources */,
+				03412B202681162300B045A4 /* EventController.swift in Sources */,
+				03412B252681266100B045A4 /* ChatAndMessage.swift in Sources */,
 				03016586267A3B1000BF1D7C /* UserController.swift in Sources */,
 				039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */,
+				03412B1A26810ECE00B045A4 /* LocationManager.swift in Sources */,
+				03412B182680F27400B045A4 /* Event.swift in Sources */,
 				C0839D492679637A00FF1369 /* PasswordTest.swift in Sources */,
 				C0839D3626794B8700FF1369 /* User.swift in Sources */,
+				03412B272681282900B045A4 /* ChatViewController.swift in Sources */,
+				03412B162680F1BB00B045A4 /* EventQuickLookViewController.swift in Sources */,
 				C0825B6E2680FF88004C099C /* MapViewController.swift in Sources */,
+				03412B2326811CB600B045A4 /* EventTableViewCell.swift in Sources */,
 				C0839D192679439000FF1369 /* AppDelegate.swift in Sources */,
+				03412B1D268114D300B045A4 /* SearchEventsViewController.swift in Sources */,
 				C0839D3E2679547F00FF1369 /* Friend.swift in Sources */,
 				C0839D3A26794BC000FF1369 /* PlaceholderViewController.swift in Sources */,
 				C0839D4526795C1B00FF1369 /* Errors.swift in Sources */,
