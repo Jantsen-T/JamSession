@@ -11,8 +11,7 @@ class UserController {
     //var users: [User] = []
     weak var presentationDelegate: presDelegate?
     
-    
-    static let shared = UserController()
+    static let sharedInstance = UserController()
         var currentUser: User?{didSet{
          //   ViewController.shared?.userAppeared()
             let userbase = db.collection("Users")
@@ -61,10 +60,6 @@ class UserController {
         let friendRequest = friendRequestCollection.document("\(originatingUser.uuid) to \(receivingUser.uuid)")
         friendRequest.setData(FriendRequest(initialUser: originatingUser.uuid, receivingUser: receivingUser.uuid).toFireObj())
     }
-    
-    
-    
-    
     
     func ignoreFriendRequest(origin: User, catcher: User){
             let userbase = db.collection("Users")
@@ -187,6 +182,7 @@ class UserController {
                 return completion(.success(user))
             }
         }
+    
         func dbContainsUsername(username: String, completion:@escaping(Bool)->Void){
             self.grabUserFromUsername(username: username) { result in
                 switch result{
@@ -197,10 +193,7 @@ class UserController {
                 }
             }
         }
-    
-    
-    
-    
+
     func authUser(email: String, password: String, username: String, completion:@escaping()->Void){
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
@@ -212,7 +205,7 @@ class UserController {
                 guard let result = result else { return}
                 let uid = result.user.uid
                 
-                self.makeUserInDB(username: username, uuid: uid, location: 2, bio: 1, instrument: 3, experience: 4) { user in
+                self.makeUserInDB(username: username, uuid: uid, location: "", bio: "", instrument: "", experience: "") { user in
                     completion()
                 }
             }
