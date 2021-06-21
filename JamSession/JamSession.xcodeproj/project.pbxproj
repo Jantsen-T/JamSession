@@ -20,7 +20,6 @@
 		03412B252681266100B045A4 /* ChatAndMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B242681266100B045A4 /* ChatAndMessage.swift */; };
 		03412B272681282900B045A4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B262681282900B045A4 /* ChatViewController.swift */; };
 		039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */; };
-		3B8C839326812FBF00457FF1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C839226812FBF00457FF1 /* Event.swift */; };
 		3B8C839526812FF400457FF1 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C839426812FF400457FF1 /* CreateEventViewController.swift */; };
 		3B8C83972681301500457FF1 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C83962681301500457FF1 /* EventDetailViewController.swift */; };
 		5E2BBCA9763C3B8758693AB6 /* Pods_JamSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */; };
@@ -58,7 +57,6 @@
 		03412B242681266100B045A4 /* ChatAndMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAndMessage.swift; sourceTree = "<group>"; };
 		03412B262681282900B045A4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtensions.swift; sourceTree = "<group>"; };
-		3B8C839226812FBF00457FF1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3B8C839426812FF400457FF1 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		3B8C83962681301500457FF1 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,10 +160,11 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
-		3B8C83992681500B00457FF1 /* Recovered References */ = {
+    
+		03412B282681342000B045A4 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				3B8C839226812FBF00457FF1 /* Event.swift */,
+      
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -177,7 +176,8 @@
 				C0839D162679439000FF1369 /* Products */,
 				E75242916C08EE60A0F4A10B /* Pods */,
 				DBFA756A11E5787274E195EF /* Frameworks */,
-				3B8C83992681500B00457FF1 /* Recovered References */,
+
+				03412B282681342000B045A4 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -437,7 +437,6 @@
 				C0414E6B26814BDF000B592C /* EditUserViewController.swift in Sources */,
 				C0839D4526795C1B00FF1369 /* Errors.swift in Sources */,
 				C0839D472679615B00FF1369 /* SignUpViewController.swift in Sources */,
-				3B8C839326812FBF00457FF1 /* Event.swift in Sources */,
 				3B8C83972681301500457FF1 /* EventDetailViewController.swift in Sources */,
 				C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */,
 			);
