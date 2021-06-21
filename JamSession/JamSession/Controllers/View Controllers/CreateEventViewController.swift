@@ -37,7 +37,7 @@ class CreateEventViewController: UIViewController {
     
     //MARK: - Properties
     
-    let event: Event? = nil
+    var event: Event? = nil
     
     //MARK: - Functions
     
