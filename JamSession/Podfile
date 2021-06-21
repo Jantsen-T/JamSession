@@ -8,10 +8,10 @@ target 'JamSession' do
   # Pods for JamSession
 
 pod 'Firebase/Core'
-
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Firebase/Analytics'
 pod 'Firebase/InAppMessaging'
+pod 'MessageKit'
 
 end
