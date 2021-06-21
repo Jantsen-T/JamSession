@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		03016586267A3B1000BF1D7C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03016585267A3B1000BF1D7C /* UserController.swift */; };
-		039B8302267BE1D500AA86D9 /* extenty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B8301267BE1D500AA86D9 /* extenty.swift */; };
+		039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */; };
 		5E2BBCA9763C3B8758693AB6 /* Pods_JamSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */; };
+		C0825B682680FAD6004C099C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B672680FAD6004C099C /* LoginController.swift */; };
+		C0825B6C2680FC30004C099C /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B6B2680FC30004C099C /* FriendsController.swift */; };
+		C0825B6E2680FF88004C099C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B6D2680FF88004C099C /* MapViewController.swift */; };
 		C0839D192679439000FF1369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D182679439000FF1369 /* AppDelegate.swift */; };
 		C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D1A2679439000FF1369 /* SceneDelegate.swift */; };
 		C0839D202679439000FF1369 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0839D1E2679439000FF1369 /* Main.storyboard */; };
@@ -27,10 +30,13 @@
 
 /* Begin PBXFileReference section */
 		03016585267A3B1000BF1D7C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		039B8301267BE1D500AA86D9 /* extenty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extenty.swift; sourceTree = "<group>"; };
+		039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtensions.swift; sourceTree = "<group>"; };
 		8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9329E72305D2502E8773DA8F /* Pods-JamSession.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.debug.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.debug.xcconfig"; sourceTree = "<group>"; };
 		B7BE5C5E5FF3D09208A8D825 /* Pods-JamSession.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.release.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.release.xcconfig"; sourceTree = "<group>"; };
+		C0825B672680FAD6004C099C /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		C0825B6B2680FC30004C099C /* FriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
+		C0825B6D2680FF88004C099C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C0839D152679439000FF1369 /* JamSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0839D182679439000FF1369 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0839D1A2679439000FF1369 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				03016585267A3B1000BF1D7C /* UserController.swift */,
+				C0825B672680FAD6004C099C /* LoginController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -133,6 +140,8 @@
 			children = (
 				C0839D3926794BC000FF1369 /* PlaceholderViewController.swift */,
 				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
+				C0825B6B2680FC30004C099C /* FriendsController.swift */,
+				C0825B6D2680FF88004C099C /* MapViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -160,7 +169,7 @@
 			children = (
 				C0839D4426795C1B00FF1369 /* Errors.swift */,
 				C0839D482679637A00FF1369 /* PasswordTest.swift */,
-				039B8301267BE1D500AA86D9 /* extenty.swift */,
+				039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -298,10 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0825B682680FAD6004C099C /* LoginController.swift in Sources */,
+				C0825B6C2680FC30004C099C /* FriendsController.swift in Sources */,
 				03016586267A3B1000BF1D7C /* UserController.swift in Sources */,
-				039B8302267BE1D500AA86D9 /* extenty.swift in Sources */,
+				039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */,
 				C0839D492679637A00FF1369 /* PasswordTest.swift in Sources */,
 				C0839D3626794B8700FF1369 /* User.swift in Sources */,
+				C0825B6E2680FF88004C099C /* MapViewController.swift in Sources */,
 				C0839D192679439000FF1369 /* AppDelegate.swift in Sources */,
 				C0839D3E2679547F00FF1369 /* Friend.swift in Sources */,
 				C0839D3A26794BC000FF1369 /* PlaceholderViewController.swift in Sources */,

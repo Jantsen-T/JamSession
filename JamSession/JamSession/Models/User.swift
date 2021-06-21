@@ -9,7 +9,24 @@ class User: Equatable{
     let profilePic: UIImage
     let uuid: String
     var blocked: [String]
-    var friends: [String] = []
+    var friends: [String] = []{
+    didSet{
+        var friendds:[User]=[]
+        for fwen in friends{
+            UserController.sharedInstance.grabUserFromUsername(username: fwen) { res in
+                switch res{
+                case .success(let user):
+                    friendds.append(user)
+                case .failure(let err):
+                    print("err")
+                }
+                
+            }
+        }
+        UserController.sharedInstance.userFriends = friendds
+        print("updated uf")
+    }
+}
     let location: String
     let bio: String?
     let instrument: String
@@ -65,3 +82,5 @@ extension User{
         return User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instrument, experienceLevel: experienceLevel, UUID: uuid, friends: friendsy, blocked: blocked)
     }
 }
+
+// This FIlE matches the HamIntercession User File model object
