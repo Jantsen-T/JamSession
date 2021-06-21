@@ -1,21 +1,27 @@
 //
-//  PlaceholderViewController.swift
+//  ChatViewController.swift
 //  JamSession
 //
-//  Created by Jantsen Tanner on 6/15/21.
+//  Created by Gavin Craft on 6/21/21.
 //
 
 import UIKit
+import Firebase
+import MessageKit
 
-class PlaceholderViewController: UIViewController {
-
+class ChatViewController: UIViewController {
+    //MARK: things relating to this self
+    private var docReference: DocumentReference?
+    var messages: [Message] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    func loadChats(){
+        let db = Firestore.firestore().collection("Chats").whereField("users", arrayContains: UserController.sharedInstance.currentUser?.uuid ?? "Not Found self")
+    }
     /*
     // MARK: - Navigation
 

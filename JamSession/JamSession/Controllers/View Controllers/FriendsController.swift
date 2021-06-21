@@ -20,7 +20,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func addUserButtonPressed(_ sender: Any) {
         guard let current = UserController.sharedInstance.currentUser else {
             
-            
             return}
         guard let un = usernameField.text, !un.isEmpty else {
             return}
@@ -44,9 +43,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    
-    
-    
     //MARK: tableview funcs
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -66,7 +62,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             return cell
         }
-        
         
         
     }

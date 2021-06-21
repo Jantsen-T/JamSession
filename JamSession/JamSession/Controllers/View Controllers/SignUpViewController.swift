@@ -11,10 +11,11 @@ import Firebase
 
 class SignUpViewController: UIViewController {
     
-    @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confrimPasswordTextField: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,31 +24,36 @@ class SignUpViewController: UIViewController {
 
     func validateFields() -> String? {
         //Check that all fields are filled in
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return "Please fill in all fields"
+        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "\(presentErrorToUser(localizedError: "Please fill in all fields"))"
         }
         //check if password is secure
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         if Password.isPasswordValid(cleanedPassword) == false {
             // Password isnt secure enough
-            return " Please make sure password has at least 8 characters, contains a special character and a number."
+            return "\(presentErrorToUser(localizedError: " Please make sure password has at least 8 characters, contains a special character and a number."))"
         }
         return nil
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
+        if confrimPasswordTextField.text == passwordTextField.text {
+            
         let error = validateFields()
         if let error = error {
             // there is something wrong with the fields, show error message
-            showError(error)
+            //showError(error)
+            presentErrorToUser(localizedError: error)
         }
         else {
             
             //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
-            let username = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let confirmPassword = confrimPasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             UserController.sharedInstance.dbContainsUsername(username: username) { val in
                 if val == false{
                     UserController.sharedInstance.authUser(email: email, password: password, username: username){
@@ -57,18 +63,22 @@ class SignUpViewController: UIViewController {
                     self.presentErrorToUser(localizedError: "Username Taken")
                 }
             }
+        }
             
+        }
+        else {
+            presentErrorToUser(localizedError: "passwords must match")
         }
     }
     
-    func showError(_ message: String) {
-        errorLabel.text = message
-        errorLabel.alpha = 1
-    }
-    
-    func transitionToHome() {
-        
-    }
+//    func showError(_ message: String) {
+//        errorLabel.text = message
+//        errorLabel.alpha = 1
+//    }
+//
+//    func transitionToHome() {
+//
+//    }
     /*
      // MARK: - Navigation
      

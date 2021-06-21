@@ -34,3 +34,9 @@ enum ManErr: LocalizedError{
     case firebaseError(Error)
     case tooManySameUsername
 }
+enum FireError: LocalizedError{
+    case NoData
+    case IncorrectFormat
+    case Fat(Error)
+    case StringDecode
+}
