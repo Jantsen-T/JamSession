@@ -25,17 +25,20 @@ class SignUpViewController: UIViewController {
     func validateFields() -> String? {
         //Check that all fields are filled in
         if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return "\(presentErrorToUser(localizedError: "Please fill in all fields"))"
+            return "Please fill in all fields"
         }
         //check if password is secure
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if Password.isPasswordValid(cleanedPassword) == false {
             // Password isnt secure enough
-            return "\(presentErrorToUser(localizedError: " Please make sure password has at least 8 characters, contains a special character and a number."))"
+            return "Please make sure password has at least 8 characters, contains a special character and a number."
         }
         return nil
     }
+    
+    
+    
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
