@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 class LoginController{
-    static let sharedInstance = LoginController()
+    static let shared = LoginController()
     
     func loginUser(email: String, password: String, completion: @escaping(Result<String, ManErr>)->Void){
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, err in

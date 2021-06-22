@@ -20,7 +20,7 @@ class EventQuickLookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let user = UserController.sharedInstance.currentUser{
+        if let user = UserController.shared.currentUser{
             if let event = event{
                 if event.creator.uuid == user.uuid{
                     editButton.isEnabled = true

@@ -61,12 +61,12 @@ class Event{
         var creator: User? = nil
         var attending: [User] = []
         //time for nested completions
-        UserController.sharedInstance.grabUserFromUuid(uuid: creatorId) { res in
+        UserController.shared.grabUserFromUuid(uuid: creatorId) { res in
             switch res{
             case .success(let mainUser):
                 creator = mainUser
                 for uuid in attendings{
-                    UserController.sharedInstance.grabUserFromUuid(uuid: uuid) { res in
+                    UserController.shared.grabUserFromUuid(uuid: uuid) { res in
                         switch res{
                         case .success(let user):
                             attending.append(user)
