@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		03016586267A3B1000BF1D7C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03016585267A3B1000BF1D7C /* UserController.swift */; };
+		031FCD0D26827F2000ABCC60 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD0926827F1F00ABCC60 /* ChatViewController.swift */; };
+		031FCD0E26827F2000ABCC60 /* MenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD0A26827F2000ABCC60 /* MenTableViewController.swift */; };
+		031FCD0F26827F2000ABCC60 /* MenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD0B26827F2000ABCC60 /* MenTableViewCell.swift */; };
+		031FCD1026827F2000ABCC60 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD0C26827F2000ABCC60 /* LoginViewController.swift */; };
+		031FCD1226827F3300ABCC60 /* ChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD1126827F3300ABCC60 /* ChatsController.swift */; };
+		031FCD1426827F5C00ABCC60 /* ChatAndMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD1326827F5C00ABCC60 /* ChatAndMessage.swift */; };
 		03412B0F2680E7E800B045A4 /* Jantsen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B0E2680E7E800B045A4 /* Jantsen.storyboard */; };
 		03412B112680EE2000B045A4 /* tanman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B102680EE2000B045A4 /* tanman.storyboard */; };
 		03412B132680EE4600B045A4 /* borp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B122680EE4600B045A4 /* borp.storyboard */; };
@@ -17,7 +23,6 @@
 		03412B1D268114D300B045A4 /* SearchEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B1C268114D300B045A4 /* SearchEventsViewController.swift */; };
 		03412B202681162300B045A4 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B1F2681162300B045A4 /* EventController.swift */; };
 		03412B2326811CB600B045A4 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B2226811CB600B045A4 /* EventTableViewCell.swift */; };
-		03412B252681266100B045A4 /* ChatAndMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B242681266100B045A4 /* ChatAndMessage.swift */; };
 		03412B272681282900B045A4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B262681282900B045A4 /* ChatViewController.swift */; };
 		039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */; };
 		3B8C839526812FF400457FF1 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C839426812FF400457FF1 /* CreateEventViewController.swift */; };
@@ -45,6 +50,12 @@
 
 /* Begin PBXFileReference section */
 		03016585267A3B1000BF1D7C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		031FCD0926827F1F00ABCC60 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = ../../../../../../inappMessaging/BlamConfession/BlamConfession/controller/view/ChatViewController.swift; sourceTree = "<group>"; };
+		031FCD0A26827F2000ABCC60 /* MenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenTableViewController.swift; sourceTree = "<group>"; };
+		031FCD0B26827F2000ABCC60 /* MenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenTableViewCell.swift; sourceTree = "<group>"; };
+		031FCD0C26827F2000ABCC60 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		031FCD1126827F3300ABCC60 /* ChatsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsController.swift; sourceTree = "<group>"; };
+		031FCD1326827F5C00ABCC60 /* ChatAndMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAndMessage.swift; sourceTree = "<group>"; };
 		03412B0E2680E7E800B045A4 /* Jantsen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Jantsen.storyboard; sourceTree = "<group>"; };
 		03412B102680EE2000B045A4 /* tanman.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tanman.storyboard; sourceTree = "<group>"; };
 		03412B122680EE4600B045A4 /* borp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = borp.storyboard; sourceTree = "<group>"; };
@@ -54,7 +65,6 @@
 		03412B1C268114D300B045A4 /* SearchEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventsViewController.swift; sourceTree = "<group>"; };
 		03412B1F2681162300B045A4 /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		03412B2226811CB600B045A4 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		03412B242681266100B045A4 /* ChatAndMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAndMessage.swift; sourceTree = "<group>"; };
 		03412B262681282900B045A4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtensions.swift; sourceTree = "<group>"; };
 		3B8C839426812FF400457FF1 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
@@ -100,10 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				03016585267A3B1000BF1D7C /* UserController.swift */,
+				031FCD1126827F3300ABCC60 /* ChatsController.swift */,
 				C0825B672680FAD6004C099C /* LoginController.swift */,
 				03412B1926810ECE00B045A4 /* LocationManager.swift */,
 				03412B1F2681162300B045A4 /* EventController.swift */,
-				03412B242681266100B045A4 /* ChatAndMessage.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -135,6 +145,10 @@
 		03412B142680F10100B045A4 /* borp */ = {
 			isa = PBXGroup;
 			children = (
+				031FCD0926827F1F00ABCC60 /* ChatViewController.swift */,
+				031FCD0C26827F2000ABCC60 /* LoginViewController.swift */,
+				031FCD0B26827F2000ABCC60 /* MenTableViewCell.swift */,
+				031FCD0A26827F2000ABCC60 /* MenTableViewController.swift */,
 				03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */,
 				03412B1C268114D300B045A4 /* SearchEventsViewController.swift */,
 				03412B262681282900B045A4 /* ChatViewController.swift */,
@@ -160,11 +174,9 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
-    
 		03412B282681342000B045A4 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-      
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -176,7 +188,6 @@
 				C0839D162679439000FF1369 /* Products */,
 				E75242916C08EE60A0F4A10B /* Pods */,
 				DBFA756A11E5787274E195EF /* Frameworks */,
-
 				03412B282681342000B045A4 /* Recovered References */,
 			);
 			sourceTree = "<group>";
@@ -216,6 +227,7 @@
 		C0839D3126794B3400FF1369 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				031FCD1326827F5C00ABCC60 /* ChatAndMessage.swift */,
 				C0839D3526794B8700FF1369 /* User.swift */,
 				C0839D3D2679547F00FF1369 /* Friend.swift */,
 				03412B172680F27400B045A4 /* Event.swift */,
@@ -271,8 +283,8 @@
 		C0839D4326795C0C00FF1369 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				C0839D4426795C1B00FF1369 /* Errors.swift */,
 				C0839D482679637A00FF1369 /* PasswordTest.swift */,
+				C0839D4426795C1B00FF1369 /* Errors.swift */,
 				039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */,
 			);
 			path = Helpers;
@@ -418,8 +430,9 @@
 				C0825B6C2680FC30004C099C /* FriendsController.swift in Sources */,
 				3B8C839526812FF400457FF1 /* CreateEventViewController.swift in Sources */,
 				03412B202681162300B045A4 /* EventController.swift in Sources */,
-				03412B252681266100B045A4 /* ChatAndMessage.swift in Sources */,
+				031FCD1026827F2000ABCC60 /* LoginViewController.swift in Sources */,
 				03016586267A3B1000BF1D7C /* UserController.swift in Sources */,
+				031FCD0E26827F2000ABCC60 /* MenTableViewController.swift in Sources */,
 				039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */,
 				03412B1A26810ECE00B045A4 /* LocationManager.swift in Sources */,
 				03412B182680F27400B045A4 /* Event.swift in Sources */,
@@ -433,12 +446,16 @@
 				C0839D192679439000FF1369 /* AppDelegate.swift in Sources */,
 				03412B1D268114D300B045A4 /* SearchEventsViewController.swift in Sources */,
 				C0839D3E2679547F00FF1369 /* Friend.swift in Sources */,
+				031FCD0F26827F2000ABCC60 /* MenTableViewCell.swift in Sources */,
 				C0414E6926814BD9000B592C /* CreateUserViewController.swift in Sources */,
 				C0414E6B26814BDF000B592C /* EditUserViewController.swift in Sources */,
+				031FCD1426827F5C00ABCC60 /* ChatAndMessage.swift in Sources */,
 				C0839D4526795C1B00FF1369 /* Errors.swift in Sources */,
+				031FCD0D26827F2000ABCC60 /* ChatViewController.swift in Sources */,
 				C0839D472679615B00FF1369 /* SignUpViewController.swift in Sources */,
 				3B8C83972681301500457FF1 /* EventDetailViewController.swift in Sources */,
 				C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */,
+				031FCD1226827F3300ABCC60 /* ChatsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,7 +604,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 25YF96HHP6;
+				DEVELOPMENT_TEAM = RCJN47T742;
 				INFOPLIST_FILE = JamSession/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -607,7 +624,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 25YF96HHP6;
+				DEVELOPMENT_TEAM = RCJN47T742;
 				INFOPLIST_FILE = JamSession/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

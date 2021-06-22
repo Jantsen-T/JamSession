@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A7i-ia-JtG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -114,14 +112,29 @@
         <!--Messages List-->
         <scene sceneID="mOq-ca-jGd">
             <objects>
-                <tableViewController id="7BH-Kl-LSs" userLabel="Messages List" sceneMemberID="viewController">
+                <tableViewController id="7BH-Kl-LSs" userLabel="Messages List" customClass="MenTableViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="q5m-Sz-pjj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="61y-UA-2PW">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyn-B5-DZe">
+                                    <rect key="frame" x="351" y="6" width="30" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="add"/>
+                                    <connections>
+                                        <action selector="plusPressed:" destination="7BH-Kl-LSs" eventType="touchUpInside" id="FJ3-yp-TyK"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="77" id="tvx-p6-zCR">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="77"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="77" id="tvx-p6-zCR" customClass="MenTableViewCell" customModule="JamSession" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="68.5" width="414" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tvx-p6-zCR" id="LWw-Le-JQI">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
@@ -147,6 +160,10 @@
                                         <constraint firstItem="o9U-ZV-Wcb" firstAttribute="top" secondItem="LWw-Le-JQI" secondAttribute="top" constant="8" id="V5G-TN-qSl"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="tHW-aG-EYw" id="6vH-M1-5sn"/>
+                                    <outlet property="pfpView" destination="o9U-ZV-Wcb" id="mFG-cT-Li1"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -163,90 +180,12 @@
         <!--Message Detail-->
         <scene sceneID="OLG-xg-74P">
             <objects>
-                <viewController id="MRA-Ns-7Ia" userLabel="Message Detail" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chatVC" id="MRA-Ns-7Ia" userLabel="Message Detail" customClass="ChatViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5rt-b8-WFe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zvs-6s-hrL">
-                                <rect key="frame" x="0.0" y="116" width="414" height="746"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0XG-3u-Wh6">
-                                    <size key="itemSize" width="414" height="33"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="receivedMessage" id="mxx-al-bl7">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Yh4-ZM-qay">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="33"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="message content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJD-El-buP">
-                                                    <rect key="frame" x="23" y="6" width="132" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" name="receive_message"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptF-rP-VLH">
-                                                    <rect key="frame" x="356" y="6" width="34" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="414" height="33"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sentMessage" id="9Mf-fo-5rz">
-                                        <rect key="frame" x="0.0" y="43" width="414" height="33"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jxn-Kt-ijv">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="33"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="message content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPf-mE-S6G">
-                                                    <rect key="frame" x="263" y="6" width="132" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" name="send_message"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnF-Ji-ZR6">
-                                                    <rect key="frame" x="16" y="6" width="34" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username that u is conversatin wit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZ0-cT-XIw">
-                                <rect key="frame" x="77" y="55" width="260" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="7pC-5o-hz5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="7pC-5o-hz5" firstAttribute="trailing" secondItem="Zvs-6s-hrL" secondAttribute="trailing" id="Ct8-SI-n6L"/>
-                            <constraint firstItem="Zvs-6s-hrL" firstAttribute="top" secondItem="7pC-5o-hz5" secondAttribute="top" constant="72" id="PRK-hi-Yp8"/>
-                            <constraint firstItem="Zvs-6s-hrL" firstAttribute="leading" secondItem="7pC-5o-hz5" secondAttribute="leading" id="j10-62-g05"/>
-                            <constraint firstItem="7pC-5o-hz5" firstAttribute="bottom" secondItem="Zvs-6s-hrL" secondAttribute="bottom" id="sql-h8-Rlk"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9sk-1J-cgf"/>
                 </viewController>
@@ -325,7 +264,6 @@
         <!--Home-->
         <scene sceneID="c54-5a-HvW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9wJ-iG-2jJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController id="A7i-ia-JtG" userLabel="Home" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="f5A-U0-kc0"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xB6-9F-Y6J">
@@ -339,6 +277,7 @@
                         <segue destination="g6g-DL-q7p" kind="relationship" relationship="viewControllers" id="Mob-bg-g0k"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9wJ-iG-2jJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3028" y="949"/>
         </scene>
@@ -349,12 +288,6 @@
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="person.badge.plus" catalog="system" width="128" height="124"/>
         <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
-        <namedColor name="receive_message">
-            <color red="0.26435389499187545" green="0.24300595711940443" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="send_message">
-            <color red="0.41752577319587625" green="0.41752577319587625" blue="0.41752577319587625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

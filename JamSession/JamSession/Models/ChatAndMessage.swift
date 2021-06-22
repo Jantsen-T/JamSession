@@ -5,10 +5,9 @@
 //  Created by Gavin Craft on 6/21/21.
 //
 
-import Foundation
+import UIKit
 import MessageKit
-import MessageKit
-import Firebase
+import FirebaseFirestore
 
 struct ChatUser: SenderType, Equatable {
     var senderId: String

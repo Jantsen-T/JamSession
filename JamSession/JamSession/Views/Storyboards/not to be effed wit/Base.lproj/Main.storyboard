@@ -33,12 +33,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(error label)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJB-TH-6NA">
-                                <rect key="frame" x="20" y="475" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hhm-zt-NDu">
                                 <rect key="frame" x="97" y="144" width="132" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -48,14 +42,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MJB-TH-6NA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="CVM-7X-Rtt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sab-O5-ROJ" secondAttribute="trailing" constant="33" id="CcL-QG-ve6"/>
                             <constraint firstItem="sab-O5-ROJ" firstAttribute="top" secondItem="Hhm-zt-NDu" secondAttribute="bottom" constant="34" id="FWM-B1-7lx"/>
-                            <constraint firstItem="MJB-TH-6NA" firstAttribute="top" secondItem="cYD-uE-zwa" secondAttribute="bottom" constant="117" id="GuH-iv-XUv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cYD-uE-zwa" secondAttribute="trailing" constant="201" id="Okp-ip-t3C"/>
                             <constraint firstItem="cYD-uE-zwa" firstAttribute="top" secondItem="U6D-MV-gEh" secondAttribute="bottom" constant="82" id="SlE-kU-G4k"/>
                             <constraint firstItem="U6D-MV-gEh" firstAttribute="top" secondItem="Hhm-zt-NDu" secondAttribute="bottom" constant="34" id="Ykx-tC-xea"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MJB-TH-6NA" secondAttribute="trailing" constant="20" id="ZQK-za-7ag"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hhm-zt-NDu" secondAttribute="trailing" constant="185" id="n0z-6w-fKi"/>
                             <constraint firstItem="Hhm-zt-NDu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="97" id="nOj-mx-uaK"/>
                             <constraint firstItem="Hhm-zt-NDu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="pfs-2Z-kU6"/>
@@ -67,7 +58,6 @@
                     <navigationItem key="navigationItem" id="8Z0-3I-DYN"/>
                     <connections>
                         <outlet property="emailTextField" destination="Hhm-zt-NDu" id="nKs-3H-UV8"/>
-                        <outlet property="errorLabel" destination="MJB-TH-6NA" id="ZZj-2j-W2z"/>
                         <outlet property="firstNameTextField" destination="U6D-MV-gEh" id="p7v-S6-WyX"/>
                         <outlet property="passwordTextField" destination="sab-O5-ROJ" id="GOQ-et-JAG"/>
                     </connections>

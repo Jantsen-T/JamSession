@@ -29,8 +29,22 @@ class LoginViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 
-                case .success(_):
-                    print("pp")
+                case .success(let user):
+                    UserController.sharedInstance.grabUserFromUuid(uuid: user) { result in
+                        switch result{
+                        case .success(let user):
+                            UserController.sharedInstance.currentUser = user
+                            let sb = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = sb.instantiateViewController(identifier: "whatchamahoozit") as! MenTableViewController
+                            vc.modalPresentationStyle = .fullScreen
+                            self.present(vc, animated: true, completion: nil)
+                            
+                        case .failure(let err):
+                            DispatchQueue.main.async {
+                                self.presentErrorToUser(localizedError: err)
+                            }
+                        }
+                    }
                 case .failure(let error):
                     
                     print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
