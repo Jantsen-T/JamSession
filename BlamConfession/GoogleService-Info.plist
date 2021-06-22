@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>474005615731-jdjf8ops9ojgt4fp9m3vjl39e14pqh9s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.474005615731-jdjf8ops9ojgt4fp9m3vjl39e14pqh9s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC-FL5_-jtLihNcuP50MD4xy_VLB52cFPs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>474005615731</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.smithyboi.BlamConfession</string>
+	<key>PROJECT_ID</key>
+	<string>jamsesh-b179f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>jamsesh-b179f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:474005615731:ios:611c93256e00f286766606</string>
+	<key>DATABASE_URL</key>
+	<string>https://jamsesh-b179f-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
