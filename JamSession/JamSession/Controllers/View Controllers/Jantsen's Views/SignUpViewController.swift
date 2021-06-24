@@ -51,7 +51,6 @@ class SignUpViewController: UIViewController {
                 presentErrorToUser(localizedError: error)
             }
             else {
-                
                 //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
                 let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -67,6 +66,23 @@ class SignUpViewController: UIViewController {
                     }
                 }
             }
+
+        }
+        else if confrimPasswordTextField.text == "" {
+            guard let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines), !(email.isEmpty),
+                  let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines), !(password.isEmpty) else {return}
+            LoginController.sharedInstance.loginUser(email: email, password: password) { result in
+                switch result {
+                
+                case success(_):
+                
+                case failure(_):
+                print("error")
+                
+                }
+            }
+                  
+    
         }
         else {
             presentErrorToUser(localizedError: "passwords must match")
@@ -75,6 +91,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         toggleToSignUp()
+    
     }
     
     
