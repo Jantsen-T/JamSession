@@ -99,7 +99,7 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return pickerData[row]
     }
     @objc func setImage(){
-        v 
+        
     }
     
 }
