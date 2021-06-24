@@ -72,7 +72,7 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
             presentErrorToUser(localizedError: "Lemme know how good you are")
             return
         }
-        UserController.sharedInstance.makeUserInDB(username: username, uuid: uuid, location: location, bio: bio, instrument: instruments, experience: expString) { user in
+        UserController.sharedInstance.makeUserInDB(username: username, uuid: uuid, location: location, bio: bio, instrument: instruments, experience: expString, pfp: pfp) { user in
             UserController.sharedInstance.saveUser(user: user)
         }
     }
