@@ -24,19 +24,22 @@ class EditUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-pickerData = ["Beginner", "Intermediate", "advanced", "Expert"]
-        // Do any additional setup after loading the view.
+        
+        //do this shit last
+        pickerData = ["Beginner", "Intermediate", "Dadvanced", "Expert"]
+        guard let currentUser = UserController.sharedInstance.currentUser else { return}
+        profilePicImageView.image = currentUser.profilePic
+        usernameTextField.text = currentUser.username
+        locationTextField.text = currentUser.location
+        instrumentTextField.text = currentUser.instrument
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    
+    func saveNewData(){
+        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !username.isEmpty else { self.presentErrorToUser(localizedError: "You cannot have an empty username!") ;return}
+        guard let location = locationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !location.isEmpty else {self.presentErrorToUser(localizedError: "You gotta let people know where you be. Even if youre super vague") ;return}
     }
-    */
-
+    
 }
