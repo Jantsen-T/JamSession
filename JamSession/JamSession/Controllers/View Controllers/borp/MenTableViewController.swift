@@ -18,7 +18,9 @@ class MenTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 75
+//    }
     @IBAction func plusPressed(_ sender: Any) {
         let vc = UIAlertController(title: "new message", message: nil, preferredStyle: .alert)
         vc.addTextField(configurationHandler: nil)
@@ -55,7 +57,7 @@ class MenTableViewController: UITableViewController {
                 switch r{
                 case .success(let user):
                     otherGuy = [user]
-                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let sb = UIStoryboard(name: "borp", bundle: nil)
                     let vc = sb.instantiateViewController(identifier: "ppchat") as! ChatViewController
                     vc.targetUser = otherGuy[0]
                     vc.modalPresentationStyle = .fullScreen
@@ -72,9 +74,10 @@ class MenTableViewController: UITableViewController {
                 switch r{
                 case .success(let user):
                     otherGuy = [user]
-                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let sb = UIStoryboard(name: "borp", bundle: nil)
                     let vc = sb.instantiateViewController(identifier: "chatVC") as! ChatViewController
                     vc.modalPresentationStyle = .fullScreen
+                    vc.modalTransitionStyle = .crossDissolve
                     vc.targetUser = otherGuy[0]
                     DispatchQueue.main.async {
                         self.present(vc, animated: true, completion: nil)
@@ -86,18 +89,19 @@ class MenTableViewController: UITableViewController {
             }
         }
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
-    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return ChatsController.sharedInstance.chats.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ManCell", for: indexPath) as? MenTableViewCell,
-              let cu = UserController.sharedInstance.currentUser else { return UITableViewCell()}
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell,
+              let cu = UserController.sharedInstance.currentUser else {
+            
+            return UITableViewCell()}
         let chat = ChatsController.sharedInstance.chats[indexPath.row]
         let index = chat.users.firstIndex(of: cu.uuid)
+        
         if index==1{
             UserController.sharedInstance.grabUserFromUuid(uuid: chat.users[0]) { r in
                 switch r{
@@ -107,6 +111,7 @@ class MenTableViewController: UITableViewController {
                 case .failure(let err):
                     print(err)
                 }
+                
             }
         }else if index==0{
             UserController.sharedInstance.grabUserFromUuid(uuid: chat.users[1]) { r in
@@ -117,8 +122,10 @@ class MenTableViewController: UITableViewController {
                 case .failure(let err):
                     print(err)
                 }
+                
             }
         }
+        
         return cell
     }
 

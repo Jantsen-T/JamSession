@@ -47,7 +47,8 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
                 }
             case .failure(let err):
                 DispatchQueue.main.async {
-                    self.presentErrorToUser(localizedError: err)
+                    print(err.localizedDescription)
+                    self.presentErrorToUser(localizedError: err.localizedDescription)
                 }
             }
         }
