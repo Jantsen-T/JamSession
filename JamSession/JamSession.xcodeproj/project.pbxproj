@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		03016586267A3B1000BF1D7C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03016585267A3B1000BF1D7C /* UserController.swift */; };
-		031FCD0D26827F2000ABCC60 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD0926827F1F00ABCC60 /* ChatViewController.swift */; };
 		031FCD0E26827F2000ABCC60 /* MenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD0A26827F2000ABCC60 /* MenTableViewController.swift */; };
 		031FCD0F26827F2000ABCC60 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD0B26827F2000ABCC60 /* MessageCell.swift */; };
 		031FCD1226827F3300ABCC60 /* ChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD1126827F3300ABCC60 /* ChatsController.swift */; };
@@ -16,7 +15,6 @@
 		031FCD1626836A1300ABCC60 /* FriendsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD1526836A1300ABCC60 /* FriendsListVC.swift */; };
 		031FCD1826836A8200ABCC60 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD1726836A8200ABCC60 /* FriendCell.swift */; };
 		034021092683B0480093B135 /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034021082683B0480093B135 /* LoginViewController2.swift */; };
-		034021142684E2B60093B135 /* Jantsen's Views in Resources */ = {isa = PBXBuildFile; fileRef = 034021132684E2B60093B135 /* Jantsen's Views */; };
 		03412B0F2680E7E800B045A4 /* Jantsen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B0E2680E7E800B045A4 /* Jantsen.storyboard */; };
 		03412B112680EE2000B045A4 /* tanman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B102680EE2000B045A4 /* tanman.storyboard */; };
 		03412B132680EE4600B045A4 /* borp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B122680EE4600B045A4 /* borp.storyboard */; };
@@ -59,7 +57,6 @@
 		031FCD1526836A1300ABCC60 /* FriendsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsListVC.swift; path = "JamSession/Controllers/View Controllers/borp/FriendsListVC.swift"; sourceTree = SOURCE_ROOT; };
 		031FCD1726836A8200ABCC60 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendCell.swift; path = "JamSession/Controllers/View Controllers/borp/FriendCell.swift"; sourceTree = SOURCE_ROOT; };
 		034021082683B0480093B135 /* LoginViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
-		034021132684E2B60093B135 /* Jantsen's Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Jantsen's Views"; sourceTree = "<group>"; };
 		03412B0E2680E7E800B045A4 /* Jantsen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Jantsen.storyboard; sourceTree = "<group>"; };
 		03412B102680EE2000B045A4 /* tanman.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tanman.storyboard; sourceTree = "<group>"; };
 		03412B122680EE4600B045A4 /* borp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = borp.storyboard; sourceTree = "<group>"; };
@@ -179,13 +176,6 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
-		03412B282681342000B045A4 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		4EA15D53F3A64FA261B23DBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,13 +184,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C02FB03326850BD700F29914 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
+				C0414E6826814BD9000B592C /* CreateUserViewController.swift */,
+				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		C0839D0C2679439000FF1369 = {
 			isa = PBXGroup;
 			children = (
 				C0839D172679439000FF1369 /* JamSession */,
 				C0839D162679439000FF1369 /* Products */,
 				E75242916C08EE60A0F4A10B /* Pods */,
-				03412B282681342000B045A4 /* Recovered References */,
 				4EA15D53F3A64FA261B23DBA /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -260,14 +259,11 @@
 		C0839D3426794B7600FF1369 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				034021132684E2B60093B135 /* Jantsen's Views */,
+				C02FB03326850BD700F29914 /* New Group */,
 				03412B142680F10100B045A4 /* borp */,
-				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
 				C0825B6D2680FF88004C099C /* MapViewController.swift */,
 				3B8C839426812FF400457FF1 /* CreateEventViewController.swift */,
 				3B8C83962681301500457FF1 /* EventDetailViewController.swift */,
-				C0414E6826814BD9000B592C /* CreateUserViewController.swift */,
-				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -377,7 +373,6 @@
 				03412B112680EE2000B045A4 /* tanman.storyboard in Resources */,
 				C0839D252679439200FF1369 /* LaunchScreen.storyboard in Resources */,
 				C0DB3D9B267BE65E0022E5B1 /* THEStoryboard.storyboard in Resources */,
-				034021142684E2B60093B135 /* Jantsen's Views in Resources */,
 				C0839D202679439000FF1369 /* Mainn.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,7 +449,6 @@
 				C0414E6B26814BDF000B592C /* EditUserViewController.swift in Sources */,
 				031FCD1426827F5C00ABCC60 /* ChatAndMessage.swift in Sources */,
 				C0839D4526795C1B00FF1369 /* Errors.swift in Sources */,
-				031FCD0D26827F2000ABCC60 /* ChatViewController.swift in Sources */,
 				C0839D472679615B00FF1369 /* SignUpViewController.swift in Sources */,
 				3B8C83972681301500457FF1 /* EventDetailViewController.swift in Sources */,
 				C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */,
@@ -607,7 +601,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RCJN47T742;
+				DEVELOPMENT_TEAM = 25YF96HHP6;
 				INFOPLIST_FILE = JamSession/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -627,7 +621,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RCJN47T742;
+				DEVELOPMENT_TEAM = 25YF96HHP6;
 				INFOPLIST_FILE = JamSession/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

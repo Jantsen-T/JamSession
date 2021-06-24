@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseFirestore
 class ChatsController{
     static let sharedInstance = ChatsController()
     var chats: [Chat] = []{
