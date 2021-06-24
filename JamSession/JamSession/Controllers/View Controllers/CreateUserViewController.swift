@@ -72,11 +72,9 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
             presentErrorToUser(localizedError: "Lemme know how good you are")
             return
         }
-        let newUser = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instruments, experienceLevel: expString, UUID: uuid, friends: [], blocked: [])
-        newUser.friendRequests = []
-        UserController.sharedInstance.currentUser = newUser
-        UserController.sharedInstance.saveUser(user: UserController.sharedInstance.currentUser!)
-        dismiss(animated: true, completion: nil)
+        UserController.sharedInstance.makeUserInDB(username: username, uuid: uuid, location: location, bio: bio, instrument: instruments, experience: expString) { user in
+            UserController.sharedInstance.saveUser(user: user)
+        }
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
