@@ -15,14 +15,32 @@ class NoChatViewController: MessagesViewController, InputBarAccessoryViewDelegat
     //MARK: things relating to this self
     var currentUser = UserController.sharedInstance.currentUser!
     private var docReference: DocumentReference?
-    var messages: [Message] = []
+    var messages: [Message] = []{
+        didSet{
+            print(messages.count)
+        }
+    }
     var targetUser: User?
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        self.title = targetUser?.username ?? "Chat"
+        
+        navigationItem.largeTitleDisplayMode = .never
+        maintainPositionOnKeyboardFrameChanged = true
+        scrollsToLastItemOnKeyboardBeginsEditing = true
+        
+        messageInputBar.inputTextView.tintColor = .systemBlue
+        messageInputBar.sendButton.setTitleColor(.systemTeal, for: .normal)
+        
+        messageInputBar.delegate = self
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        
+        loadChat()
     }
-
+    
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         //When use press send button this method is called.
         let message = Message(id: UUID().uuidString, content: text, created: Timestamp(), senderID: currentUser.uuid, senderName: currentUser.username)
@@ -43,8 +61,15 @@ class NoChatViewController: MessagesViewController, InputBarAccessoryViewDelegat
             self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
         }
     }
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        if message.sender.senderId == currentUser.uuid {
+            avatarView.image = currentUser.profilePic
+        } else {
+            avatarView.image = targetUser?.profilePic
+        }
+    }
     func currentSender() -> SenderType {
-        return ChatUser(senderId: Auth.auth().currentUser!.uid, displayName: (Auth.auth().currentUser?.displayName)!)
+        return ChatUser(senderId: UserController.sharedInstance.currentUser!.uuid, displayName: (UserController.sharedInstance.currentUser!.username))
         // return Sender(id: Auth.auth().currentUser!.uid, displayName: Auth.auth().currentUser?.displayName ?? "Name not found")
     }
     //This return the MessageType which we have defined to be text in Messages.swift
@@ -79,23 +104,8 @@ class NoChatViewController: MessagesViewController, InputBarAccessoryViewDelegat
             self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
         })
     }
-        //MARK: chatty functions that i have NO CLUE about
-    func createNewChat() {
-        guard let targetUser = targetUser else { return}
-        let users = [self.currentUser.uuid, targetUser.uuid]
-        let data: [String: Any] = [
-            "users":users
-        ]
-        let db = Firestore.firestore().collection("Chats")
-        db.addDocument(data: data) { (error) in
-            if let error = error {
-                print("Unable to create chat! \(error)")
-                return
-            } else {
-                self.loadChat()
-            }
-        }
-    }
+    //MARK: chatty functions that i have NO CLUE about
+    
     func loadChat() {
         //Fetch all the chats which has current user in it
         guard let targetUser = targetUser else { return}
@@ -111,7 +121,7 @@ class NoChatViewController: MessagesViewController, InputBarAccessoryViewDelegat
                 }
                 if queryCount == 0 {
                     //If documents count is zero that means there is no chat available and we need to create a new instance
-                    self.createNewChat()
+                    ChatsController.sharedInstance.createNewChatWith(user: targetUser)
                 }
                 else if queryCount >= 1 {
                     //Chat(s) found for currentUser
@@ -142,7 +152,7 @@ class NoChatViewController: MessagesViewController, InputBarAccessoryViewDelegat
                             return
                         } //end of if
                     } //end of for
-                    self.createNewChat()
+                    ChatsController.sharedInstance.createNewChatWith(user: targetUser)
                 } else {
                     print("if you see this, i am a literal failure - borp")
                 }}}}

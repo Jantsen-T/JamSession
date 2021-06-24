@@ -28,7 +28,7 @@ class FriendCell: UITableViewCell {
         guard let currentUser = UserController.sharedInstance.currentUser,
               let user = user else { return}
         let sb = UIStoryboard(name: "borp", bundle: nil)
-        let vc = sb.instantiateViewController(identifier: "chatVC") as! ChatViewController
+        let vc = sb.instantiateViewController(identifier: "chatVC") as! NoChatViewController
         vc.currentUser = currentUser
         vc.targetUser = user
         vc.modalPresentationStyle = .fullScreen
