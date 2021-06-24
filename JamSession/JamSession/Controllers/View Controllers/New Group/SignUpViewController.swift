@@ -37,6 +37,7 @@ class SignUpViewController: UIViewController {
         return nil
     }
     
+    
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
         if confrimPasswordTextField.text == passwordTextField.text {
