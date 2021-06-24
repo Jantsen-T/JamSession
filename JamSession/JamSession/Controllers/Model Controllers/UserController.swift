@@ -214,8 +214,8 @@ class UserController {
             }
         }
     }
-    func makeUserInDB(username: String,uuid:String, /*friends will always be []*/location: String, bio: String, instrument: String /*frindrequests will alwasy be empty aswell*/, experience: String, completion: @escaping(User)->Void){
-        let user = User(username: username, profilePic: UIImage(named: "blank")!, location: location, bio: bio, instrument: instrument, experienceLevel: experience, UUID: uuid, friends: [])
+    func makeUserInDB(username: String,uuid:String,location: String, bio: String, instrument: String, experience: String, pfp: UIImage, completion: @escaping(User)->Void){
+        let user = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instrument, experienceLevel: experience, UUID: uuid, friends: [])
         let dict = user.toFireObj()
         let userCollection = db.collection("Users")
         let document = userCollection.document(uuid)
