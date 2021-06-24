@@ -185,6 +185,7 @@ class UserController {
             return completion(.success(user))
         }
     }
+    
     func dbContainsUsername(username: String, completion:@escaping(Bool)->Void){
         self.grabUserFromUsername(username: username) { result in
             switch result{
@@ -210,7 +211,7 @@ class UserController {
                 guard let result = result else { return}
                 let uid = result.user.uid
                 
-                self.makeUserInDB(username: username, uuid: uid, location: 2, bio: 1, instrument: 3, experience: 4) { user in
+                self.makeUserInDB(username: username, uuid: uid, location: "locatioin", bio: "bio", instrument: "instrument", experience: "seleccted experience") { user in
                     completion()
                 }
             }

@@ -160,13 +160,22 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
-    
 		03412B282681342000B045A4 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-      
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		C005263B2682A338005F0286 /* Jantsen's Views */ = {
+			isa = PBXGroup;
+			children = (
+				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
+				C0414E6C26814BED000B592C /* LoginViewController.swift */,
+				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
+				C0414E6826814BD9000B592C /* CreateUserViewController.swift */,
+			);
+			path = "Jantsen's Views";
 			sourceTree = "<group>";
 		};
 		C0839D0C2679439000FF1369 = {
@@ -176,7 +185,6 @@
 				C0839D162679439000FF1369 /* Products */,
 				E75242916C08EE60A0F4A10B /* Pods */,
 				DBFA756A11E5787274E195EF /* Frameworks */,
-
 				03412B282681342000B045A4 /* Recovered References */,
 			);
 			sourceTree = "<group>";
@@ -235,15 +243,12 @@
 		C0839D3426794B7600FF1369 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C005263B2682A338005F0286 /* Jantsen's Views */,
 				03412B142680F10100B045A4 /* borp */,
-				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
 				C0825B6B2680FC30004C099C /* FriendsController.swift */,
 				C0825B6D2680FF88004C099C /* MapViewController.swift */,
 				3B8C839426812FF400457FF1 /* CreateEventViewController.swift */,
 				3B8C83962681301500457FF1 /* EventDetailViewController.swift */,
-				C0414E6826814BD9000B592C /* CreateUserViewController.swift */,
-				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
-				C0414E6C26814BED000B592C /* LoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

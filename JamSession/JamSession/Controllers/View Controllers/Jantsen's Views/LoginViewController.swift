@@ -20,24 +20,24 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func logInButtonTapped(_ sender: Any) {
-        
-        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-              let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {return}
-        
-        LoginController.sharedInstance.loginUser(email: email, password: password) { result in
-            DispatchQueue.main.async {
-                switch result {
-                
-                case .success(_):
-                    <#code#>
-                case .failure(let error):
-                    
-                    print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-                }
-            }
-        }
-    }
+//    @IBAction func logInButtonTapped(_ sender: Any) {
+//
+//        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+//              let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {return}
+//
+//        LoginController.sharedInstance.loginUser(email: email, password: password) { result in
+//            DispatchQueue.main.async {
+//                switch result {
+//
+//                case .success(_):
+//
+//                case .failure(let error):
+//
+//                    print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+//                }
+//            }
+//        }
+//    }
     
     /*
     // MARK: - Navigation
