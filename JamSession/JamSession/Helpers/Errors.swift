@@ -39,4 +39,16 @@ enum FireError: LocalizedError{
     case IncorrectFormat
     case Fat(Error)
     case StringDecode
+    var errorDescription: String?{
+        switch self{
+        case .NoData:
+            return "no data"
+        case .IncorrectFormat:
+            return "format"
+        case .Fat(let err):
+            return err.localizedDescription
+        case .StringDecode:
+            return "string decode"
+        }
+    }
 }
