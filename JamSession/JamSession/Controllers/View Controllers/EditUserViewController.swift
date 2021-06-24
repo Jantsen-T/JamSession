@@ -80,6 +80,7 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         let newUser = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instruments, experienceLevel: expString, UUID: oldUUID, friends: oldFriends, blocked: oldBlocked)
         newUser.friendRequests = oldFRs
         UserController.sharedInstance.currentUser = newUser
+        UserController.sharedInstance.saveUser(user: UserController.sharedInstance.currentUser!)
         dismiss(animated: true, completion: nil)
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
