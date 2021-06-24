@@ -436,6 +436,7 @@
 				C0839D3626794B8700FF1369 /* User.swift in Sources */,
 				03412B272681282900B045A4 /* ChatViewController_possiblyBad.swift in Sources */,
 				03412B162680F1BB00B045A4 /* EventQuickLookViewController.swift in Sources */,
+
 				031FCD1626836A1300ABCC60 /* FriendsListVC.swift in Sources */,
 				C0825B6E2680FF88004C099C /* MapViewController.swift in Sources */,
 				03412B2326811CB600B045A4 /* EventTableViewCell.swift in Sources */,
