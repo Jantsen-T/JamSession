@@ -18,22 +18,21 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         FriendViewController.shared = self
     }
     @IBAction func addUserButtonPressed(_ sender: Any) {
-        guard let current = UserController.shared.currentUser else {
-            
+        guard let current = UserController.sharedInstance.currentUser else {
             
             return}
         guard let un = usernameField.text, !un.isEmpty else {
             return}
-        UserController.shared.dbContainsUsername(username: un) { val in
+        UserController.sharedInstance.dbContainsUsername(username: un) { val in
             if val==false{
                 DispatchQueue.main.async {
                     self.presentErrorToUser(localizedError: "User does not exist")
                 }
             }else{
-                UserController.shared.grabUserFromUsername(username: un) { result in
+                UserController.sharedInstance.grabUserFromUsername(username: un) { result in
                     switch result{
                     case .success(let user):
-                        UserController.shared.sendFriendRequest(originatingUser: current, receivingUser: user)
+                        UserController.sharedInstance.sendFriendRequest(originatingUser: current, receivingUser: user)
                     case .failure(let err):
                         DispatchQueue.main.async {
                             self.presentErrorToUser(localizedError: err)
@@ -44,9 +43,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    
-    
-    
     //MARK: tableview funcs
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -54,19 +50,18 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section==0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath)
-            if UserController.shared.currentUser!.friends.indices.contains(indexPath.row){
-                cell.textLabel?.text = UserController.shared.currentUser!.friends[indexPath.row]
+            if UserController.sharedInstance.currentUser!.friends.indices.contains(indexPath.row){
+                cell.textLabel?.text = UserController.sharedInstance.currentUser!.friends[indexPath.row]
             }
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath)
-            guard let user = UserController.shared.currentUser else { return cell}
-            if UserController.shared.currentUser!.friendRequests.indices.contains(indexPath.row){
+            guard let user = UserController.sharedInstance.currentUser else { return cell}
+            if UserController.sharedInstance.currentUser!.friendRequests.indices.contains(indexPath.row){
                 cell.textLabel?.text = user.friendRequests[indexPath.row].initialUser
             }
             return cell
         }
-        
         
         
     }
@@ -81,10 +76,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print("unfriend")
                 let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
                 if let str = str{
-                    UserController.shared.grabUserFromUsername(username: str) { result in
+                    UserController.sharedInstance.grabUserFromUsername(username: str) { result in
                         switch result{
                         case .success(let user):
-                            UserController.shared.unfriendUser(user: user)
+                            UserController.sharedInstance.unfriendUser(user: user)
                         case .failure(let err):
                             print("err "+err.localizedDescription)
                         }
@@ -95,10 +90,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let blockAction = UIContextualAction(style: .destructive, title: "block") { action, view, handler in
                 let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
                 if let str = str{
-                    UserController.shared.grabUserFromUsername(username: str) { result in
+                    UserController.sharedInstance.grabUserFromUsername(username: str) { result in
                         switch result{
                         case .success(let user):
-                            UserController.shared.blockUser(user: user)
+                            UserController.sharedInstance.blockUser(user: user)
                         case .failure(let err):
                             print("err "+err.localizedDescription)
                         }
@@ -110,11 +105,11 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let unfriendAction = UIContextualAction(style: .normal, title: "ignore") { action, view, handler in
                 let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
                 if let str = str{
-                    UserController.shared.grabUserFromUuid(uuid: str) { result in
+                    UserController.sharedInstance.grabUserFromUuid(uuid: str) { result in
                         switch result{
                         case .success(let user):
-                            guard let cu = UserController.shared.currentUser else { return}
-                            UserController.shared.ignoreFriendRequest(origin: user, catcher: cu)
+                            guard let cu = UserController.sharedInstance.currentUser else { return}
+                            UserController.sharedInstance.ignoreFriendRequest(origin: user, catcher: cu)
                         case .failure(let err):
                             print("err "+err.localizedDescription)
                         }
@@ -124,10 +119,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let blockAction = UIContextualAction(style: .destructive, title: "block") { action, view, handler in
                 let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
                 if let str = str{
-                    UserController.shared.grabUserFromUuid(uuid: str) { result in
+                    UserController.sharedInstance.grabUserFromUuid(uuid: str) { result in
                         switch result{
                         case .success(let user):
-                            UserController.shared.unfriendUser(user: user)
+                            UserController.sharedInstance.unfriendUser(user: user)
                         case .failure(let err):
                             print("err "+err.localizedDescription)
                         }
@@ -144,14 +139,14 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var un = ""
         print(section)
         if section==1{
-            un = UserController.shared.currentUser!.friendRequests[ir].initialUser
+            un = UserController.sharedInstance.currentUser!.friendRequests[ir].initialUser
         }else{
             return
         }
-        UserController.shared.grabUserFromUuid(uuid: un) { res in
+        UserController.sharedInstance.grabUserFromUuid(uuid: un) { res in
             switch res{
             case .success(let userr):
-                UserController.shared.acceptFriendRequest(originatingUser: userr, receivingUser: UserController.shared.currentUser!)
+                UserController.sharedInstance.acceptFriendRequest(originatingUser: userr, receivingUser: UserController.sharedInstance.currentUser!)
                 DispatchQueue.main.async {
                     self.tableVieww.reloadData()
                 }
@@ -163,7 +158,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let user = UserController.shared.currentUser else {
+        guard let user = UserController.sharedInstance.currentUser else {
             
             return 0 }
         if section==0{
