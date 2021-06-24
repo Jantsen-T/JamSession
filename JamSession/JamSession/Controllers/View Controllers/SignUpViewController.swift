@@ -40,7 +40,15 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
+        toggleToSignUp()
         
+    }
+    
+    @IBAction func loginTapped(_ sender: Any) {
+        toggleTologin()
+    }
+    
+    @IBAction func createButtonTapped(_ sender: Any) {
         if confirmPasswordTextField.text == passwordTextField.text {
             
             let error = validateFields()
@@ -66,47 +74,32 @@ class SignUpViewController: UIViewController {
                     }
                 }
             }
-            
         }
-        
         else if confirmPasswordTextField.text == "" {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             LoginController.sharedInstance.loginUser(email: email, password: password) { result in
                 switch result {
-                
                 case .success(let userUuid):
                     UserController.sharedInstance.grabUserFromUuid(uuid: userUuid) { result in
                         switch result {
                         
                         case .success(let user):
-                            guard let user = user else {return}
                             UserController.sharedInstance.currentUser = user
-                            
                         case .failure(let error):
-                            print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                            self.presentErrorToUser(localizedError: error)
                         }
                     }
-                    
                 case .failure(let error):
                     print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
                 }
             }
-            
         }
         else {
             presentErrorToUser(localizedError: "passwords must match")
         }
-    }
-    
-    @IBAction func loginTapped(_ sender: Any) {
-        toggleTologin()
-    }
-    
-    
-    @IBAction func createButtonTapped(_ sender: Any) {
-        toggleToSignUp()
+
     }
     
     func toggleTologin() {
@@ -129,7 +122,6 @@ class SignUpViewController: UIViewController {
                 self.signUpButton.setTitleColor(.blue, for: .normal)
                 self.loginButton.setTitleColor(.gray, for: .normal)
                 self.createButton.setTitle("Create Account", for: .normal)
-                
             }
         }
     }
