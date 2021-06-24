@@ -199,7 +199,7 @@ class UserController {
     
     
     
-    func authUser(email: String, password: String, username: String, completion:@escaping()->Void){
+    func createAuthUser(email: String, password: String, username: String, completion:@escaping(String)->Void){
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
@@ -210,9 +210,7 @@ class UserController {
                 guard let result = result else { return}
                 let uid = result.user.uid
                 
-                self.makeUserInDB(username: username, uuid: uid, location: 2, bio: 1, instrument: 3, experience: 4) { user in
-                    completion()
-                }
+                return completion(uid)
             }
         }
     }
