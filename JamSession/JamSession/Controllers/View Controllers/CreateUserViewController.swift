@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 
 class CreateUserViewController: UIViewController {
-    @IBOutlet weak var profilePicImageView: UIImageView!
+    @IBOutlet weak var profilePicImageView: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var experienceLevelPicker: UIPickerView!
@@ -29,6 +29,8 @@ pickerData = ["Beginner", "Intermediate", "advanced", "Expert"]
       
         
     }
+    
+    
     
     /*
     // MARK: - Navigation
