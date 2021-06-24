@@ -33,7 +33,7 @@
 		3B8C83972681301500457FF1 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C83962681301500457FF1 /* EventDetailViewController.swift */; };
 		C0414E6926814BD9000B592C /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0414E6826814BD9000B592C /* CreateUserViewController.swift */; };
 		C0414E6B26814BDF000B592C /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0414E6A26814BDF000B592C /* EditUserViewController.swift */; };
-		C0414E6D26814BEE000B592C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0414E6C26814BED000B592C /* LoginViewController.swift */; };
+		C0414E6D26814BEE000B592C /* LoginViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0414E6C26814BED000B592C /* LoginViewController3.swift */; };
 		C0825B682680FAD6004C099C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B672680FAD6004C099C /* LoginController.swift */; };
 		C0825B6E2680FF88004C099C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B6D2680FF88004C099C /* MapViewController.swift */; };
 		C0839D192679439000FF1369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D182679439000FF1369 /* AppDelegate.swift */; };
@@ -77,7 +77,7 @@
 		AA756259BA6D7355081282F6 /* Pods-JamSession.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.release.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.release.xcconfig"; sourceTree = "<group>"; };
 		C0414E6826814BD9000B592C /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		C0414E6A26814BDF000B592C /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
-		C0414E6C26814BED000B592C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C0414E6C26814BED000B592C /* LoginViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController3.swift; sourceTree = "<group>"; };
 		C0825B672680FAD6004C099C /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C0825B6D2680FF88004C099C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C0839D152679439000FF1369 /* JamSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,24 +186,12 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		C005263B2682A338005F0286 /* Jantsen's Views */ = {
-			isa = PBXGroup;
-			children = (
-				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
-				C0414E6C26814BED000B592C /* LoginViewController.swift */,
-				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
-				C0414E6826814BD9000B592C /* CreateUserViewController.swift */,
-			);
-			path = "Jantsen's Views";
-=======
 		4EA15D53F3A64FA261B23DBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				9F8E290BD731CCDFB0718491 /* Pods_JamSession.framework */,
 			);
 			name = Frameworks;
->>>>>>> 6a9910b788549251d43f075d4ee22f47dffed6fb
 			sourceTree = "<group>";
 		};
 		C0839D0C2679439000FF1369 = {
@@ -212,10 +200,6 @@
 				C0839D172679439000FF1369 /* JamSession */,
 				C0839D162679439000FF1369 /* Products */,
 				E75242916C08EE60A0F4A10B /* Pods */,
-<<<<<<< HEAD
-				DBFA756A11E5787274E195EF /* Frameworks */,
-=======
->>>>>>> 6a9910b788549251d43f075d4ee22f47dffed6fb
 				03412B282681342000B045A4 /* Recovered References */,
 				4EA15D53F3A64FA261B23DBA /* Frameworks */,
 			);
@@ -276,16 +260,14 @@
 		C0839D3426794B7600FF1369 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C005263B2682A338005F0286 /* Jantsen's Views */,
 				03412B142680F10100B045A4 /* borp */,
-<<<<<<< HEAD
-				C0825B6B2680FC30004C099C /* FriendsController.swift */,
-=======
 				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
->>>>>>> 6a9910b788549251d43f075d4ee22f47dffed6fb
 				C0825B6D2680FF88004C099C /* MapViewController.swift */,
 				3B8C839426812FF400457FF1 /* CreateEventViewController.swift */,
 				3B8C83962681301500457FF1 /* EventDetailViewController.swift */,
+				C0414E6826814BD9000B592C /* CreateUserViewController.swift */,
+				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
+				C0414E6C26814BED000B592C /* LoginViewController3.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -460,7 +442,7 @@
 				03412B272681282900B045A4 /* ChatViewController_possiblyBad.swift in Sources */,
 				03412B162680F1BB00B045A4 /* EventQuickLookViewController.swift in Sources */,
 				034021092683B0480093B135 /* LoginViewController2.swift in Sources */,
-				C0414E6D26814BEE000B592C /* LoginViewController.swift in Sources */,
+				C0414E6D26814BEE000B592C /* LoginViewController3.swift in Sources */,
 				031FCD1626836A1300ABCC60 /* FriendsListVC.swift in Sources */,
 				C0825B6E2680FF88004C099C /* MapViewController.swift in Sources */,
 				03412B2326811CB600B045A4 /* EventTableViewCell.swift in Sources */,
