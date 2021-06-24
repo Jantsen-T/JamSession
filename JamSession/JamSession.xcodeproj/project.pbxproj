@@ -14,7 +14,9 @@
 		031FCD1426827F5C00ABCC60 /* ChatAndMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD1326827F5C00ABCC60 /* ChatAndMessage.swift */; };
 		031FCD1626836A1300ABCC60 /* FriendsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD1526836A1300ABCC60 /* FriendsListVC.swift */; };
 		031FCD1826836A8200ABCC60 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD1726836A8200ABCC60 /* FriendCell.swift */; };
+
 		034021092683B0480093B135 /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034021082683B0480093B135 /* LoginViewController2.swift */; };
+
 		03412B0F2680E7E800B045A4 /* Jantsen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B0E2680E7E800B045A4 /* Jantsen.storyboard */; };
 		03412B112680EE2000B045A4 /* tanman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B102680EE2000B045A4 /* tanman.storyboard */; };
 		03412B132680EE4600B045A4 /* borp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B122680EE4600B045A4 /* borp.storyboard */; };
@@ -49,14 +51,15 @@
 
 /* Begin PBXFileReference section */
 		03016585267A3B1000BF1D7C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		031FCD0926827F1F00ABCC60 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = ../../inappMessaging/BlamConfession/BlamConfession/controller/view/ChatViewController.swift; sourceTree = SOURCE_ROOT; };
 		031FCD0A26827F2000ABCC60 /* MenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenTableViewController.swift; path = "JamSession/Controllers/View Controllers/borp/MenTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		031FCD0B26827F2000ABCC60 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCell.swift; path = "JamSession/Controllers/View Controllers/borp/MessageCell.swift"; sourceTree = SOURCE_ROOT; };
 		031FCD1126827F3300ABCC60 /* ChatsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsController.swift; sourceTree = "<group>"; };
 		031FCD1326827F5C00ABCC60 /* ChatAndMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAndMessage.swift; sourceTree = "<group>"; };
 		031FCD1526836A1300ABCC60 /* FriendsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsListVC.swift; path = "JamSession/Controllers/View Controllers/borp/FriendsListVC.swift"; sourceTree = SOURCE_ROOT; };
 		031FCD1726836A8200ABCC60 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendCell.swift; path = "JamSession/Controllers/View Controllers/borp/FriendCell.swift"; sourceTree = SOURCE_ROOT; };
+
 		034021082683B0480093B135 /* LoginViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
+
 		03412B0E2680E7E800B045A4 /* Jantsen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Jantsen.storyboard; sourceTree = "<group>"; };
 		03412B102680EE2000B045A4 /* tanman.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tanman.storyboard; sourceTree = "<group>"; };
 		03412B122680EE4600B045A4 /* borp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = borp.storyboard; sourceTree = "<group>"; };
@@ -144,9 +147,7 @@
 		03412B142680F10100B045A4 /* borp */ = {
 			isa = PBXGroup;
 			children = (
-				031FCD0926827F1F00ABCC60 /* ChatViewController.swift */,
 				031FCD0B26827F2000ABCC60 /* MessageCell.swift */,
-				034021082683B0480093B135 /* LoginViewController2.swift */,
 				031FCD0A26827F2000ABCC60 /* MenTableViewController.swift */,
 				031FCD1526836A1300ABCC60 /* FriendsListVC.swift */,
 				03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */,
@@ -437,7 +438,7 @@
 				C0839D3626794B8700FF1369 /* User.swift in Sources */,
 				03412B272681282900B045A4 /* ChatViewController_possiblyBad.swift in Sources */,
 				03412B162680F1BB00B045A4 /* EventQuickLookViewController.swift in Sources */,
-				034021092683B0480093B135 /* LoginViewController2.swift in Sources */,
+
 				031FCD1626836A1300ABCC60 /* FriendsListVC.swift in Sources */,
 				C0825B6E2680FF88004C099C /* MapViewController.swift in Sources */,
 				03412B2326811CB600B045A4 /* EventTableViewCell.swift in Sources */,
