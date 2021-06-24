@@ -16,6 +16,7 @@
 		031FCD1626836A1300ABCC60 /* FriendsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD1526836A1300ABCC60 /* FriendsListVC.swift */; };
 		031FCD1826836A8200ABCC60 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FCD1726836A8200ABCC60 /* FriendCell.swift */; };
 		034021092683B0480093B135 /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034021082683B0480093B135 /* LoginViewController2.swift */; };
+		034021142684E2B60093B135 /* Jantsen's Views in Resources */ = {isa = PBXBuildFile; fileRef = 034021132684E2B60093B135 /* Jantsen's Views */; };
 		03412B0F2680E7E800B045A4 /* Jantsen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B0E2680E7E800B045A4 /* Jantsen.storyboard */; };
 		03412B112680EE2000B045A4 /* tanman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B102680EE2000B045A4 /* tanman.storyboard */; };
 		03412B132680EE4600B045A4 /* borp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B122680EE4600B045A4 /* borp.storyboard */; };
@@ -59,6 +60,7 @@
 		031FCD1526836A1300ABCC60 /* FriendsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsListVC.swift; path = "JamSession/Controllers/View Controllers/borp/FriendsListVC.swift"; sourceTree = SOURCE_ROOT; };
 		031FCD1726836A8200ABCC60 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendCell.swift; path = "JamSession/Controllers/View Controllers/borp/FriendCell.swift"; sourceTree = SOURCE_ROOT; };
 		034021082683B0480093B135 /* LoginViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
+		034021132684E2B60093B135 /* Jantsen's Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Jantsen's Views"; sourceTree = "<group>"; };
 		03412B0E2680E7E800B045A4 /* Jantsen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Jantsen.storyboard; sourceTree = "<group>"; };
 		03412B102680EE2000B045A4 /* tanman.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tanman.storyboard; sourceTree = "<group>"; };
 		03412B122680EE4600B045A4 /* borp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = borp.storyboard; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 		C0839D3426794B7600FF1369 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				034021132684E2B60093B135 /* Jantsen's Views */,
 				03412B142680F10100B045A4 /* borp */,
 				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
 				C0825B6D2680FF88004C099C /* MapViewController.swift */,
@@ -377,6 +380,7 @@
 				03412B112680EE2000B045A4 /* tanman.storyboard in Resources */,
 				C0839D252679439200FF1369 /* LaunchScreen.storyboard in Resources */,
 				C0DB3D9B267BE65E0022E5B1 /* THEStoryboard.storyboard in Resources */,
+				034021142684E2B60093B135 /* Jantsen's Views in Resources */,
 				C0839D202679439000FF1369 /* Mainn.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
