@@ -194,6 +194,7 @@
                         <outlet property="bioTextView" destination="vHb-b0-Nia" id="jhF-67-giK"/>
                         <outlet property="experienceLevelPicker" destination="S2t-6H-Wbm" id="ErV-eA-PrV"/>
                         <outlet property="locationTextField" destination="Pae-UI-I7V" id="Hfb-Al-xIK"/>
+                        <outlet property="profileButton" destination="9D9-K8-sQE" id="3JU-0X-ecF"/>
                         <outlet property="profilePicImageView" destination="9D9-K8-sQE" id="wJy-PE-otf"/>
                         <outlet property="usernameTextField" destination="ayU-f2-Fiy" id="uAv-Gl-Q95"/>
                     </connections>
@@ -355,6 +356,7 @@
                     <connections>
                         <outlet property="bioTextView" destination="Qgn-lz-t8j" id="5kT-G1-xVf"/>
                         <outlet property="experienceLevelPicker" destination="F3D-J6-F8q" id="gdT-OY-piy"/>
+                        <outlet property="imageButton" destination="Sz7-8o-LuC" id="MB6-rc-x2m"/>
                         <outlet property="instrumentTextField" destination="W2q-Cz-nhN" id="g0S-AB-23p"/>
                         <outlet property="locationTextField" destination="fFf-r6-c1J" id="Gpl-it-tG7"/>
                         <outlet property="profilePicImageView" destination="Sz7-8o-LuC" id="uKO-hq-HB9"/>

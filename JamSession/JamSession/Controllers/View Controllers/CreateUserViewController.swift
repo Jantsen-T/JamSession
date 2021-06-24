@@ -14,6 +14,10 @@ class CreateUserViewController: UIViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var experienceLevelPicker: UIPickerView!
     @IBOutlet weak var bioTextView: UITextView!
+    
+    @IBOutlet weak var profileButton: UIButton!
+    
+    
     var pickerData: [String] = [String]()
     
     override func viewDidLoad() {
