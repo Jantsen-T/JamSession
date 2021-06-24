@@ -211,7 +211,11 @@ class UserController {
                 guard let result = result else { return}
                 let uid = result.user.uid
                 
+<<<<<<< HEAD
                 self.makeUserInDB(username: username, uuid: uid, location: "locatioin", bio: "bio", instrument: "instrument", experience: "seleccted experience") { user in
+=======
+                self.makeUserInDB(username: username, uuid: uid, location: "", bio: "", instrument: "", experience: "") { user in
+>>>>>>> 6a9910b788549251d43f075d4ee22f47dffed6fb
                     completion()
                 }
             }

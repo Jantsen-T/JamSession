@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+<<<<<<< HEAD:JamSession/JamSession/Controllers/View Controllers/Jantsen's Views/LoginViewController.swift
 //    @IBAction func logInButtonTapped(_ sender: Any) {
 //
 //        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -38,6 +39,26 @@ class LoginViewController: UIViewController {
 //            }
 //        }
 //    }
+=======
+    @IBAction func logInButtonTapped(_ sender: Any) {
+        
+        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+              let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {return}
+        
+        LoginController.sharedInstance.loginUser(email: email, password: password) { result in
+            DispatchQueue.main.async {
+                switch result {
+                
+                case .success(_):
+                    print("pp")
+                case .failure(let error):
+                    
+                    print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                }
+            }
+        }
+    }
+>>>>>>> 6a9910b788549251d43f075d4ee22f47dffed6fb:JamSession/JamSession/Controllers/View Controllers/LoginViewController.swift
     
     /*
     // MARK: - Navigation
