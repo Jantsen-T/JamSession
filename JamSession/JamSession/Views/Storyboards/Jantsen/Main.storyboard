@@ -65,7 +65,6 @@
                                 <rect key="frame" x="100" y="433" width="214" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Whi-B6-5Cg"/>
-                                    <constraint firstAttribute="width" constant="80" id="b15-TE-sp4"/>
                                 </constraints>
                                 <state key="normal" title="Create"/>
                                 <connections>
