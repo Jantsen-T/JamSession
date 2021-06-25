@@ -113,7 +113,7 @@
         <!--Create User-->
         <scene sceneID="W1m-Y2-JPK">
             <objects>
-                <viewController id="Jjn-IC-wBY" userLabel="Create User" customClass="CreateUserViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createUser" id="Jjn-IC-wBY" userLabel="Create User" customClass="CreateUserViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vY0-Ic-yMP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

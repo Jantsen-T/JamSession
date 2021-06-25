@@ -213,6 +213,7 @@ class UserController {
             }
         }
     }
+    
     func makeUserInDB(username: String,uuid:String,location: String, bio: String, instrument: String, experience: String, pfp: UIImage, completion: @escaping(User)->Void){
         let user = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instrument, experienceLevel: experience, UUID: uuid, friends: [])
         let dict = user.toFireObj()
