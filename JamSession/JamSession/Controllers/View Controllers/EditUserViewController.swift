@@ -62,16 +62,16 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         default:
             expString = ""
         }
-        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !username.isEmpty else { presentErrorToUser(localizedError: "You gotta have an username");return}
+        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !username.isEmpty else { presentErrorToUser(localizedError: "Must have username");return}
         guard let location = locationTextField.text, !location.isEmpty else {presentErrorToUser(localizedError: "In order to be able to effectively collalborate, please give others an idea of where you are located") ;return}
         var pfp = UIImage(named: "blank")!
         if let image = profilePicImageView.image(for: .normal){
             pfp = image
         }
-        guard let instruments = instrumentTextField.text, !instruments.isEmpty else {presentErrorToUser(localizedError: "Pls let others know what indstruments you play") ;return}
+        guard let instruments = instrumentTextField.text, !instruments.isEmpty else {presentErrorToUser(localizedError: "Please let others know what indstruments you play") ;return}
         guard let bio = locationTextField.text, !bio.isEmpty else {presentErrorToUser(localizedError: "Please provide a bio") ;return}
         if expString == ""{
-            presentErrorToUser(localizedError: "Lemme know how good you are")
+            presentErrorToUser(localizedError: "What is your experience level?")
             return
         }
         let oldFriends = user.friends
@@ -99,7 +99,7 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
 
         let alert = UIAlertController(title: "Select image", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Calcel", style: .cancel) { _ in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.imagePicker.dismiss(animated: true, completion: nil)
         }
         let useCameraAction = UIAlertAction(title: "Take Photo", style: .default) { _ in
