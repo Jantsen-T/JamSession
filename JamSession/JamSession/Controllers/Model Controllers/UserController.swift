@@ -209,14 +209,7 @@ class UserController {
                 //User created successfully
                 guard let result = result else { return}
                 let uid = result.user.uid
-                
-
-                self.makeUserInDB(username: username, uuid: uid, location: , bio: 1, instrument: 3, experience: 4) { user in
-                    completion()
-                }
-
                 return completion(uid)
-
             }
         }
     }
