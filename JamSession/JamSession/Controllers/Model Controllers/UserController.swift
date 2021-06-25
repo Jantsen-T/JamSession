@@ -199,7 +199,7 @@ class UserController {
     
     
     
-    func authUser(email: String, password: String, username: String, completion:@escaping()->Void){
+    func createAuthUser(email: String, password: String, username: String, completion:@escaping(String)->Void){
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
@@ -210,14 +210,18 @@ class UserController {
                 guard let result = result else { return}
                 let uid = result.user.uid
                 
+
                 self.makeUserInDB(username: username, uuid: uid, location: , bio: 1, instrument: 3, experience: 4) { user in
                     completion()
                 }
+
+                return completion(uid)
+
             }
         }
     }
-    func makeUserInDB(username: String,uuid:String, /*friends will always be []*/location: String, bio: String, instrument: String /*frindrequests will alwasy be empty aswell*/, experience: String, completion: @escaping(User)->Void){
-        let user = User(username: username, profilePic: UIImage(named: "blank")!, location: location, bio: bio, instrument: instrument, experienceLevel: experience, UUID: uuid, friends: [])
+    func makeUserInDB(username: String,uuid:String,location: String, bio: String, instrument: String, experience: String, pfp: UIImage, completion: @escaping(User)->Void){
+        let user = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instrument, experienceLevel: experience, UUID: uuid, friends: [])
         let dict = user.toFireObj()
         let userCollection = db.collection("Users")
         let document = userCollection.document(uuid)

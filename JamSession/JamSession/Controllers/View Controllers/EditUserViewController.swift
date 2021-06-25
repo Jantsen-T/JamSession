@@ -8,23 +8,17 @@
 import UIKit
 import CoreLocation
 
-class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UIImagePickerControllerDelegate {
     
     @IBOutlet weak var profilePicImageView: UIButton!
-    
     @IBOutlet weak var usernameTextField: UITextField!
-    
     @IBOutlet weak var locationTextField: UITextField!
-    
     @IBOutlet weak var instrumentTextField: UITextField!
-    
     @IBOutlet weak var experienceLevelPicker: UIPickerView!
-    
     @IBOutlet weak var bioTextView: UITextView!
-    
     @IBOutlet weak var imageButton: UIButton!
-    
     var pickerData: [String] = []
+    let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +43,7 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
             experienceLevelPicker.selectRow(3, inComponent: 1, animated: true)
         }
     }
+    
     
     
     @IBAction func saveTapped(_ sender: Any) {
@@ -86,6 +81,7 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         let newUser = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instruments, experienceLevel: expString, UUID: oldUUID, friends: oldFriends, blocked: oldBlocked)
         newUser.friendRequests = oldFRs
         UserController.sharedInstance.currentUser = newUser
+        UserController.sharedInstance.saveUser(user: UserController.sharedInstance.currentUser!)
         dismiss(animated: true, completion: nil)
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -99,7 +95,42 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return pickerData[row]
     }
     @objc func setImage(){
+
         
+
+        let alert = UIAlertController(title: "Select image", message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Calcel", style: .cancel) { _ in
+            self.imagePicker.dismiss(animated: true, completion: nil)
+        }
+        let useCameraAction = UIAlertAction(title: "Take Photo", style: .default) { _ in
+            self.openPickerWith(option: .camera)
+        }
+        let usePhotoLibAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
+            self.openPickerWith(option: .photoLibrary)
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(useCameraAction)
+        alert.addAction(usePhotoLibAction)
+        present(alert, animated: true)
     }
     
+    
+    func openPickerWith(option: UIImagePickerController.SourceType){
+        if UIImagePickerController.isSourceTypeAvailable(option){
+            imagePicker.sourceType = option
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true)
+        }
+        else{
+            presentErrorToUser(localizedError: "sourcetype is not allowed: no access. Please allow access to use")
+        }
+        
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage{
+            profilePicImageView.setImage(pickedImage, for: .normal)
+        }
+        picker.dismiss(animated: true, completion: nil)
+
+    }
 }

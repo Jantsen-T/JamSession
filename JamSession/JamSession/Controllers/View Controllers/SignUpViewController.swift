@@ -10,7 +10,7 @@ import FirebaseAuth
 import Firebase
 
 class SignUpViewController: UIViewController {
-    
+    static var successfulUUID: String?
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -63,11 +63,11 @@ class SignUpViewController: UIViewController {
                 let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                let confirmPassword = confirmPasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 UserController.sharedInstance.dbContainsUsername(username: username) { val in
                     if val == false{
-                        UserController.sharedInstance.authUser(email: email, password: password, username: username){
+                        UserController.sharedInstance.createAuthUser(email: email, password: password, username: username){ uid in
                             self.showToast(message: "i logged u in")
+                            SignUpViewController.successfulUUID = uid
                         }
                     }else{
                         self.presentErrorToUser(localizedError: "Username Taken")
@@ -99,8 +99,10 @@ class SignUpViewController: UIViewController {
         else {
             presentErrorToUser(localizedError: "passwords must match")
         }
-
+        
     }
+    
+    
     
     func toggleTologin() {
         DispatchQueue.main.async {
