@@ -19,14 +19,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var createButton: UIButton!
     
     override func viewDidLoad() {
-      
+        
         super.viewDidLoad()
         kyboardDissapear()
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         self.confirmPasswordTextField.delegate = self
-        
     }
+    
     func validateFields() -> String? {
         //Check that all fields are filled in
         if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
@@ -67,7 +67,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 
                 UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
-                    self.showToast(message: "i logged u in")
+                    self.showToast(message: "create successful")
                     SignUpViewController.successfulUUID = uid
                     let sb = UIStoryboard(name: "Main", bundle: nil)
                     let vc = sb.instantiateViewController(identifier: "createUser")
@@ -133,7 +133,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     func kyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -143,7 +142,5 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.resignFirstResponder()
     }
-    
-    
 }// End of class
 
