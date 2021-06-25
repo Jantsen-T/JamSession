@@ -60,8 +60,6 @@ class SignUpViewController: UIViewController {
                 //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
                 let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                
-<<<<<<< HEAD
                 UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
                     self.showToast(message: "i logged u in")
                     SignUpViewController.successfulUUID = uid
@@ -69,16 +67,6 @@ class SignUpViewController: UIViewController {
                     let vc = sb.instantiateViewController(identifier: "createUser")
                     vc.modalPresentationStyle = .fullScreen
                     //vc.modalTransitionStyle = .partialCurl
-=======
-                
-                UserController.sharedInstance.createAuthUser(email: email, password: password, username: username){ uid in
-                    self.showToast(message: "i logged u in")
-                    SignUpViewController.successfulUUID = uid
-                    let sb = UIStoryboard(name: "Jantsen", bundle: nil)
-                    let vc = sb.instantiateViewController(identifier: "createUser")
-                    vc.modalPresentationStyle = .fullScreen
-                    vc.modalTransitionStyle = .partialCurl
->>>>>>> GavinsBranch
                     DispatchQueue.main.async {
                         self.present(vc, animated: true, completion: nil)
                     }
