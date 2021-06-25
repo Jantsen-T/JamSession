@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
@@ -20,6 +20,12 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        kyboardDissapear()
+        self.usernameTextField.delegate = self
+        self.locationTextField.delegate = self
+        self.instrumentTextField.delegate = self
+        self.bioTextView.delegate = self
+        
         imageButton.imageView?.contentMode = .scaleAspectFit
         imagePicker.delegate = self
         pickerData = ["Beginner", "Intermediate", "Advanced", "Expert"]
@@ -115,12 +121,41 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.resignFirstResponder()
+    }
+    func kyboardDissapear() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[.originalImage] as? UIImage{
             imageButton.setImage(pickedImage, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
     }
+    //MARK: - This function needs to push up the view so the User can see what they are typing in the Bio
+    
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+//
+//        self.view.frame.origin.y = 320 - keyboardSize.height + 0   }
+//
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        self.view.frame.origin.y = 90
+//    }
 
 }// End of class
 
