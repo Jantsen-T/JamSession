@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 
 class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    @IBOutlet weak var profilePicImageView: UIButton!
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var instrumentTextField: UITextField!
@@ -64,7 +64,7 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
         guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !username.isEmpty else { presentErrorToUser(localizedError: "You gotta have an username");return}
         guard let location = locationTextField.text, !location.isEmpty else {presentErrorToUser(localizedError: "In order to be able to effectively collalborate, please give others an idea of where you are located") ;return}
         var pfp = UIImage(named: "blank")!
-        if let image = profilePicImageView.image(for: .normal){
+        if let image = imageButton.image(for: .normal){
             pfp = image
         }
         guard let instruments = instrumentTextField.text, !instruments.isEmpty else {presentErrorToUser(localizedError: "Pls let others know what indstruments you play") ;return}
@@ -116,7 +116,7 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[.originalImage] as? UIImage{
-            profilePicImageView.setImage(pickedImage, for: .normal)
+            imageButton.setImage(pickedImage, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
     }

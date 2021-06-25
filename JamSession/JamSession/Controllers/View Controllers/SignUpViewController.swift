@@ -12,7 +12,6 @@ import Firebase
 class SignUpViewController: UIViewController {
     static var successfulUUID: String?
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -61,27 +60,24 @@ class SignUpViewController: UIViewController {
                 
                 //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
                 let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                
                 let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                UserController.sharedInstance.dbContainsUsername(username: username) { val in
-                    if val == false{
-                        UserController.sharedInstance.createAuthUser(email: email, password: password, username: username){ uid in
-                            self.showToast(message: "i logged u in")
-                            SignUpViewController.successfulUUID = uid
-                            let sb = UIStoryboard(name: "Jantsen", bundle: nil)
-                            let vc = sb.instantiateViewController(identifier: "createUser")
-                            vc.modalPresentationStyle = .fullScreen
-                            vc.modalTransitionStyle = .partialCurl
-                            DispatchQueue.main.async {
-                                self.present(vc, animated: true, completion: nil)
-                            }
-                        }
-                    }else{
-                        self.presentErrorToUser(localizedError: "Username Taken")
+                
+                
+                UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
+                    self.showToast(message: "i logged u in")
+                    SignUpViewController.successfulUUID = uid
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = sb.instantiateViewController(identifier: "createUser")
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.modalTransitionStyle = .partialCurl
+                    DispatchQueue.main.async {
+                        self.present(vc, animated: true, completion: nil)
                     }
                 }
             }
         }
+        
         else if confirmPasswordTextField.text == "" {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -106,7 +102,6 @@ class SignUpViewController: UIViewController {
         else {
             presentErrorToUser(localizedError: "passwords must match")
         }
-        
     }
     
     
