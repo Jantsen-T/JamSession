@@ -63,22 +63,19 @@ class SignUpViewController: UIViewController {
                 let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                UserController.sharedInstance.dbContainsUsername(username: username) { val in
-                    if val == false{
-                        UserController.sharedInstance.createAuthUser(email: email, password: password, username: username){ uid in
-                            self.showToast(message: "i logged u in")
-                            SignUpViewController.successfulUUID = uid
-                            let sb = UIStoryboard(name: "Jantsen", bundle: nil)
-                            let vc = sb.instantiateViewController(identifier: "createUser")
-                            vc.modalPresentationStyle = .fullScreen
-                            vc.modalTransitionStyle = .partialCurl
-                            DispatchQueue.main.async {
-                                self.present(vc, animated: true, completion: nil)
-                            }
-                        }
-                    }else{
-                        self.presentErrorToUser(localizedError: "Username Taken")
+                
+                
+                UserController.sharedInstance.createAuthUser(email: email, password: password, username: username){ uid in
+                    self.showToast(message: "i logged u in")
+                    SignUpViewController.successfulUUID = uid
+                    let sb = UIStoryboard(name: "Jantsen", bundle: nil)
+                    let vc = sb.instantiateViewController(identifier: "createUser")
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.modalTransitionStyle = .partialCurl
+                    DispatchQueue.main.async {
+                        self.present(vc, animated: true, completion: nil)
                     }
+                    
                 }
             }
         }
