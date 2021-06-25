@@ -16,7 +16,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
-    
     @IBOutlet weak var createButton: UIButton!
     
     override func viewDidLoad() {
@@ -60,9 +59,7 @@ class SignUpViewController: UIViewController {
                 
                 //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
                 let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                
                 let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                
                 
                 UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
                     self.showToast(message: "i logged u in")
@@ -70,7 +67,7 @@ class SignUpViewController: UIViewController {
                     let sb = UIStoryboard(name: "Main", bundle: nil)
                     let vc = sb.instantiateViewController(identifier: "createUser")
                     vc.modalPresentationStyle = .fullScreen
-                    vc.modalTransitionStyle = .partialCurl
+                    //vc.modalTransitionStyle = .partialCurl
                     DispatchQueue.main.async {
                         self.present(vc, animated: true, completion: nil)
                     }
@@ -103,8 +100,6 @@ class SignUpViewController: UIViewController {
             presentErrorToUser(localizedError: "passwords must match")
         }
     }
-    
-    
     
     func toggleTologin() {
         DispatchQueue.main.async {

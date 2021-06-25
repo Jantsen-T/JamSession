@@ -21,7 +21,7 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickerData = ["Beginner", "Intermediate", "advanced", "Expert"]
+        pickerData = ["Beginner", "Intermediate", "Advanced", "Expert"]
         experienceLevelPicker.dataSource = self
         experienceLevelPicker.delegate = self
         imageButton.addTarget(self, action: #selector(setImage), for: .touchUpInside)
@@ -121,4 +121,5 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
         picker.dismiss(animated: true, completion: nil)
     }
 
-}
+}// End of class
+
