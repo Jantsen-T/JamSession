@@ -68,16 +68,16 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
         default:
             expString = ""
         }
-        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !username.isEmpty else { presentErrorToUser(localizedError: "You gotta have an username");return}
+        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !username.isEmpty else { presentErrorToUser(localizedError: "Must have username");return}
         guard let location = locationTextField.text, !location.isEmpty else {presentErrorToUser(localizedError: "In order to be able to effectively collalborate, please give others an idea of where you are located") ;return}
         var pfp = UIImage(named: "blank")!
         if let image = imageButton.image(for: .normal){
             pfp = image
         }
-        guard let instruments = instrumentTextField.text, !instruments.isEmpty else {presentErrorToUser(localizedError: "Pls let others know what indstruments you play") ;return}
+        guard let instruments = instrumentTextField.text, !instruments.isEmpty else {presentErrorToUser(localizedError: "Please let others know what indstruments you play") ;return}
         guard let bio = bioTextView.text, !bio.isEmpty else {presentErrorToUser(localizedError: "Please provide a bio") ;return}
         if expString == ""{
-            presentErrorToUser(localizedError: "Lemme know how good you are")
+            presentErrorToUser(localizedError: "What is your experience?")
             return
         }
         UserController.sharedInstance.makeUserInDB(username: username, uuid: uuid, location: location, bio: bio, instrument: instruments, experience: expString, pfp: pfp) { user in
@@ -138,6 +138,9 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         
+//        NotificationCenter.default.addObserver(self, selector: #selector(CreateUserViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(CreateUserViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -156,6 +159,5 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
 //    @objc func keyboardWillHide(notification: NSNotification) {
 //        self.view.frame.origin.y = 90
 //    }
-
 }// End of class
 
