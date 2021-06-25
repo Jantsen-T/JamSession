@@ -209,7 +209,6 @@ class UserController {
                 //User created successfully
                 guard let result = result else { return}
                 let uid = result.user.uid
-                
                 return completion(uid)
             }
         }

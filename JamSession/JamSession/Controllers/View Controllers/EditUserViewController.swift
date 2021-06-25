@@ -45,6 +45,7 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     
+    
     @IBAction func saveTapped(_ sender: Any) {
         guard let user = UserController.sharedInstance.currentUser else { return}
         let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 1)
@@ -94,6 +95,9 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return pickerData[row]
     }
     @objc func setImage(){
+
+        
+
         let alert = UIAlertController(title: "Select image", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Calcel", style: .cancel) { _ in
             self.imagePicker.dismiss(animated: true, completion: nil)
@@ -109,6 +113,8 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         alert.addAction(usePhotoLibAction)
         present(alert, animated: true)
     }
+    
+    
     func openPickerWith(option: UIImagePickerController.SourceType){
         if UIImagePickerController.isSourceTypeAvailable(option){
             imagePicker.sourceType = option
@@ -125,5 +131,6 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
             profilePicImageView.setImage(pickedImage, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
+
     }
 }

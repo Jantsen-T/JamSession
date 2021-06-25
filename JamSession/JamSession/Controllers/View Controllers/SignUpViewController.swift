@@ -102,6 +102,8 @@ class SignUpViewController: UIViewController {
         
     }
     
+    
+    
     func toggleTologin() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.25) {
