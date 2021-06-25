@@ -20,7 +20,6 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         pickerData = ["Beginner", "Intermediate", "Advanced", "Expert"]
         experienceLevelPicker.dataSource = self
         experienceLevelPicker.delegate = self
