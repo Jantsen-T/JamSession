@@ -1,3 +1,4 @@
+
 //
 //  FriendsController.swift
 //  HamIntercessionFriendRequestsTest
@@ -19,6 +20,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     @IBAction func addUserButtonPressed(_ sender: Any) {
         guard let current = UserController.sharedInstance.currentUser else {
+            
             
             return}
         guard let un = usernameField.text, !un.isEmpty else {
@@ -43,25 +45,44 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    
+    
+    
     //MARK: tableview funcs
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section==0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
             if UserController.sharedInstance.currentUser!.friends.indices.contains(indexPath.row){
-                cell.textLabel?.text = UserController.sharedInstance.currentUser!.friends[indexPath.row]
+                //cell.usernameLabel.text = UserController.sharedInstance.currentUser!.friends[indexPath.row]
+                UserController.sharedInstance.grabUserFromUsername(username: UserController.sharedInstance.currentUser!.friends[indexPath.row]){result in
+                    switch result{
+                    case .success(let user):
+                        cell.user = user
+                    case .failure(let err):
+                        print(err)
+                    }
+                }
             }
             return cell
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
             guard let user = UserController.sharedInstance.currentUser else { return cell}
             if UserController.sharedInstance.currentUser!.friendRequests.indices.contains(indexPath.row){
-                cell.textLabel?.text = user.friendRequests[indexPath.row].initialUser
+                UserController.sharedInstance.grabUserFromUsername(username: user.friendRequests[indexPath.row].initialUser){result in
+                    switch result{
+                    case .success(let user):
+                        cell.user = user
+                    case .failure(let err):
+                        print(err)
+                    }
+                }
             }
             return cell
         }
+        
         
         
     }
