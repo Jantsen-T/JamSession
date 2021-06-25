@@ -20,11 +20,8 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
-=======
         imageButton.imageView?.contentMode = .scaleAspectFit
         imagePicker.delegate = self
->>>>>>> 801d7d802aa0629e9d16a305c4c77029244349ee
         pickerData = ["Beginner", "Intermediate", "Advanced", "Expert"]
         experienceLevelPicker.dataSource = self
         experienceLevelPicker.delegate = self
