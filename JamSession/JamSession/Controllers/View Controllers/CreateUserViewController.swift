@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
@@ -20,7 +20,11 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+<<<<<<< HEAD
+=======
+        imageButton.imageView?.contentMode = .scaleAspectFit
+        imagePicker.delegate = self
+>>>>>>> 801d7d802aa0629e9d16a305c4c77029244349ee
         pickerData = ["Beginner", "Intermediate", "Advanced", "Expert"]
         experienceLevelPicker.dataSource = self
         experienceLevelPicker.delegate = self
@@ -45,8 +49,8 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     
     
-    @IBAction func saveTapped(_ sender: Any) {
-        let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 1)
+    @IBAction func createProfileTapped(_ sender: Any) {
+        let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 0)
         guard let uuid = SignUpViewController.successfulUUID else { return}
         var expString = ""
         switch selectedIndex{
@@ -68,7 +72,7 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
             pfp = image
         }
         guard let instruments = instrumentTextField.text, !instruments.isEmpty else {presentErrorToUser(localizedError: "Pls let others know what indstruments you play") ;return}
-        guard let bio = locationTextField.text, !bio.isEmpty else {presentErrorToUser(localizedError: "Please provide a bio") ;return}
+        guard let bio = bioTextView.text, !bio.isEmpty else {presentErrorToUser(localizedError: "Please provide a bio") ;return}
         if expString == ""{
             presentErrorToUser(localizedError: "Lemme know how good you are")
             return
@@ -89,7 +93,7 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     @objc func setImage(){
         let alert = UIAlertController(title: "Select image", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Calcel", style: .cancel) { _ in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.imagePicker.dismiss(animated: true, completion: nil)
         }
         let useCameraAction = UIAlertAction(title: "Take Photo", style: .default) { _ in
