@@ -61,9 +61,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qG-72-q8k">
-                                <rect key="frame" x="184" y="745" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qG-72-q8k">
+                                <rect key="frame" x="100" y="433" width="214" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Whi-B6-5Cg"/>
+                                    <constraint firstAttribute="width" constant="80" id="b15-TE-sp4"/>
+                                </constraints>
                                 <state key="normal" title="Create"/>
                                 <connections>
                                     <action selector="createButtonTapped:" destination="6HU-e3-5oV" eventType="touchUpInside" id="EJz-8P-PDx"/>
@@ -73,9 +76,12 @@
                         <viewLayoutGuide key="safeArea" id="NEh-Wh-GXb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="1qG-72-q8k" firstAttribute="top" secondItem="EZq-JY-T9a" secondAttribute="bottom" constant="103" id="Ksc-ol-nvC"/>
                             <constraint firstItem="Bck-xU-e9m" firstAttribute="top" secondItem="EZq-JY-T9a" secondAttribute="bottom" constant="200" id="TBc-7I-xpW"/>
                             <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="Bck-xU-e9m" secondAttribute="trailing" constant="5" id="TG3-pE-US1"/>
                             <constraint firstItem="EZq-JY-T9a" firstAttribute="top" secondItem="NEh-Wh-GXb" secondAttribute="top" constant="54" id="Yuw-D7-rxo"/>
+                            <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="1qG-72-q8k" secondAttribute="trailing" constant="100" id="dMY-u8-Mk9"/>
+                            <constraint firstItem="1qG-72-q8k" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="100" id="eVg-oO-W9g"/>
                             <constraint firstItem="EZq-JY-T9a" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" id="gqw-VF-Cwg"/>
                             <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="EZq-JY-T9a" secondAttribute="trailing" id="yaV-57-G1k"/>
                             <constraint firstItem="Bck-xU-e9m" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="5" id="z1j-I9-lJP"/>
