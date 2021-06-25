@@ -14,8 +14,8 @@
 		0340212226864F890093B135 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211926864F880093B135 /* FriendCell.swift */; };
 		0340212426864F890093B135 /* ChatViewController_possiblyBad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211B26864F880093B135 /* ChatViewController_possiblyBad.swift */; };
 		0340212526864F890093B135 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211C26864F880093B135 /* MessageCell.swift */; };
-		0340212626864F890093B135 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211D26864F890093B135 /* FriendsViewController.swift */; };
 		0340212826864FAE0093B135 /* borp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0340212726864FAE0093B135 /* borp.storyboard */; };
+		0340212A26865BA40093B135 /* ChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340212926865BA40093B135 /* ChatsController.swift */; };
 		03412B0F2680E7E800B045A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B0E2680E7E800B045A4 /* Main.storyboard */; };
 		03412B112680EE2000B045A4 /* tanman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B102680EE2000B045A4 /* tanman.storyboard */; };
 		03412B162680F1BB00B045A4 /* EventQuickLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */; };
@@ -33,7 +33,6 @@
 		C0414E6926814BD9000B592C /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0414E6826814BD9000B592C /* CreateUserViewController.swift */; };
 		C0414E6B26814BDF000B592C /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0414E6A26814BDF000B592C /* EditUserViewController.swift */; };
 		C0825B682680FAD6004C099C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B672680FAD6004C099C /* LoginController.swift */; };
-		C0825B6C2680FC30004C099C /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B6B2680FC30004C099C /* FriendsController.swift */; };
 		C0825B6E2680FF88004C099C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B6D2680FF88004C099C /* MapViewController.swift */; };
 		C0839D192679439000FF1369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D182679439000FF1369 /* AppDelegate.swift */; };
 		C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D1A2679439000FF1369 /* SceneDelegate.swift */; };
@@ -57,8 +56,8 @@
 		0340211926864F880093B135 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		0340211B26864F880093B135 /* ChatViewController_possiblyBad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController_possiblyBad.swift; sourceTree = "<group>"; };
 		0340211C26864F880093B135 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
-		0340211D26864F890093B135 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		0340212726864FAE0093B135 /* borp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = borp.storyboard; sourceTree = "<group>"; };
+		0340212926865BA40093B135 /* ChatsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsController.swift; sourceTree = "<group>"; };
 		03412B0E2680E7E800B045A4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		03412B102680EE2000B045A4 /* tanman.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tanman.storyboard; sourceTree = "<group>"; };
 		03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventQuickLookViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +77,6 @@
 		C0414E6826814BD9000B592C /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		C0414E6A26814BDF000B592C /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		C0825B672680FAD6004C099C /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		C0825B6B2680FC30004C099C /* FriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
 		C0825B6D2680FF88004C099C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C0839D152679439000FF1369 /* JamSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0839D182679439000FF1369 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +112,7 @@
 				03016585267A3B1000BF1D7C /* UserController.swift */,
 				C0825B672680FAD6004C099C /* LoginController.swift */,
 				03412B1926810ECE00B045A4 /* LocationManager.swift */,
+				0340212926865BA40093B135 /* ChatsController.swift */,
 				03412B1F2681162300B045A4 /* EventController.swift */,
 				03412B242681266100B045A4 /* ChatAndMessage.swift */,
 			);
@@ -151,7 +150,6 @@
 				03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */,
 				0340211926864F880093B135 /* FriendCell.swift */,
 				0340211626864F870093B135 /* FriendsListVC.swift */,
-				0340211D26864F890093B135 /* FriendsViewController.swift */,
 				0340211826864F870093B135 /* LoginViewController2.swift */,
 				0340211726864F870093B135 /* MenTableViewController.swift */,
 				0340211C26864F880093B135 /* MessageCell.swift */,
@@ -253,7 +251,6 @@
 			children = (
 				03412B142680F10100B045A4 /* borp */,
 				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
-				C0825B6B2680FC30004C099C /* FriendsController.swift */,
 				C0825B6D2680FF88004C099C /* MapViewController.swift */,
 				3B8C839426812FF400457FF1 /* CreateEventViewController.swift */,
 				3B8C83962681301500457FF1 /* EventDetailViewController.swift */,
@@ -430,7 +427,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0825B682680FAD6004C099C /* LoginController.swift in Sources */,
-				C0825B6C2680FC30004C099C /* FriendsController.swift in Sources */,
 				3B8C839526812FF400457FF1 /* CreateEventViewController.swift in Sources */,
 				03412B202681162300B045A4 /* EventController.swift in Sources */,
 				03412B252681266100B045A4 /* ChatAndMessage.swift in Sources */,
@@ -456,10 +452,10 @@
 				C0414E6926814BD9000B592C /* CreateUserViewController.swift in Sources */,
 				C0414E6B26814BDF000B592C /* EditUserViewController.swift in Sources */,
 				C0839D4526795C1B00FF1369 /* Errors.swift in Sources */,
-				0340212626864F890093B135 /* FriendsViewController.swift in Sources */,
 				C0839D472679615B00FF1369 /* SignUpViewController.swift in Sources */,
 				3B8C83972681301500457FF1 /* EventDetailViewController.swift in Sources */,
 				C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */,
+				0340212A26865BA40093B135 /* ChatsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

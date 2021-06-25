@@ -7,8 +7,7 @@
 
 import Foundation
 import MessageKit
-import MessageKit
-import Firebase
+import FirebaseFirestore
 
 struct ChatUser: SenderType, Equatable {
     var senderId: String
