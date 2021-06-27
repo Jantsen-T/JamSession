@@ -29,8 +29,8 @@ class LoginViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 
-                case .success(_):
-                    <#code#>
+                case .success(_): break
+                    
                 case .failure(let error):
                     
                     print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")

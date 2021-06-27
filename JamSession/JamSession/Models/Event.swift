@@ -7,13 +7,12 @@
 
 import Foundation
 import CoreLocation
-class Event{
+class Event {
     var title: String
     var eventTime: Date
     var location: CLLocation
     let creator: User
     var instruments: String
-    
     var description: String
     var attending: [User]
     init(title: String, eventTime: Date, location: CLLocation, creator: User, descriptoin: String, attending: [User], instruments: String){

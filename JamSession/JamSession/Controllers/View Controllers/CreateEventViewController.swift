@@ -12,10 +12,10 @@ class CreateEventViewController: UIViewController {
     //MARK: - Outlets
     
     @IBOutlet weak var eventNameTextField: UITextField!
-    @IBOutlet weak var locationNameTextField: UITextField!
-    @IBOutlet weak var eventTimeTextField: UITextField!
+    @IBOutlet weak var eventLocationTextField: UITextField!
+    @IBOutlet weak var eventDatePicker: UIDatePicker!
     @IBOutlet weak var instrumentsUsedTextField: UITextField!
-    @IBOutlet weak var eventDetailsTextField: UITextView!
+    @IBOutlet weak var eventDetailsTextView: UITextView!
     
     
     override func viewDidLoad() {
@@ -24,36 +24,39 @@ class CreateEventViewController: UIViewController {
         
     }
     
+    //MARK: - Properties
+    var event: Event?
+    var selectedDate = Date()
+    
+    var name = ""
+    var location = ""
+    var instruments = ""
+    var details = ""
+    var datePicker = UIDatePicker()
+    
     //MARK: - Actions
     
-    @IBAction func saveEventButtonTapped(_ sender: Any) {
-        eventNameTextField.text = ""
-        locationNameTextField.text = ""
-        eventTimeTextField.text = ""
-        instrumentsUsedTextField.text = ""
-        eventDetailsTextField.text = ""
+    @IBAction func saveEventButtonTapped(_ sender: UITextField) {
+        
+        self.name = eventNameTextField.text!
+        self.location = eventLocationTextField.text!
+        self.selectedDate = self.eventDatePicker.date
+        self.instruments = instrumentsUsedTextField.text!
+        self.details = eventDetailsTextView.text
+        performSegue(withIdentifier: "toDetailVC", sender: self)
+        print(name,location,time,instruments,details)
     }
     
-    
-    //MARK: - Properties
-    
-    var event: Event? = nil
     
     //MARK: - Functions
     
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        var vc = segue.destination as! EventDetailViewController
+        vc.finalName = self.name
+        vc.finalLocation = self.location
+        vc.finalTime =  "\(self.selectedDate)"
+        vc.finalInstuments = self.instruments
+        vc.finalDetails = self.details
     }
-    */
 
-}
+}//End of class
