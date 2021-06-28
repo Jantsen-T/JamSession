@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03016586267A3B1000BF1D7C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03016585267A3B1000BF1D7C /* UserController.swift */; };
+		030EB57D268A2A8600DEC691 /* AttendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030EB57C268A2A8600DEC691 /* AttendingTableViewCell.swift */; };
 		0340211F26864F890093B135 /* FriendsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211626864F870093B135 /* FriendsListVC.swift */; };
 		0340212026864F890093B135 /* MenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211726864F870093B135 /* MenTableViewController.swift */; };
 		0340212126864F890093B135 /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211826864F870093B135 /* LoginViewController2.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		03016585267A3B1000BF1D7C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		030EB57C268A2A8600DEC691 /* AttendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingTableViewCell.swift; sourceTree = "<group>"; };
 		0340211626864F870093B135 /* FriendsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListVC.swift; sourceTree = "<group>"; };
 		0340211726864F870093B135 /* MenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenTableViewController.swift; sourceTree = "<group>"; };
 		0340211826864F870093B135 /* LoginViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				0340211C26864F880093B135 /* MessageCell.swift */,
 				03412B1C268114D300B045A4 /* SearchEventsViewController.swift */,
 				03412B262681282900B045A4 /* ChatViewController.swift */,
+				030EB57C268A2A8600DEC691 /* AttendingTableViewCell.swift */,
 			);
 			path = borp;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				03412B2326811CB600B045A4 /* EventTableViewCell.swift in Sources */,
 				C0839D192679439000FF1369 /* AppDelegate.swift in Sources */,
 				03412B1D268114D300B045A4 /* SearchEventsViewController.swift in Sources */,
+				030EB57D268A2A8600DEC691 /* AttendingTableViewCell.swift in Sources */,
 				C0839D3E2679547F00FF1369 /* Friend.swift in Sources */,
 				C0414E6926814BD9000B592C /* CreateUserViewController.swift in Sources */,
 				C0414E6B26814BDF000B592C /* EditUserViewController.swift in Sources */,
