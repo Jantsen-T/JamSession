@@ -21,6 +21,8 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        popViewAndKyboard()
+        kyboardDissapear()
         
         pickerData = ["Beginner", "Intermediate", "advanced", "Expert"]
         experienceLevelPicker.dataSource = self
@@ -42,6 +44,19 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }else if user.experienceLevel.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)=="expert"{
             experienceLevelPicker.selectRow(3, inComponent: 1, animated: true)
         }
+    }
+    
+    @IBAction func signOutTapped(_ sender: Any) {
+        
+    }
+    
+    func popViewAndKyboard() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAUserViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAUserViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @IBAction func saveTapped(_ sender: Any) {
@@ -128,6 +143,20 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }
         picker.dismiss(animated: true, completion: nil)
 
+    }
+    
+    func kyboardDissapear() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+        
+        self.view.frame.origin.y = 200 - keyboardSize.height + 0   }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
     }
 }// End of class
 

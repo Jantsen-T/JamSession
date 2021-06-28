@@ -10,6 +10,7 @@ import CoreLocation
 
 class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var instrumentTextField: UITextField!
@@ -20,6 +21,7 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        popViewAndKyboard()
         kyboardDissapear()
         self.usernameTextField.delegate = self
         self.locationTextField.delegate = self
@@ -121,6 +123,17 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
         }
         
     }
+    
+    func popViewAndKyboard() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAUserViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAUserViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -137,8 +150,6 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
     func kyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
-        
-
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -147,5 +158,20 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
         }
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    @objc func dismissMyKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+        
+        self.view.frame.origin.y = 200 - keyboardSize.height + 0   }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
+    }
+    
+
   
 }// End of class
