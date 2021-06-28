@@ -132,6 +132,19 @@
 			path = tanner;
 			sourceTree = "<group>";
 		};
+		034021332689EB9E0093B135 /* jants */ = {
+			isa = PBXGroup;
+			children = (
+				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
+				C0825B6D2680FF88004C099C /* MapViewController.swift */,
+				3B8C839426812FF400457FF1 /* CreateEventViewController.swift */,
+				3B8C83962681301500457FF1 /* EventDetailViewController.swift */,
+				C0414E6826814BD9000B592C /* CreateUserViewController.swift */,
+				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
+			);
+			path = jants;
+			sourceTree = "<group>";
+		};
 		03412B0B2680E73A00B045A4 /* Jantsen */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,14 +275,9 @@
 		C0839D3426794B7600FF1369 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				034021332689EB9E0093B135 /* jants */,
 				0340212C2689EA8F0093B135 /* tanner */,
 				03412B142680F10100B045A4 /* borp */,
-				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
-				C0825B6D2680FF88004C099C /* MapViewController.swift */,
-				3B8C839426812FF400457FF1 /* CreateEventViewController.swift */,
-				3B8C83962681301500457FF1 /* EventDetailViewController.swift */,
-				C0414E6826814BD9000B592C /* CreateUserViewController.swift */,
-				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
