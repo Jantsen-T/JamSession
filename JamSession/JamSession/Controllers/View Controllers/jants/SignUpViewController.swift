@@ -52,6 +52,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createButtonTapped(_ sender: Any) {
+        
+    
+        
         if confirmPasswordTextField.text == passwordTextField.text {
             
             let error = validateFields()
