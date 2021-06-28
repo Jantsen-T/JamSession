@@ -13,10 +13,11 @@ class Event{
     var location: CLLocation
     let creator: User
     var instruments: String
+    var uuid: String
     
     var description: String
     var attending: [User]
-    init(title: String, eventTime: Date, location: CLLocation, creator: User, descriptoin: String, attending: [User], instruments: String){
+    init(title: String, eventTime: Date, location: CLLocation, creator: User, descriptoin: String, attending: [User], instruments: String, uuid: String = UUID().uuidString){
         self.title = title
         self.eventTime = eventTime
         self.location = location
@@ -24,6 +25,7 @@ class Event{
         self.description = descriptoin
         self.attending = attending
         self.instruments = instruments
+        self.uuid = uuid
     }
     func toFireObj()->[String: Any]{
         let dateFormat = DateFormatter()

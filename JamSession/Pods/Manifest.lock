@@ -373,6 +373,7 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (1.2.12)
+  - SearchTextField (1.2.4)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -381,6 +382,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/InAppMessaging
   - MessageKit
+  - SearchTextField
 
 SPEC REPOS:
   trunk:
@@ -406,6 +408,7 @@ SPEC REPOS:
     - MessageKit
     - nanopb
     - PromisesObjC
+    - SearchTextField
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -430,7 +433,8 @@ SPEC CHECKSUMS:
   MessageKit: d153fbbbcb12f3f4045a1ba8874298924dacfb62
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SearchTextField: 40dc3cc57def5a211f263cac263622c163bbc25a
 
-PODFILE CHECKSUM: 7ba51d7e8ddf6753d7de278299de802e49c9e5a2
+PODFILE CHECKSUM: 1f401b47e727d6e1e3a8d9428d8d4092d32be3de
 
 COCOAPODS: 1.10.1

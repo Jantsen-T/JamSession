@@ -35,4 +35,10 @@ class EventController{
             return completion(.success(results))
         }
     }
+    func saveEvent(_ event: Event){
+        let dict = event.toFireObj()
+        let eventBase = db.collection("Events")
+        let eventDoc = eventBase.document(event.uuid)
+        eventDoc.setData(dict)
+    }
 }

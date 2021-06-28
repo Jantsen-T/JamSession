@@ -51,7 +51,7 @@ class EventQuickLookViewController: UIViewController {
     }
     @IBAction func editButtonPressed(_ sender: Any) {
         guard let event = event else { return}
-        let sb = UIStoryboard(name: "tanman", bundle: nil)
+        let sb = UIStoryboard(name: "borp", bundle: nil)
         guard let vc = sb.instantiateViewController(identifier: "createEvent")as? CreateEventViewController else { return}
         vc.event = event
         vc.modalPresentationStyle = .fullScreen

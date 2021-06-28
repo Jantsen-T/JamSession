@@ -69,6 +69,7 @@
                                                 <rect key="frame" x="183" y="0.0" width="199" height="23"/>
                                                 <state key="normal">
                                                     <imageReference key="image" image="map" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                 </state>
                                             </button>
                                         </subviews>
@@ -525,7 +526,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JST-va-mYp">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JST-va-mYp" customClass="SearchTextField" customModule="SearchTextField">
                                                 <rect key="frame" x="0.0" y="38" width="414" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="6aJ-Xi-W5l"/>
@@ -590,6 +591,7 @@
                     <connections>
                         <outlet property="eventDatePicker" destination="hTI-6c-lSR" id="AAb-b5-9WF"/>
                         <outlet property="eventDetailsTextView" destination="Z5D-w1-zBv" id="HIn-bd-RFt"/>
+                        <outlet property="eventLocationTextField" destination="JST-va-mYp" id="iJ4-sn-uKu"/>
                         <outlet property="eventNameTextField" destination="Uys-AM-foY" id="KGB-Ws-hHV"/>
                         <outlet property="instrumentsUsedTextField" destination="PN7-kX-sW9" id="WWA-hg-REk"/>
                         <outlet property="locationNameTextField" destination="JST-va-mYp" id="ahl-BJ-3uS"/>
