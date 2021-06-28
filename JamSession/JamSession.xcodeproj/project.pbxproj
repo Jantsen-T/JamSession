@@ -29,8 +29,6 @@
 		03412B252681266100B045A4 /* ChatAndMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B242681266100B045A4 /* ChatAndMessage.swift */; };
 		03412B272681282900B045A4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B262681282900B045A4 /* ChatViewController.swift */; };
 		039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */; };
-		3B8C839526812FF400457FF1 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C839426812FF400457FF1 /* CreateEventViewController.swift */; };
-		3B8C83972681301500457FF1 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C83962681301500457FF1 /* EventDetailViewController.swift */; };
 		5E2BBCA9763C3B8758693AB6 /* Pods_JamSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */; };
 		C0414E6926814BD9000B592C /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0414E6826814BD9000B592C /* CreateUserViewController.swift */; };
 		C0414E6B26814BDF000B592C /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0414E6A26814BDF000B592C /* EditUserViewController.swift */; };
@@ -73,8 +71,6 @@
 		03412B242681266100B045A4 /* ChatAndMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAndMessage.swift; sourceTree = "<group>"; };
 		03412B262681282900B045A4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtensions.swift; sourceTree = "<group>"; };
-		3B8C839426812FF400457FF1 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
-		3B8C83962681301500457FF1 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9329E72305D2502E8773DA8F /* Pods-JamSession.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.debug.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.debug.xcconfig"; sourceTree = "<group>"; };
 		B7BE5C5E5FF3D09208A8D825 /* Pods-JamSession.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.release.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,8 +133,6 @@
 			children = (
 				C0839D462679615B00FF1369 /* SignUpViewController.swift */,
 				C0825B6D2680FF88004C099C /* MapViewController.swift */,
-				3B8C839426812FF400457FF1 /* CreateEventViewController.swift */,
-				3B8C83962681301500457FF1 /* EventDetailViewController.swift */,
 				C0414E6826814BD9000B592C /* CreateUserViewController.swift */,
 				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
 			);
@@ -449,7 +443,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0825B682680FAD6004C099C /* LoginController.swift in Sources */,
-				3B8C839526812FF400457FF1 /* CreateEventViewController.swift in Sources */,
 				03412B202681162300B045A4 /* EventController.swift in Sources */,
 				03412B252681266100B045A4 /* ChatAndMessage.swift in Sources */,
 				0340212226864F890093B135 /* FriendCell.swift in Sources */,
@@ -477,7 +470,6 @@
 				C0414E6B26814BDF000B592C /* EditUserViewController.swift in Sources */,
 				C0839D4526795C1B00FF1369 /* Errors.swift in Sources */,
 				C0839D472679615B00FF1369 /* SignUpViewController.swift in Sources */,
-				3B8C83972681301500457FF1 /* EventDetailViewController.swift in Sources */,
 				C0839D1B2679439000FF1369 /* SceneDelegate.swift in Sources */,
 				0340212A26865BA40093B135 /* ChatsController.swift in Sources */,
 			);
