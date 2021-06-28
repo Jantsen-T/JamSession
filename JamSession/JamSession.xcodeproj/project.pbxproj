@@ -47,6 +47,7 @@
 		C0839D492679637A00FF1369 /* PasswordTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D482679637A00FF1369 /* PasswordTest.swift */; };
 		C0876896268A378B0042C8EC /* CreateAUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0876895268A378B0042C8EC /* CreateAUserViewController.swift */; };
 		C0876898268A48770042C8EC /* EditAUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0876897268A48770042C8EC /* EditAUserViewController.swift */; };
+		C087689A268A6CB20042C8EC /* FriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0876899268A6CB20042C8EC /* FriendDetailViewController.swift */; };
 		C0DB3D9B267BE65E0022E5B1 /* THEStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0DB3D9A267BE65E0022E5B1 /* THEStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		C0839D482679637A00FF1369 /* PasswordTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTest.swift; sourceTree = "<group>"; };
 		C0876895268A378B0042C8EC /* CreateAUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAUserViewController.swift; sourceTree = "<group>"; };
 		C0876897268A48770042C8EC /* EditAUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAUserViewController.swift; sourceTree = "<group>"; };
+		C0876899268A6CB20042C8EC /* FriendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailViewController.swift; sourceTree = "<group>"; };
 		C0DB3D9A267BE65E0022E5B1 /* THEStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = THEStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
 				C0876895268A378B0042C8EC /* CreateAUserViewController.swift */,
 				C0876897268A48770042C8EC /* EditAUserViewController.swift */,
+				C0876899268A6CB20042C8EC /* FriendDetailViewController.swift */,
 			);
 			path = jants;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 			files = (
 				C0825B682680FAD6004C099C /* LoginController.swift in Sources */,
 				03412B202681162300B045A4 /* EventController.swift in Sources */,
+				C087689A268A6CB20042C8EC /* FriendDetailViewController.swift in Sources */,
 				03412B252681266100B045A4 /* ChatAndMessage.swift in Sources */,
 				0340212226864F890093B135 /* FriendCell.swift in Sources */,
 				03016586267A3B1000BF1D7C /* UserController.swift in Sources */,
