@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
-class EventQuickLookViewController: UIViewController {
+class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: vars and outlets
     var event: Event?
-    
+    @IBOutlet weak var attendingTableView: UITableView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -20,6 +22,8 @@ class EventQuickLookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        attendingTableView.dataSource = self
+        attendingTableView.delegate = self
         if let user = UserController.sharedInstance.currentUser{
             if let event = event{
                 if event.creator.uuid == user.uuid{
@@ -56,6 +60,43 @@ class EventQuickLookViewController: UIViewController {
         vc.event = event
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
+    }
+    @IBAction func mapButtonPressed(_ sender: Any) {
+        guard let event = event else { return}
+        let lat = event.location.coordinate.latitude
+        let lon = event.location.coordinate.longitude
+        self.openMapForPlace(lat: lat, long: lon)
+    }
+    func openMapForPlace(lat: CLLocationDegrees, long: CLLocationDegrees) {
+        guard let event = event else { return}
+        let latitude:CLLocationDegrees =  lat
+        let longitude:CLLocationDegrees =  long
+        
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "\(event.title)"
+        mapItem.openInMaps(launchOptions: options)
+        
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let event = event else { return UITableViewCell()}
+        let cell = tableView.dequeueReusableCell(withIdentifier: "attendeeCell", for: indexPath)
+        let user = event.attending[indexPath.row]
+        cell.textLabel?.text = user.username
+        cell.imageView?.image = user.profilePic
+        return cell
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let event = event{
+            return event.attending.count
+        }else {return 0}
     }
     
 }
