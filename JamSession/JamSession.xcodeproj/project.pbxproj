@@ -45,6 +45,7 @@
 		C0839D4526795C1B00FF1369 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D4426795C1B00FF1369 /* Errors.swift */; };
 		C0839D472679615B00FF1369 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D462679615B00FF1369 /* SignUpViewController.swift */; };
 		C0839D492679637A00FF1369 /* PasswordTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D482679637A00FF1369 /* PasswordTest.swift */; };
+		C0876896268A378B0042C8EC /* CreateAUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0876895268A378B0042C8EC /* CreateAUserViewController.swift */; };
 		C0DB3D9B267BE65E0022E5B1 /* THEStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0DB3D9A267BE65E0022E5B1 /* THEStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		C0839D4426795C1B00FF1369 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		C0839D462679615B00FF1369 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C0839D482679637A00FF1369 /* PasswordTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTest.swift; sourceTree = "<group>"; };
+		C0876895268A378B0042C8EC /* CreateAUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAUserViewController.swift; sourceTree = "<group>"; };
 		C0DB3D9A267BE65E0022E5B1 /* THEStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = THEStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 				C0825B6D2680FF88004C099C /* MapViewController.swift */,
 				C0414E6826814BD9000B592C /* CreateUserViewController.swift */,
 				C0414E6A26814BDF000B592C /* EditUserViewController.swift */,
+				C0876895268A378B0042C8EC /* CreateAUserViewController.swift */,
 			);
 			path = jants;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */,
 				0340212426864F890093B135 /* ChatViewController_possiblyBad.swift in Sources */,
 				03412B1A26810ECE00B045A4 /* LocationManager.swift in Sources */,
+				C0876896268A378B0042C8EC /* CreateAUserViewController.swift in Sources */,
 				0340212126864F890093B135 /* LoginViewController2.swift in Sources */,
 				03412B182680F27400B045A4 /* Event.swift in Sources */,
 				034021302689EA9C0093B135 /* EventDetailViewController.swift in Sources */,
