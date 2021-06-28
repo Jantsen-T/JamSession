@@ -47,7 +47,12 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func signOutTapped(_ sender: Any) {
-        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "signUp")
+        vc.modalTransitionStyle = .coverVertical
+        DispatchQueue.main.async {
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     func popViewAndKyboard() {

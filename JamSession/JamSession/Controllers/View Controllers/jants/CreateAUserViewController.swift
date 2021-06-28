@@ -171,7 +171,4 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
     }
-    
-
-  
 }// End of class
