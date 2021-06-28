@@ -12,33 +12,43 @@
         <!--SignUp View Controller-->
         <scene sceneID="ZsB-kw-TCr">
             <objects>
-                <viewController id="6HU-e3-5oV" userLabel="SignUp View Controller" customClass="SignUpViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUp" id="6HU-e3-5oV" userLabel="SignUp View Controller" customClass="SignUpViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qOG-3L-jyG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="EZq-JY-T9a">
-                                <rect key="frame" x="0.0" y="142" width="414" height="142"/>
+                                <rect key="frame" x="5" y="208" width="404" height="142"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pbP-eM-YUH">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8mI-vz-Mer">
-                                        <rect key="frame" x="0.0" y="54" width="414" height="34"/>
+                                        <rect key="frame" x="0.0" y="54" width="404" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BAN-BQ-Thz">
-                                        <rect key="frame" x="0.0" y="108" width="414" height="34"/>
+                                        <rect key="frame" x="0.0" y="108" width="404" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qG-72-q8k">
+                                <rect key="frame" x="100" y="425" width="214" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Whi-B6-5Cg"/>
+                                </constraints>
+                                <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="createButtonTapped:" destination="6HU-e3-5oV" eventType="touchUpInside" id="EJz-8P-PDx"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bck-xU-e9m">
-                                <rect key="frame" x="5" y="484" width="404" height="30"/>
+                                <rect key="frame" x="5" y="158" width="404" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uS0-Ng-fmH">
                                         <rect key="frame" x="0.0" y="0.0" width="198" height="30"/>
@@ -56,29 +66,19 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qG-72-q8k">
-                                <rect key="frame" x="100" y="387" width="214" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Whi-B6-5Cg"/>
-                                </constraints>
-                                <state key="normal" title="Create"/>
-                                <connections>
-                                    <action selector="createButtonTapped:" destination="6HU-e3-5oV" eventType="touchUpInside" id="EJz-8P-PDx"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NEh-Wh-GXb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1qG-72-q8k" firstAttribute="top" secondItem="EZq-JY-T9a" secondAttribute="bottom" constant="103" id="Ksc-ol-nvC"/>
-                            <constraint firstItem="Bck-xU-e9m" firstAttribute="top" secondItem="EZq-JY-T9a" secondAttribute="bottom" constant="200" id="TBc-7I-xpW"/>
-                            <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="Bck-xU-e9m" secondAttribute="trailing" constant="5" id="TG3-pE-US1"/>
-                            <constraint firstItem="EZq-JY-T9a" firstAttribute="top" secondItem="NEh-Wh-GXb" secondAttribute="top" constant="54" id="Yuw-D7-rxo"/>
+                            <constraint firstItem="EZq-JY-T9a" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="5" id="4Ln-ay-FbW"/>
+                            <constraint firstItem="Bck-xU-e9m" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="5" id="6lu-DK-O4U"/>
+                            <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="EZq-JY-T9a" secondAttribute="trailing" constant="5" id="KqY-L3-dJK"/>
+                            <constraint firstItem="Bck-xU-e9m" firstAttribute="top" secondItem="NEh-Wh-GXb" secondAttribute="top" constant="70" id="Nzm-lA-rx0"/>
+                            <constraint firstItem="EZq-JY-T9a" firstAttribute="top" secondItem="Bck-xU-e9m" secondAttribute="bottom" constant="20" id="OU4-Lp-lx8"/>
                             <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="1qG-72-q8k" secondAttribute="trailing" constant="100" id="dMY-u8-Mk9"/>
                             <constraint firstItem="1qG-72-q8k" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="100" id="eVg-oO-W9g"/>
-                            <constraint firstItem="EZq-JY-T9a" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" id="gqw-VF-Cwg"/>
-                            <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="EZq-JY-T9a" secondAttribute="trailing" id="yaV-57-G1k"/>
-                            <constraint firstItem="Bck-xU-e9m" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="5" id="z1j-I9-lJP"/>
+                            <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="Bck-xU-e9m" secondAttribute="trailing" constant="5" id="iYj-wS-OS4"/>
+                            <constraint firstItem="1qG-72-q8k" firstAttribute="top" secondItem="EZq-JY-T9a" secondAttribute="bottom" constant="75" id="kdI-X7-q5h"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9IJ-wp-z0O"/>
@@ -258,7 +258,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(bio)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBY-lb-e0q">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(bio)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBY-lb-e0q">
                                 <rect key="frame" x="5" y="603.5" width="404" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Wny-gM-9Gt"/>
