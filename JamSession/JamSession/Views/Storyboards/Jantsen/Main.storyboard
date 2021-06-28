@@ -17,11 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hID-fH-eV1">
-                                <rect key="frame" x="153" y="713" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="EZq-JY-T9a">
                                 <rect key="frame" x="0.0" y="142" width="414" height="188"/>
                                 <subviews>
@@ -85,11 +80,6 @@
                             <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="EZq-JY-T9a" secondAttribute="trailing" id="yaV-57-G1k"/>
                             <constraint firstItem="Bck-xU-e9m" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="5" id="z1j-I9-lJP"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="hID-fH-eV1"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="9IJ-wp-z0O"/>
                     <connections>
@@ -160,7 +150,7 @@
                                 <rect key="frame" x="5" y="455" width="404" height="216"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Zj-zy-47b">
-                                <rect key="frame" x="160" y="832" width="94" height="30"/>
+                                <rect key="frame" x="120" y="822" width="174" height="30"/>
                                 <state key="normal" title="Create Profile"/>
                                 <connections>
                                     <action selector="createProfileTapped:" destination="Jjn-IC-wBY" eventType="touchUpInside" id="0rT-ui-Fg0"/>
@@ -172,15 +162,15 @@
                         <constraints>
                             <constraint firstItem="fK9-S2-Ha7" firstAttribute="leading" secondItem="Sch-mr-1pm" secondAttribute="leading" constant="5" id="1dN-dJ-unU"/>
                             <constraint firstItem="ebk-N0-LDL" firstAttribute="top" secondItem="fK9-S2-Ha7" secondAttribute="bottom" constant="27" id="3HK-af-J23"/>
-                            <constraint firstItem="7Zj-zy-47b" firstAttribute="top" secondItem="vHb-b0-Nia" secondAttribute="bottom" constant="20" id="64S-8K-B2h"/>
+                            <constraint firstItem="7Zj-zy-47b" firstAttribute="top" secondItem="vHb-b0-Nia" secondAttribute="bottom" constant="10" id="64S-8K-B2h"/>
                             <constraint firstItem="S2t-6H-Wbm" firstAttribute="leading" secondItem="vY0-Ic-yMP" secondAttribute="leading" constant="5" id="6ZH-Jq-gES"/>
-                            <constraint firstItem="7Zj-zy-47b" firstAttribute="leading" secondItem="Sch-mr-1pm" secondAttribute="leading" constant="160" id="HDw-9V-xxz"/>
+                            <constraint firstItem="7Zj-zy-47b" firstAttribute="leading" secondItem="Sch-mr-1pm" secondAttribute="leading" constant="120" id="HDw-9V-xxz"/>
                             <constraint firstItem="Sch-mr-1pm" firstAttribute="trailing" secondItem="fK9-S2-Ha7" secondAttribute="trailing" constant="5" id="Lkg-Mk-ua7"/>
                             <constraint firstItem="Sch-mr-1pm" firstAttribute="trailing" secondItem="S2t-6H-Wbm" secondAttribute="trailing" constant="5" id="TdB-vH-I6r"/>
                             <constraint firstItem="fK9-S2-Ha7" firstAttribute="top" secondItem="Sch-mr-1pm" secondAttribute="top" constant="29" id="b3a-Dq-BMd"/>
                             <constraint firstItem="ebk-N0-LDL" firstAttribute="leading" secondItem="Sch-mr-1pm" secondAttribute="leading" constant="5" id="b5j-G6-zzx"/>
                             <constraint firstItem="Sch-mr-1pm" firstAttribute="trailing" secondItem="ebk-N0-LDL" secondAttribute="trailing" constant="5" id="iOk-NZ-CUT"/>
-                            <constraint firstItem="Sch-mr-1pm" firstAttribute="trailing" secondItem="7Zj-zy-47b" secondAttribute="trailing" constant="160" id="nZs-qt-7ga"/>
+                            <constraint firstItem="Sch-mr-1pm" firstAttribute="trailing" secondItem="7Zj-zy-47b" secondAttribute="trailing" constant="120" id="nZs-qt-7ga"/>
                             <constraint firstItem="Sch-mr-1pm" firstAttribute="bottom" secondItem="vHb-b0-Nia" secondAttribute="bottom" constant="50" id="nbT-Pn-BEW"/>
                             <constraint firstItem="vHb-b0-Nia" firstAttribute="leading" secondItem="Sch-mr-1pm" secondAttribute="leading" constant="5" id="oez-wz-DPh"/>
                             <constraint firstItem="Sch-mr-1pm" firstAttribute="trailing" secondItem="vHb-b0-Nia" secondAttribute="trailing" constant="5" id="pdt-IF-rWj"/>
@@ -280,7 +270,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Bio" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qgn-lz-t8j">
-                                <rect key="frame" x="5" y="619" width="404" height="128"/>
+                                <rect key="frame" x="5" y="645" width="404" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="7ei-Hy-hh9"/>
@@ -323,23 +313,30 @@
                                 </subviews>
                             </stackView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3D-J6-F8q">
-                                <rect key="frame" x="5" y="448" width="404" height="216"/>
+                                <rect key="frame" x="5" y="425" width="404" height="216"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6K-ia-ogs">
+                                <rect key="frame" x="300" y="40" width="89" height="30"/>
+                                <state key="normal" title="Sign Out"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Dl-lF-boq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Dl-lF-boq" firstAttribute="trailing" secondItem="F3D-J6-F8q" secondAttribute="trailing" constant="5" id="0Kx-ra-hsM"/>
+                            <constraint firstItem="a6K-ia-ogs" firstAttribute="top" secondItem="vcU-T5-UgC" secondAttribute="top" constant="40" id="0YZ-FA-WQN"/>
                             <constraint firstItem="6Dl-lF-boq" firstAttribute="trailing" secondItem="Qgn-lz-t8j" secondAttribute="trailing" constant="5" id="229-Za-DVl"/>
                             <constraint firstItem="WQT-6g-QF4" firstAttribute="leading" secondItem="6Dl-lF-boq" secondAttribute="leading" constant="5" id="4EG-iw-ph4"/>
-                            <constraint firstItem="F3D-J6-F8q" firstAttribute="top" secondItem="2Am-wy-TYr" secondAttribute="bottom" constant="63" id="Kpq-hK-WYD"/>
+                            <constraint firstItem="6Dl-lF-boq" firstAttribute="trailing" secondItem="a6K-ia-ogs" secondAttribute="trailing" constant="25" id="4st-7u-2C0"/>
+                            <constraint firstItem="F3D-J6-F8q" firstAttribute="top" secondItem="2Am-wy-TYr" secondAttribute="bottom" constant="40" id="Kpq-hK-WYD"/>
                             <constraint firstItem="6Dl-lF-boq" firstAttribute="trailing" secondItem="WQT-6g-QF4" secondAttribute="trailing" constant="5" id="T9f-10-9ZL"/>
                             <constraint firstItem="WQT-6g-QF4" firstAttribute="top" secondItem="6Dl-lF-boq" secondAttribute="top" constant="29" id="VPP-8X-HOJ"/>
                             <constraint firstItem="2Am-wy-TYr" firstAttribute="top" secondItem="WQT-6g-QF4" secondAttribute="bottom" constant="27" id="b1P-B2-aMJ"/>
                             <constraint firstItem="6Dl-lF-boq" firstAttribute="trailing" secondItem="2Am-wy-TYr" secondAttribute="trailing" constant="5" id="b8x-fT-1BZ"/>
                             <constraint firstItem="F3D-J6-F8q" firstAttribute="leading" secondItem="vcU-T5-UgC" secondAttribute="leading" constant="5" id="gxy-aO-x8S"/>
                             <constraint firstItem="Qgn-lz-t8j" firstAttribute="leading" secondItem="6Dl-lF-boq" secondAttribute="leading" constant="5" id="h62-rf-1OA"/>
-                            <constraint firstItem="6Dl-lF-boq" firstAttribute="bottom" secondItem="Qgn-lz-t8j" secondAttribute="bottom" constant="66" id="jG7-To-Ht1"/>
+                            <constraint firstItem="6Dl-lF-boq" firstAttribute="bottom" secondItem="Qgn-lz-t8j" secondAttribute="bottom" constant="40" id="jG7-To-Ht1"/>
+                            <constraint firstItem="a6K-ia-ogs" firstAttribute="leading" secondItem="6Dl-lF-boq" secondAttribute="leading" constant="300" id="rVX-XK-meo"/>
                             <constraint firstItem="2Am-wy-TYr" firstAttribute="leading" secondItem="6Dl-lF-boq" secondAttribute="leading" constant="5" id="v1T-6A-cx8"/>
                         </constraints>
                     </view>
@@ -364,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wpU-qQ-6br" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3090" y="-1378"/>
+            <point key="canvasLocation" x="3089.8550724637685" y="-1378.125"/>
         </scene>
     </scenes>
     <resources>
