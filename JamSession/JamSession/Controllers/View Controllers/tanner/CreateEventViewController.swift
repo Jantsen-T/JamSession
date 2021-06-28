@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import CoreLocation
+import SearchTextField
+import Contacts
 
 class CreateEventViewController: UIViewController {
     
     //MARK: - Outlets
     
     @IBOutlet weak var eventNameTextField: UITextField!
-    @IBOutlet weak var eventLocationTextField: UITextField!
+    @IBOutlet weak var eventLocationTextField: SearchTextField!
     @IBOutlet weak var eventDatePicker: UIDatePicker!
     @IBOutlet weak var instrumentsUsedTextField: UITextField!
     @IBOutlet weak var eventDetailsTextView: UITextView!
@@ -20,7 +23,16 @@ class CreateEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        eventLocationTextField.userStoppedTypingHandler = {
+            self.userStoppedTyping()
+        }
+        if let event = event{
+            eventNameTextField.text = event.title
+            eventLocationTextField.text = event.location.description
+            instrumentsUsedTextField.text = event.instruments
+            eventDatePicker.date = event.eventTime
+            eventDetailsTextView.text = event.description
+        }
         
     }
     
@@ -37,17 +49,66 @@ class CreateEventViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func saveEventButtonTapped(_ sender: UITextField) {
-        
-        self.name = eventNameTextField.text!
-        self.location = eventLocationTextField.text!
-        self.selectedDate = self.eventDatePicker.date
-        self.instruments = instrumentsUsedTextField.text!
-        self.details = eventDetailsTextView.text
-        performSegue(withIdentifier: "toDetailVC", sender: self)
-        print(name,location,time,instruments,details)
+        guard let currentUser = UserController.sharedInstance.currentUser else { return}
+        guard let title = eventNameTextField.text, !title.isEmpty,
+              let location = eventLocationTextField.text, !location.isEmpty,
+              let instruments = instrumentsUsedTextField.text, !instruments.isEmpty else { return}
+        if let event = event{
+            event.description = eventDetailsTextView.text
+            event.title = title
+            let address = eventLocationTextField.text ?? ""
+            let geoCoder = CLGeocoder()
+            geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                guard
+                    let placemarks = placemarks,
+                    let locationy = placemarks.first?.location
+                else {
+                    // handle no location found
+                    return
+                }
+                event.location = locationy
+            }
+            event.description = description
+            event.instruments = instruments
+            EventController.sharedInstance.saveEvent(event)
+        }else{
+            let description = eventDetailsTextView.text ?? ""
+            let address = eventLocationTextField.text ?? ""
+            let geoCoder = CLGeocoder()
+            var addressLocation = CLLocation()
+            geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                guard
+                    let placemarks = placemarks,
+                    let locationy = placemarks.first?.location
+                else {
+                    // handle no location found
+                    return
+                }
+                addressLocation = locationy
+            }
+            let newEvent = Event(title: title, eventTime: eventDatePicker.date, location: addressLocation, creator: currentUser, descriptoin: description, attending: [], instruments: instruments)
+            EventController.sharedInstance.saveEvent(newEvent)
+        }
     }
-    
-    
+    func userStoppedTyping(){
+        let formatter = CNPostalAddressFormatter()
+        let address = eventLocationTextField.text ?? ""
+        var strings:[String] = []
+            let geoCoder = CLGeocoder()
+            geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                guard let placemarks = placemarks
+                else {
+                    // handle no location found
+                    return
+                }
+                for loc in placemarks{
+                    if let postal = loc.postalAddress{
+                        strings.append(formatter.string(from: postal))
+                    }
+                }
+            }
+        eventLocationTextField.filterStrings(strings)
+    }
     //MARK: - Functions
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
