@@ -25,7 +25,9 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
         super.viewDidLoad()
         
         self.title = targetUser?.username ?? "Chat"
-        
+        let gest = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(goBack))
+        gest.edges = .left
+        self.view.addGestureRecognizer(gest)
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
         scrollsToLastItemOnKeyboardBeginsEditing = true
@@ -156,4 +158,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
                 } else {
                     print("if you see this, i am a literal failure - borp")
                 }}}}
+    @objc func goBack(){
+        dismiss(animated: true, completion: nil)
+    }
 }

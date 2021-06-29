@@ -27,22 +27,26 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         pickerData = ["Beginner", "Intermediate", "advanced", "Expert"]
         experienceLevelPicker.dataSource = self
         experienceLevelPicker.delegate = self
+        experienceLevelPicker.reloadAllComponents()
         imageButton.addTarget(self, action: #selector(setImage), for: .touchUpInside)
         
         //do this last
-        guard let user = UserController.sharedInstance.currentUser else { return}
+        guard let user = UserController.sharedInstance.currentUser else {
+            return}
         usernameTextField.text = user.username
         locationTextField.text = user.location
         instrumentTextField.text = user.instrument
+        profilePicImageView.setImage(user.profilePic, for: .normal)
+        
         bioTextView.text = user.bio
         if user.experienceLevel.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)=="beginner"{
-            experienceLevelPicker.selectRow(0, inComponent: 1, animated: true)
+            experienceLevelPicker.selectRow(0, inComponent: 0, animated: true)
         }else if user.experienceLevel.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)=="intermediate"{
-            experienceLevelPicker.selectRow(1, inComponent: 1, animated: true)
+            experienceLevelPicker.selectRow(1, inComponent: 0, animated: true)
         }else if user.experienceLevel.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)=="advanced"{
-            experienceLevelPicker.selectRow(2, inComponent: 1, animated: true)
+            experienceLevelPicker.selectRow(2, inComponent: 0, animated: true)
         }else if user.experienceLevel.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)=="expert"{
-            experienceLevelPicker.selectRow(3, inComponent: 1, animated: true)
+            experienceLevelPicker.selectRow(3, inComponent: 0, animated: true)
         }
     }
     
