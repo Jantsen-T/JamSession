@@ -47,6 +47,8 @@
 		C0876896268A378B0042C8EC /* CreateAUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0876895268A378B0042C8EC /* CreateAUserViewController.swift */; };
 		C0876898268A48770042C8EC /* EditAUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0876897268A48770042C8EC /* EditAUserViewController.swift */; };
 		C087689A268A6CB20042C8EC /* FriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0876899268A6CB20042C8EC /* FriendDetailViewController.swift */; };
+		C0D0A923268BDBC700B3EAD1 /* Styleguide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D0A922268BDBC700B3EAD1 /* Styleguide.swift */; };
+		C0D0A925268BDCC800B3EAD1 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D0A924268BDCC800B3EAD1 /* TextFields.swift */; };
 		C0DB3D9B267BE65E0022E5B1 /* THEStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0DB3D9A267BE65E0022E5B1 /* THEStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,8 @@
 		C0876895268A378B0042C8EC /* CreateAUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAUserViewController.swift; sourceTree = "<group>"; };
 		C0876897268A48770042C8EC /* EditAUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAUserViewController.swift; sourceTree = "<group>"; };
 		C0876899268A6CB20042C8EC /* FriendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailViewController.swift; sourceTree = "<group>"; };
+		C0D0A922268BDBC700B3EAD1 /* Styleguide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styleguide.swift; sourceTree = "<group>"; };
+		C0D0A924268BDCC800B3EAD1 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		C0DB3D9A267BE65E0022E5B1 /* THEStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = THEStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +236,7 @@
 		C0839D172679439000FF1369 /* JamSession */ = {
 			isa = PBXGroup;
 			children = (
+				C0D0A920268BDB9600B3EAD1 /* Style Guide */,
 				C0839D2F267946B300FF1369 /* GoogleService-Info.plist */,
 				C0839D4326795C0C00FF1369 /* Helpers */,
 				C0839D3726794B8F00FF1369 /* Views */,
@@ -310,6 +315,23 @@
 				039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C0D0A920268BDB9600B3EAD1 /* Style Guide */ = {
+			isa = PBXGroup;
+			children = (
+				C0D0A922268BDBC700B3EAD1 /* Styleguide.swift */,
+				C0D0A921268BDBA400B3EAD1 /* Custom Elements */,
+			);
+			path = "Style Guide";
+			sourceTree = "<group>";
+		};
+		C0D0A921268BDBA400B3EAD1 /* Custom Elements */ = {
+			isa = PBXGroup;
+			children = (
+				C0D0A924268BDCC800B3EAD1 /* TextFields.swift */,
+			);
+			path = "Custom Elements";
 			sourceTree = "<group>";
 		};
 		DBFA756A11E5787274E195EF /* Frameworks */ = {
@@ -453,11 +475,13 @@
 				C087689A268A6CB20042C8EC /* FriendDetailViewController.swift in Sources */,
 				03412B252681266100B045A4 /* ChatAndMessage.swift in Sources */,
 				0340212226864F890093B135 /* FriendCell.swift in Sources */,
+				C0D0A923268BDBC700B3EAD1 /* Styleguide.swift in Sources */,
 				03016586267A3B1000BF1D7C /* UserController.swift in Sources */,
 				0340212026864F890093B135 /* MenTableViewController.swift in Sources */,
 				0340211F26864F890093B135 /* FriendsListVC.swift in Sources */,
 				0340212F2689EA9C0093B135 /* CreateEventViewController.swift in Sources */,
 				039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */,
+				C0D0A925268BDCC800B3EAD1 /* TextFields.swift in Sources */,
 				0340212426864F890093B135 /* ChatViewController_possiblyBad.swift in Sources */,
 				03412B1A26810ECE00B045A4 /* LocationManager.swift in Sources */,
 				C0876896268A378B0042C8EC /* CreateAUserViewController.swift in Sources */,
