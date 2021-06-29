@@ -66,6 +66,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                 }
             }
+            cell.sender = self
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
