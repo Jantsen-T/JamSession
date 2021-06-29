@@ -48,7 +48,7 @@ class CreateEventViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction func saveEventButtonTapped(_ sender: UITextField) {
+    @IBAction func saveEventButtonTapped(_ sender: Any) {
         guard let currentUser = UserController.sharedInstance.currentUser else { return}
         guard let title = eventNameTextField.text, !title.isEmpty,
               let location = eventLocationTextField.text, !location.isEmpty,
@@ -85,9 +85,10 @@ class CreateEventViewController: UIViewController {
                     return
                 }
                 addressLocation = locationy
+                let newEvent = Event(title: title, eventTime: self.eventDatePicker.date, location: addressLocation, creator: currentUser, descriptoin: description, attending: [], instruments: instruments)
+                EventController.sharedInstance.saveEvent(newEvent)
             }
-            let newEvent = Event(title: title, eventTime: eventDatePicker.date, location: addressLocation, creator: currentUser, descriptoin: description, attending: [], instruments: instruments)
-            EventController.sharedInstance.saveEvent(newEvent)
+            
         }
     }
     func userStoppedTyping(){
@@ -111,6 +112,7 @@ class CreateEventViewController: UIViewController {
     }
     //MARK: - Functions
     
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var vc = segue.destination as! EventDetailViewController
         vc.finalName = self.name
