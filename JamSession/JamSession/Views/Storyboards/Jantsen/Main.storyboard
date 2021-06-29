@@ -530,16 +530,6 @@
                                 <rect key="frame" x="329" y="40" width="60" height="30"/>
                                 <state key="normal" title="Sign Out"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lfl-JA-gio">
-                                <rect key="frame" x="25" y="40" width="55" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="vP3-4d-FeA"/>
-                                </constraints>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveTapped:" destination="Ake-Xq-dJc" eventType="touchUpInside" id="5TA-Kn-L8y"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Dl-lF-boq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -547,10 +537,8 @@
                             <constraint firstItem="6Dl-lF-boq" firstAttribute="trailing" secondItem="F3D-J6-F8q" secondAttribute="trailing" constant="5" id="0Kx-ra-hsM"/>
                             <constraint firstItem="a6K-ia-ogs" firstAttribute="top" secondItem="vcU-T5-UgC" secondAttribute="top" constant="40" id="0YZ-FA-WQN"/>
                             <constraint firstItem="6Dl-lF-boq" firstAttribute="trailing" secondItem="Qgn-lz-t8j" secondAttribute="trailing" constant="5" id="229-Za-DVl"/>
-                            <constraint firstItem="Lfl-JA-gio" firstAttribute="top" secondItem="vcU-T5-UgC" secondAttribute="top" constant="40" id="486-eM-RPj"/>
                             <constraint firstItem="WQT-6g-QF4" firstAttribute="leading" secondItem="6Dl-lF-boq" secondAttribute="leading" constant="5" id="4EG-iw-ph4"/>
                             <constraint firstItem="6Dl-lF-boq" firstAttribute="trailing" secondItem="a6K-ia-ogs" secondAttribute="trailing" constant="25" id="4st-7u-2C0"/>
-                            <constraint firstItem="Lfl-JA-gio" firstAttribute="leading" secondItem="6Dl-lF-boq" secondAttribute="leading" constant="25" id="JsB-h7-mu9"/>
                             <constraint firstItem="F3D-J6-F8q" firstAttribute="top" secondItem="2Am-wy-TYr" secondAttribute="bottom" constant="40" id="Kpq-hK-WYD"/>
                             <constraint firstItem="6Dl-lF-boq" firstAttribute="trailing" secondItem="WQT-6g-QF4" secondAttribute="trailing" constant="5" id="T9f-10-9ZL"/>
                             <constraint firstItem="WQT-6g-QF4" firstAttribute="top" secondItem="6Dl-lF-boq" secondAttribute="top" constant="29" id="VPP-8X-HOJ"/>
@@ -585,7 +573,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq7-Ws-g7v">
-                                                <rect key="frame" x="310" y="8" width="99" height="30"/>
+                                                <rect key="frame" x="344" y="8" width="65" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="65" id="VNo-FR-FPm"/>
+                                                </constraints>
                                                 <state key="normal" title="Sign Out"/>
                                                 <connections>
                                                     <action selector="signOutTapped:" destination="lh1-GZ-MGi" eventType="touchUpInside" id="xYe-Pc-9Xg"/>
@@ -640,15 +631,25 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Jx-54-g0z">
+                                                <rect key="frame" x="5" y="8" width="65" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="65" id="ZkX-UQ-994"/>
+                                                </constraints>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveTapped:" destination="lh1-GZ-MGi" eventType="touchUpInside" id="Ttx-Pc-jJg"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Dzw-Ze-FRm" firstAttribute="top" secondItem="ScR-yf-bLp" secondAttribute="bottom" constant="25" id="2C0-vO-HrK"/>
                                             <constraint firstAttribute="height" constant="1200" id="6Ki-FX-bR3"/>
+                                            <constraint firstItem="7Jx-54-g0z" firstAttribute="leading" secondItem="TOQ-MM-y9D" secondAttribute="leading" constant="5" id="7LH-oN-k3V"/>
                                             <constraint firstItem="ScR-yf-bLp" firstAttribute="leading" secondItem="TOQ-MM-y9D" secondAttribute="leading" constant="5" id="BmG-hy-kv0"/>
                                             <constraint firstAttribute="trailing" secondItem="RNJ-CK-fs8" secondAttribute="trailing" constant="55" id="JKn-vB-Mm2"/>
                                             <constraint firstItem="ScR-yf-bLp" firstAttribute="top" secondItem="Wq7-Ws-g7v" secondAttribute="bottom" constant="10" id="Jm2-60-gc0"/>
-                                            <constraint firstItem="Wq7-Ws-g7v" firstAttribute="leading" secondItem="TOQ-MM-y9D" secondAttribute="leading" constant="310" id="Meo-4R-2u5"/>
                                             <constraint firstItem="Dzw-Ze-FRm" firstAttribute="leading" secondItem="TOQ-MM-y9D" secondAttribute="leading" constant="5" id="NAn-ye-z4u"/>
                                             <constraint firstAttribute="trailing" secondItem="nO4-s6-MNZ" secondAttribute="trailing" constant="5" id="Nf6-Xx-4j5"/>
                                             <constraint firstAttribute="trailing" secondItem="Wq7-Ws-g7v" secondAttribute="trailing" constant="5" id="OAH-s5-hOP"/>
@@ -659,6 +660,8 @@
                                             <constraint firstAttribute="trailing" secondItem="ScR-yf-bLp" secondAttribute="trailing" constant="5" id="aaU-NM-kOQ"/>
                                             <constraint firstItem="nO4-s6-MNZ" firstAttribute="top" secondItem="RNJ-CK-fs8" secondAttribute="bottom" constant="40" id="nJl-AS-bjv"/>
                                             <constraint firstItem="RNJ-CK-fs8" firstAttribute="leading" secondItem="TOQ-MM-y9D" secondAttribute="leading" constant="55" id="nXX-E9-Lp7"/>
+                                            <constraint firstItem="7Jx-54-g0z" firstAttribute="top" secondItem="TOQ-MM-y9D" secondAttribute="top" constant="8" id="rAz-tZ-Iqr"/>
+                                            <constraint firstItem="ScR-yf-bLp" firstAttribute="top" secondItem="7Jx-54-g0z" secondAttribute="bottom" constant="10" id="ta7-xC-Psf"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -684,11 +687,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" image="person" catalog="system" selectedImage="person.fill" id="xlT-jp-TNh"/>
                     <toolbarItems>
-                        <barButtonItem systemItem="save" id="cJk-Zv-993">
-                            <connections>
-                                <action selector="saveTapped:" destination="lh1-GZ-MGi" id="sTz-Rm-VYi"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem systemItem="save" id="cJk-Zv-993"/>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="414" height="1200"/>
