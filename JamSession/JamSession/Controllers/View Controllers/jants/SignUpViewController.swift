@@ -22,6 +22,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
         kyboardDissapear()
+        toggleTologin()
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         self.confirmPasswordTextField.delegate = self
