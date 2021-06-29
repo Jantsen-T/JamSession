@@ -75,11 +75,13 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     switch result{
                     case .success(let user):
                         cell.user = user
+                        
                     case .failure(let err):
                         print(err)
                     }
                 }
             }
+            cell.sender = self
             return cell
         }
         
