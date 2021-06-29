@@ -54,6 +54,7 @@ class FriendCell: UITableViewCell {
             
             return}
         vc.target = user
+
         self.sender?.present(vc, animated: true, completion: nil)
     }
 }
