@@ -25,6 +25,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         self.confirmPasswordTextField.delegate = self
+       
     }
     
     func validateFields() -> String? {

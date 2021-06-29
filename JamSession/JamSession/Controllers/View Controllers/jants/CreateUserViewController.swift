@@ -5,8 +5,8 @@
 //  Created by Jantsen Tanner on 6/21/21.
 //
 
-import UIKit
-import CoreLocation
+//import UIKit
+//import CoreLocation
 
 //class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
 //    
