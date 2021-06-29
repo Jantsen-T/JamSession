@@ -252,7 +252,7 @@
         <!--Friend Detail View-->
         <scene sceneID="Cwj-Be-CjH">
             <objects>
-                <viewController id="bIW-3A-FMw" userLabel="Friend Detail View" customClass="FriendDetailViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="friendDetail" id="bIW-3A-FMw" userLabel="Friend Detail View" customClass="FriendDetailViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Noz-LI-Mve">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

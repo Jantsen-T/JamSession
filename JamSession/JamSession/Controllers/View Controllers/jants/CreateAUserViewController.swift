@@ -85,6 +85,13 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
         UserController.sharedInstance.makeUserInDB(username: username, uuid: uuid, location: location, bio: bio, instrument: instruments, experience: expString, pfp: pfp) { user in
             UserController.sharedInstance.saveUser(user: user)
         }
+        
+        let sb = UIStoryboard(name: "borp", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "tabbar")
+        vc.modalPresentationStyle = .fullScreen
+        DispatchQueue.main.async {
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
