@@ -29,6 +29,7 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         experienceLevelPicker.delegate = self
         experienceLevelPicker.reloadAllComponents()
         imageButton.addTarget(self, action: #selector(setImage), for: .touchUpInside)
+        imageButton.imageView?.contentMode = .scaleAspectFit
         
         //do this last
         guard let user = UserController.sharedInstance.currentUser else {
@@ -55,11 +56,10 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(identifier: "signUp")
         vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .coverVertical
         DispatchQueue.main.async {
             self.present(vc, animated: true, completion: nil)
+            UserController.sharedInstance.currentUser = nil
         }
-        UserController.sharedInstance.currentUser = nil
     }
     
     func popViewAndKyboard() {
