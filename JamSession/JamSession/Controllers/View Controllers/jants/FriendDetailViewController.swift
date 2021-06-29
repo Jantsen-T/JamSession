@@ -8,16 +8,23 @@
 import UIKit
 
 class FriendDetailViewController: UIViewController {
-    @IBOutlet weak var friendUsername: UILabel!
-    @IBOutlet weak var friendPic: UIImageView!
-    @IBOutlet weak var friendLocation: UILabel!
-    @IBOutlet weak var friendInstrument: UILabel!
-    @IBOutlet weak var friendExperience: UILabel!
-    @IBOutlet weak var friendBio: UILabel!
+    var target: User?
+    @IBOutlet weak var usernameField: UILabel!
+    @IBOutlet weak var picView: UIImageView!
+    @IBOutlet weak var locationField: UILabel!
+    @IBOutlet weak var instrumentField: UILabel!
+    @IBOutlet weak var experienceField: UILabel!
+    @IBOutlet weak var bioField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let target = target{
+            usernameField.text = target.username
+            picView.image = target.profilePic
+            locationField.text = target.location
+            instrumentField.text = target.instrument
+            experienceField.text = target.experienceLevel
+            bioField.text = target.bio
+        }
     }
     
     
