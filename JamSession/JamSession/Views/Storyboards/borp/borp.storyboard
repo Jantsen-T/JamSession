@@ -707,7 +707,6 @@
                         <outlet property="eventLocationTextField" destination="JST-va-mYp" id="iJ4-sn-uKu"/>
                         <outlet property="eventNameTextField" destination="Uys-AM-foY" id="KGB-Ws-hHV"/>
                         <outlet property="instrumentsUsedTextField" destination="PN7-kX-sW9" id="WWA-hg-REk"/>
-                        <outlet property="locationNameTextField" destination="JST-va-mYp" id="ahl-BJ-3uS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APr-jZ-rGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

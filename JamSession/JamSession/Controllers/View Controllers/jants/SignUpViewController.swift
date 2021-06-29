@@ -96,6 +96,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         
                         case .success(let user):
                             UserController.sharedInstance.currentUser = user
+                            let sb = UIStoryboard(name: "borp", bundle: nil)
+                            let vc = sb.instantiateViewController(identifier: "tabbar")
+                            vc.modalPresentationStyle = .fullScreen
+                            //vc.modalTransitionStyle = .partialCurl
+                            self.present(vc, animated: true, completion: nil)
                         case .failure(let error):
                             self.presentErrorToUser(localizedError: error)
                         }
