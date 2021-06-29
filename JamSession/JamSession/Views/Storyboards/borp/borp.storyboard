@@ -576,6 +576,14 @@
                                 <rect key="frame" x="300" y="40" width="89" height="30"/>
                                 <state key="normal" title="Sign Out"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOR-j4-PgU">
+                                <rect key="frame" x="25" y="40" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="black"/>
+                                <connections>
+                                    <action selector="saveTapped:" destination="lR0-Zb-fhw" eventType="touchUpInside" id="jEk-tH-3U9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Aoy-rx-dPO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -631,8 +639,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Zn-uI-afz">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgw-Dx-Eeb">
+                                        <rect key="frame" x="191" y="0.0" width="32" height="30"/>
+                                        <state key="normal" title="save"/>
+                                        <connections>
+                                            <action selector="saveEventButtonTapped:" destination="dAO-uw-bZl" eventType="touchUpInside" id="oq9-Uj-a4E"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yGH-Ac-Lc6">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="106"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="106"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uys-AM-foY">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -669,10 +684,10 @@
                                         </constraints>
                                     </stackView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="dateAndTime" minuteInterval="15" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="hTI-6c-lSR">
-                                        <rect key="frame" x="11.5" y="106" width="391" height="476"/>
+                                        <rect key="frame" x="11.5" y="136" width="391" height="457.5"/>
                                     </datePicker>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Event details" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Z5D-w1-zBv">
-                                        <rect key="frame" x="0.0" y="582" width="414" height="270"/>
+                                        <rect key="frame" x="0.0" y="593.5" width="414" height="258.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -697,13 +712,6 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Create" selectedImage="pencil.circle" catalog="system" id="TtO-9u-C4a"/>
-                    <navigationItem key="navigationItem" id="aWf-dZ-WsD">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="ec0-3v-YWk">
-                            <connections>
-                                <action selector="saveEventButtonTapped:" destination="dAO-uw-bZl" id="vA9-Fv-bhr"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="eventDatePicker" destination="hTI-6c-lSR" id="AAb-b5-9WF"/>
                         <outlet property="eventDetailsTextView" destination="Z5D-w1-zBv" id="HIn-bd-RFt"/>

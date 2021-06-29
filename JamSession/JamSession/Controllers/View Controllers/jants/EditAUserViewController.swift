@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UIImagePickerControllerDelegate {
+class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var profilePicImageView: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -36,6 +36,7 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         usernameTextField.text = user.username
         locationTextField.text = user.location
         instrumentTextField.text = user.instrument
+        imagePicker.delegate = self
         profilePicImageView.setImage(user.profilePic, for: .normal)
         
         bioTextView.text = user.bio

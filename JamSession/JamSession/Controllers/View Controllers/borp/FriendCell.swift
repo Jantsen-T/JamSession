@@ -36,7 +36,7 @@ class FriendCell: UITableViewCell {
         vc.currentUser = currentUser
         vc.targetUser = user
         vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .flipHorizontal
+//        vc.modalTransitionStyle = .flipHorizontal
         FriendViewController.shared?.present(vc, animated: true, completion: nil)
     }
     @IBAction func messageTapped(_ sender: Any){
