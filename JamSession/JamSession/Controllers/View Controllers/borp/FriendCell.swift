@@ -53,8 +53,7 @@ class FriendCell: UITableViewCell {
             
             
             return}
-        //vc.target = user
-        vc.modalPresentationStyle = .fullScreen
+        vc.target = user
         self.sender?.present(vc, animated: true, completion: nil)
     }
 }

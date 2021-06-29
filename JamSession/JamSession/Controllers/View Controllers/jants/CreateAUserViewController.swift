@@ -83,6 +83,7 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
             return
         }
         UserController.sharedInstance.makeUserInDB(username: username, uuid: uuid, location: location, bio: bio, instrument: instruments, experience: expString, pfp: pfp) { user in
+            UserController.sharedInstance.currentUser = user
             UserController.sharedInstance.saveUser(user: user)
         }
         
