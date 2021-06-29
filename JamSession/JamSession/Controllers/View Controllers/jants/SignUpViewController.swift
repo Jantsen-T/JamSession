@@ -75,7 +75,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     let sb = UIStoryboard(name: "Main", bundle: nil)
                     let vc = sb.instantiateViewController(identifier: "createUser")
                     vc.modalPresentationStyle = .fullScreen
-                    //vc.modalTransitionStyle = .partialCurl
                     DispatchQueue.main.async {
                         self.present(vc, animated: true, completion: nil)
                     }
