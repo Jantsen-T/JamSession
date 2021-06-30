@@ -11,29 +11,75 @@ import Firebase
 class EventController{
     static let sharedInstance = EventController()
     let db = Firestore.firestore()
-
-    func getAllEventsMatching(term: String, completion: @escaping(Result<[Event], FireError>)->Void){
+    var documents: [DocumentSnapshot] = []
+    
+    func docsToEvents(completionn: @escaping([Event])->Void){
+        var events: [Event] = []
+        DispatchQueue.main.async {
+            for doc in self.documents{
+                guard let data = doc.data() else { return}
+                
+                    Event.fromFireObj(data) { result in
+                        switch result{
+                        case .success(let event):
+                            events.append(event)
+                        case .failure(let err):
+                            print(err)
+                        }
+                    }
+                
+            }
+            completionn(events)
+        }
+        
+    }
+    func fetchDocuments(term: String, completion: @escaping(Bool)->Void){
         let eventBase = db.collection("Events")
         let query = eventBase.whereField("title", isEqualTo: term)
-                             .whereField("eventTime", isEqualTo: term)
-                             .whereField("instruments", isEqualTo: term)
-                             .whereField("attending", arrayContains: term)
         query.getDocuments { snap, err in
-            if let err = err{ return completion(.failure(.Fat(err)))}
-            guard let snap = snap, !snap.isEmpty else { return completion(.failure(.NoData))}
-            var results: [Event] = []
-            for doc in snap.documents{
+            if let _ = err{
+                return completion(false)
+            }
+            if let snap = snap{
+                self.documents = snap.documents
+                return completion(true)
+            }
+            return completion(false)
+        }
+        
+    }
+    
+    
+    
+    func getAllEventsMatching(term: String, completion: @escaping(Result<[Event], FireError>)->Void){
+        
+        let eventBase = db.collection("Events")
+        let query = eventBase.whereField("title", isEqualTo: term)
+        
+        var docs: [QueryDocumentSnapshot] = []
+        var events: [Event] = []
+        query.getDocuments { snap, err in
+            DispatchQueue.main.async {
+                if let snap = snap{
+                    docs = snap.documents
+                }
+            }
+        }
+        DispatchQueue.main.async {
+            for doc in docs{
                 Event.fromFireObj(doc.data()) { res in
                     switch res{
                     case .success(let event):
-                        results.append(event)
+                        events.append(event)
                     case .failure(let err):
-                        print(err)
+                        return completion(.failure(.IncorrectFormat))
                     }
                 }
             }
-            return completion(.success(results))
+            return completion(.success(events))
         }
+        
+        
     }
     func saveEvent(_ event: Event){
         let dict = event.toFireObj()

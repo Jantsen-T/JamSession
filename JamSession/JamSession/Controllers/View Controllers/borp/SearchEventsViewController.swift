@@ -36,18 +36,24 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         present(vc, animated: true, completion: nil)
     }
     //MARK: search bar
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let term = searchBar.text, !term.isEmpty else { return}
-        EventController.sharedInstance.getAllEventsMatching(term: term) { res in
-            switch res{
-            case .success(let events):
-                self.pulledEvents = events
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            case .failure(let err):
-                DispatchQueue.main.async {
-                    self.presentErrorToUser(localizedError: err)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            return}
+        
+        
+        //step one get document
+        DispatchQueue.main.async {
+            EventController.sharedInstance.fetchDocuments(term: searchText) { complete in
+                switch complete{
+                case true:
+                    DispatchQueue.main.async {
+                        EventController.sharedInstance.docsToEvents { events in
+                            self.pulledEvents = events
+                            self.tableView.reloadData()
+                        }
+                    }
+                case false:
+                    print("false")
                 }
             }
         }
