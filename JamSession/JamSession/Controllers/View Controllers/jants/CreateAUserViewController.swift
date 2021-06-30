@@ -22,7 +22,7 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        popViewAndKyboard()
+        //popViewAndKyboard()
         kyboardDissapear()
         self.usernameTextField.delegate = self
         self.locationTextField.delegate = self
@@ -52,8 +52,6 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
             experienceLevelPicker.selectRow(3, inComponent: 1, animated: true)
         }
     }
-    
-    
     
     @IBAction func createProfileTapped(_ sender: Any) {
         let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 0)

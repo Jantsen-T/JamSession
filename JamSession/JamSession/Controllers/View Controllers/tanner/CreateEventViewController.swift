@@ -10,7 +10,7 @@ import CoreLocation
 import SearchTextField
 import Contacts
 
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Outlets
     
@@ -23,6 +23,10 @@ class CreateEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.eventNameTextField.delegate = self
+        self.eventLocationTextField.delegate = self
+        self.instrumentsUsedTextField.delegate = self
+        kyboardDissapear()
         eventLocationTextField.userStoppedTypingHandler = {
             self.userStoppedTyping()
         }
@@ -120,6 +124,17 @@ class CreateEventViewController: UIViewController {
         vc.finalTime =  "\(self.selectedDate)"
         vc.finalInstuments = self.instruments
         vc.finalDetails = self.details
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.resignFirstResponder()
+    }
+    func kyboardDissapear() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
 
 }//End of class
