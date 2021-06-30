@@ -18,7 +18,7 @@ class LocationManager{
                 {(placemarks, error) in
                     if (error != nil)
                     {
-                        return completion(.failure(.Fat(error!)))
+                        return completion(.failure(.Generic(error!)))
                     }
                     let pm = placemarks! as [CLPlacemark]
 
