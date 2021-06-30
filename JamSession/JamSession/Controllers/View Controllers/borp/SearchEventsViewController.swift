@@ -25,7 +25,8 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         return pulledEvents.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "borpCell") as? EventTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "borpCell") as? EventTableViewCell else {
+            return UITableViewCell()}
         cell.event = pulledEvents[indexPath.row]
         return cell
     }
@@ -42,15 +43,14 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         
         
         //step one get document
-        DispatchQueue.main.async {
-            EventController.sharedInstance.fetchDocuments(term: searchText) { complete in
+        
+        EventController.sharedInstance.fetchDocuments(term: searchText) { complete in
+            DispatchQueue.main.async {
                 switch complete{
                 case true:
-                    DispatchQueue.main.async {
-                        EventController.sharedInstance.docsToEvents { events in
-                            self.pulledEvents = events
-                            self.tableView.reloadData()
-                        }
+                    EventController.sharedInstance.docsToEvents { events in
+                        self.pulledEvents = events
+                        self.tableView.reloadData()
                     }
                 case false:
                     print("false")
