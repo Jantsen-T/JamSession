@@ -21,7 +21,7 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        popViewAndKyboard()
+        //popViewAndKyboard()
         kyboardDissapear()
         
         pickerData = ["Beginner", "Intermediate", "advanced", "Expert"]
@@ -58,7 +58,6 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         vc.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async {
             self.present(vc, animated: true, completion: nil)
-            UserController.sharedInstance.currentUser = nil
         }
     }
     
