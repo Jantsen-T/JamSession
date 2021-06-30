@@ -173,11 +173,21 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
-        
-        self.view.frame.origin.y = 200 - keyboardSize.height + 0   }
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+//
+//        self.view.frame.origin.y = 200 - keyboardSize.height + 0   }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+        if self.view.frame.origin.y != 0{
+            self.view.frame.origin.y = 0
+        }
     }
 }// End of class
