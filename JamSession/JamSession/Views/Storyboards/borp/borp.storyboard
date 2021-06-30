@@ -345,11 +345,21 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="hZn-aB-M5I" secondAttribute="trailing" id="7LY-Ge-gCS"/>
+                                                <constraint firstItem="eQa-qY-Qic" firstAttribute="leading" secondItem="9hA-Ud-ojw" secondAttribute="leading" id="C0l-LB-IR0"/>
+                                                <constraint firstItem="hZn-aB-M5I" firstAttribute="leading" secondItem="9hA-Ud-ojw" secondAttribute="leading" id="Ean-8O-Azi"/>
+                                                <constraint firstItem="eQa-qY-Qic" firstAttribute="top" secondItem="hZn-aB-M5I" secondAttribute="bottom" constant="8" symbolic="YES" id="WE7-vc-p2H"/>
+                                                <constraint firstAttribute="trailing" secondItem="eQa-qY-Qic" secondAttribute="trailing" id="iQF-RE-hyJ"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="9hA-Ud-ojw" secondAttribute="bottom" constant="8" id="92l-pk-NwK"/>
+                                        <constraint firstItem="9hA-Ud-ojw" firstAttribute="leading" secondItem="bDN-8x-Fqh" secondAttribute="leading" constant="8" id="E60-gm-0ka"/>
+                                        <constraint firstAttribute="bottom" secondItem="9hA-Ud-ojw" secondAttribute="bottom" constant="8" id="E6w-Wv-PE7"/>
                                         <constraint firstItem="9hA-Ud-ojw" firstAttribute="top" secondItem="bDN-8x-Fqh" secondAttribute="top" constant="8" id="b1U-2R-Hmd"/>
+                                        <constraint firstAttribute="trailing" secondItem="9hA-Ud-ojw" secondAttribute="trailing" constant="8" id="cOu-Uw-Vzs"/>
                                         <constraint firstAttribute="trailing" secondItem="9hA-Ud-ojw" secondAttribute="trailing" constant="8" id="hg9-gx-hie"/>
                                         <constraint firstItem="9hA-Ud-ojw" firstAttribute="leading" secondItem="bDN-8x-Fqh" secondAttribute="leading" constant="8" id="iqe-Q2-O74"/>
                                     </constraints>

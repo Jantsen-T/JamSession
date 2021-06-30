@@ -44,8 +44,6 @@ class Event{
         return dict
     }
     static func fromFireObj(_ s: [String: Any], completion: @escaping(Result<Event, FireError>)->Void){
-        let queeu = DispatchGroup()
-        queeu.enter()
         guard let title = s["title"] as? String,
               let eventTime = s["eventTime"] as? String,
               let locationn = s["location"] as? String,
@@ -66,28 +64,41 @@ class Event{
         var attending: [User] = []
         //time for nested completions
         UserController.sharedInstance.grabUserFromUuid(uuid: creatorId) { res in
-            switch res{
-            case .success(let mainUser):
-                creator = mainUser
-                for uuid in attendings ?? []{
-                    UserController.sharedInstance.grabUserFromUuid(uuid: uuid) { res in
-                        switch res{
-                        case .success(let user):
-                            attending.append(user)
-                        case .failure(let err):
-                            return completion(.failure(.Generic(err)))
+            DispatchQueue.main.async {
+                switch res{
+                case .success(let mainUser):
+                    creator = mainUser
+                    if (attendings ?? []).count > 0{
+                        for uuid in attendings ?? []{
+                            UserController.sharedInstance.grabUserFromUuid(uuid: uuid) { res in
+                                DispatchQueue.main.async {
+                                    switch res{
+                                    case .success(let user):
+                                        attending.append(user)
+                                        if uuid == attendings?.last{
+                                            guard let time = time,
+                                                  let creator = creator else {
+                                                return completion(.failure(.IncorrectFormat))}
+                                            let event = Event(title: title, eventTime: time, location: location, creator: creator, descriptoin: description, attending: attending, instruments: instruments)
+                                            return completion(.success(event))
+                                        }
+                                    case .failure(let err):
+                                        return completion(.failure(.Generic(err)))
+                                    }
+                                }
+                            }
                         }
+                    }else{
+                        guard let time = time,
+                              let creator = creator else {
+                            return completion(.failure(.IncorrectFormat))}
+                        let event = Event(title: title, eventTime: time, location: location, creator: creator, descriptoin: description, attending: [], instruments: instruments)
+                        return completion(.success(event))
                     }
+                    
+                case .failure(let err):
+                    return completion(.failure(.Generic(err)))
                 }
-                guard let time = time,
-                      let creator = creator else {
-                    return completion(.failure(.IncorrectFormat))}
-                let event = Event(title: title, eventTime: time, location: location, creator: creator, descriptoin: description, attending: attending, instruments: instruments)
-                queeu.leave()
-                queeu.wait()
-                return completion(.success(event))
-            case .failure(let err):
-                return completion(.failure(.Generic(err)))
             }
         }
     }

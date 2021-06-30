@@ -15,21 +15,21 @@ class EventController{
     
     func docsToEvents(completionn: @escaping([Event])->Void){
         var events: [Event] = []
-        DispatchQueue.main.async {
-            for doc in self.documents{
-                guard let data = doc.data() else { return}
-                
-                    Event.fromFireObj(data) { result in
-                        switch result{
-                        case .success(let event):
-                            events.append(event)
-                        case .failure(let err):
-                            print(err)
-                        }
+        for doc in self.documents{
+            guard let data = doc.data() else { return}
+            
+            Event.fromFireObj(data) { result in
+                switch result{
+                case .success(let event):
+                    events.append(event)
+                    if doc == self.documents.last{
+                        return completionn(events)
                     }
-                
+                case .failure(let err):
+                    print(err)
+                }
             }
-            completionn(events)
+            
         }
         
     }
@@ -37,16 +37,17 @@ class EventController{
         let eventBase = db.collection("Events")
         let query = eventBase.whereField("title", isEqualTo: term)
         query.getDocuments { snap, err in
-            if let _ = err{
+            DispatchQueue.main.async {
+                if let _ = err{
+                    return completion(false)
+                }
+                if let snap = snap{
+                    self.documents = snap.documents
+                    return completion(true)
+                }
                 return completion(false)
             }
-            if let snap = snap{
-                self.documents = snap.documents
-                return completion(true)
-            }
-            return completion(false)
         }
-        
     }
     
     

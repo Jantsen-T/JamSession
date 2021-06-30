@@ -58,7 +58,7 @@ class MenTableViewController: UITableViewController {
                 case .success(let user):
                     otherGuy = [user]
                     let sb = UIStoryboard(name: "borp", bundle: nil)
-                    let vc = sb.instantiateViewController(identifier: "ppchat") as! ChatViewController
+                    let vc = sb.instantiateViewController(identifier: "chatVC") as! ChatViewController
                     vc.targetUser = otherGuy[0]
                     vc.modalPresentationStyle = .fullScreen
                     DispatchQueue.main.async {
