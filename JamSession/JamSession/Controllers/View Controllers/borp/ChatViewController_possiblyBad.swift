@@ -19,7 +19,7 @@ class NoChatViewController: MessagesViewController, InputBarAccessoryViewDelegat
     var targetUser: User?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        messagesCollectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         // Do any additional setup after loading the view.
     }
 

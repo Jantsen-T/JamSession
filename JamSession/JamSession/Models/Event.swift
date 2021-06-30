@@ -40,7 +40,7 @@ class Event{
         dict["description"] = description
         dict["attending"] = attending.map({$0.uuid})
         dict["instruments"] = instruments
-        
+        dict["uuid"] = uuid
         return dict
     }
     static func fromFireObj(_ s: [String: Any], completion: @escaping(Result<Event, FireError>)->Void){
@@ -50,6 +50,7 @@ class Event{
               let creatorId = s["creator"] as? String,
               let description = s["description"]as? String,
               let attendings = s["attending"] as? [String]?,
+              let uuid = s["uuid"] as? String,
               let instruments = s["instruments"] as? String else {
             return completion(.failure(.IncorrectFormat))}
         let dateFormat = DateFormatter()
@@ -79,7 +80,7 @@ class Event{
                                             guard let time = time,
                                                   let creator = creator else {
                                                 return completion(.failure(.IncorrectFormat))}
-                                            let event = Event(title: title, eventTime: time, location: location, creator: creator, descriptoin: description, attending: attending, instruments: instruments)
+                                            let event = Event(title: title, eventTime: time, location: location, creator: creator, descriptoin: description, attending: attending, instruments: instruments, uuid: uuid)
                                             return completion(.success(event))
                                         }
                                     case .failure(let err):
@@ -92,7 +93,7 @@ class Event{
                         guard let time = time,
                               let creator = creator else {
                             return completion(.failure(.IncorrectFormat))}
-                        let event = Event(title: title, eventTime: time, location: location, creator: creator, descriptoin: description, attending: [], instruments: instruments)
+                        let event = Event(title: title, eventTime: time, location: location, creator: creator, descriptoin: description, attending: [], instruments: instruments, uuid: uuid)
                         return completion(.success(event))
                     }
                     

@@ -13,6 +13,7 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
     //MARK: vars and outlets
     var event: Event?
     @IBOutlet weak var attendingTableView: UITableView!
+    @IBOutlet weak var imInButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -30,6 +31,9 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
                     editButton.isEnabled = true
                 }else{
                     editButton.isEnabled = false
+                }
+                if event.attending.contains(user){
+                    imInButton.isEnabled = false
                 }
                 eventNameLabel.text = event.title
                 instrumentsLabel.text = event.instruments
@@ -97,6 +101,17 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
         if let event = event{
             return event.attending.count
         }else {return 0}
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    @IBAction func imInPressed(_ sender: Any) {
+        guard let event = event,
+              let user = UserController.sharedInstance.currentUser else { return}
+        event.attending.append(user)
+        EventController.sharedInstance.saveEvent(event)
+        attendingTableView.reloadData()
+        imInButton.isEnabled = false
     }
     
 }
