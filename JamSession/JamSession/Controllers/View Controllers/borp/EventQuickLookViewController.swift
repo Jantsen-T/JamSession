@@ -95,6 +95,7 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
         let user = event.attending[indexPath.row]
         cell.textLabel?.text = user.username
         cell.imageView?.image = user.profilePic
+        
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
