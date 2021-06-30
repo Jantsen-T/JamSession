@@ -71,7 +71,7 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func saveTapped(_ sender: Any) {
-    
+        
         guard let user = UserController.sharedInstance.currentUser else { return}
         let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 0)
         var expString = ""
@@ -179,8 +179,8 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
-        
-        self.view.frame.origin.y = 200 - keyboardSize.height + 0   }
+        self.view.frame.origin.y = 200 - keyboardSize.height + 0
+    }
     
     
 }// End of class
