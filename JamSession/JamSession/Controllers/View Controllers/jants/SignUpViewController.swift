@@ -106,7 +106,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                 case .failure(let error):
-                    print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                    self.presentErrorToUser(localizedError: "Incorect Password")
                 }
             }
         }

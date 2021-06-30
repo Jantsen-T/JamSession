@@ -13,6 +13,7 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        kyboardDissapear()
         searchBar.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -58,4 +59,10 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
             }
         }
     }
-}
+
+    func kyboardDissapear() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+}// End of class
+

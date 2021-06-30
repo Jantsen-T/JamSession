@@ -71,6 +71,7 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func saveTapped(_ sender: Any) {
+    
         guard let user = UserController.sharedInstance.currentUser else { return}
         let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 0)
         var expString = ""
@@ -93,7 +94,7 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
             pfp = image
         }
         guard let instruments = instrumentTextField.text, !instruments.isEmpty else {presentErrorToUser(localizedError: "Please let others know what indstruments you play") ;return}
-        guard let bio = locationTextField.text, !bio.isEmpty else {presentErrorToUser(localizedError: "Please provide a bio") ;return}
+        guard let bio = bioTextView.text, !bio.isEmpty else {presentErrorToUser(localizedError: "Please provide a bio") ;return}
         if expString == ""{
             presentErrorToUser(localizedError: "What is your experience level?")
             return
@@ -106,6 +107,7 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 self.showToast(message: "Username Taken")
                 return
             }else{
+                self.hideKeyboard()
                 let oldUUID = user.uuid
                 let newUser = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instruments, experienceLevel: expString, UUID: oldUUID, friends: oldFriends, blocked: oldBlocked)
                 newUser.friendRequests = oldFRs
@@ -168,14 +170,18 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
+    func hideKeyboard() {
+        usernameTextField.resignFirstResponder()
+        locationTextField.resignFirstResponder()
+        instrumentTextField.resignFirstResponder()
+        bioTextView.resignFirstResponder()
+    }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
         
         self.view.frame.origin.y = 200 - keyboardSize.height + 0   }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
-    }
+    
 }// End of class
 
