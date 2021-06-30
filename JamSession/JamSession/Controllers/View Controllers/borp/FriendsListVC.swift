@@ -7,13 +7,15 @@
 //
 
 import UIKit
-class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
     //MARK: outlets
     @IBOutlet weak var tableVieww: UITableView!
     @IBOutlet weak var usernameField: UITextField!
     static var shared: FriendViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
+        kyboardDissapear()
+        self.usernameField.delegate = self
         tableVieww.delegate = self
         tableVieww.dataSource = self
         FriendViewController.shared = self
@@ -191,4 +193,15 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return user.friendRequests.count
         }
     }
-}
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func kyboardDissapear() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+   
+}// End of class
+
