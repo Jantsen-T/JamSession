@@ -611,7 +611,7 @@
                             <constraint firstItem="y2i-EO-npG" firstAttribute="trailing" secondItem="9Zn-uI-afz" secondAttribute="trailing" id="umk-fi-FZ6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Create" selectedImage="pencil.circle" catalog="system" id="TtO-9u-C4a"/>
+                    <tabBarItem key="tabBarItem" title="Create" image="pencil.circle" catalog="system" id="TtO-9u-C4a"/>
                     <connections>
                         <outlet property="eventDatePicker" destination="hTI-6c-lSR" id="AAb-b5-9WF"/>
                         <outlet property="eventDetailsTextView" destination="Z5D-w1-zBv" id="HIn-bd-RFt"/>

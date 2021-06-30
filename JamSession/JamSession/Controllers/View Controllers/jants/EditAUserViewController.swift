@@ -72,44 +72,52 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @IBAction func saveTapped(_ sender: Any) {
         guard let user = UserController.sharedInstance.currentUser else { return}
-               let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 1)
-               var expString = ""
-               switch selectedIndex{
-               case 0:
-                   expString = "Beginner"
-               case 1:
-                   expString = "Intermediate"
-               case 2:
-                   expString = "Advanced"
-               case 3:
-                   expString = "Expert"
-               default:
-                   expString = ""
-               }
-               guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !username.isEmpty else { presentErrorToUser(localizedError: "Must have username");return}
-               guard let location = locationTextField.text, !location.isEmpty else {presentErrorToUser(localizedError: "In order to be able to effectively collalborate, please give others an idea of where you are located") ;return}
-               var pfp = UIImage(named: "blank")!
-               if let image = profilePicImageView.image(for: .normal){
-                   pfp = image
-               }
-               guard let instruments = instrumentTextField.text, !instruments.isEmpty else {presentErrorToUser(localizedError: "Please let others know what indstruments you play") ;return}
-               guard let bio = locationTextField.text, !bio.isEmpty else {presentErrorToUser(localizedError: "Please provide a bio") ;return}
-               if expString == ""{
-                   presentErrorToUser(localizedError: "What is your experience level?")
-                   return
-               }
-               let oldFriends = user.friends
-               let oldFRs = user.friendRequests
-               let oldBlocked = user.blocked
-               let oldUUID = user.uuid
-               let newUser = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instruments, experienceLevel: expString, UUID: oldUUID, friends: oldFriends, blocked: oldBlocked)
-               newUser.friendRequests = oldFRs
-               UserController.sharedInstance.currentUser = newUser
-               UserController.sharedInstance.saveUser(user: UserController.sharedInstance.currentUser!)
-               dismiss(animated: true, completion: nil)
-           }
+        let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 0)
+        var expString = ""
+        switch selectedIndex{
+        case 0:
+            expString = "Beginner"
+        case 1:
+            expString = "Intermediate"
+        case 2:
+            expString = "Advanced"
+        case 3:
+            expString = "Expert"
+        default:
+            expString = ""
+        }
+        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !username.isEmpty else { presentErrorToUser(localizedError: "Must have username");return}
+        guard let location = locationTextField.text, !location.isEmpty else {presentErrorToUser(localizedError: "In order to be able to effectively collalborate, please give others an idea of where you are located") ;return}
+        var pfp = UIImage(named: "blank")!
+        if let image = profilePicImageView.image(for: .normal){
+            pfp = image
+        }
+        guard let instruments = instrumentTextField.text, !instruments.isEmpty else {presentErrorToUser(localizedError: "Please let others know what indstruments you play") ;return}
+        guard let bio = locationTextField.text, !bio.isEmpty else {presentErrorToUser(localizedError: "Please provide a bio") ;return}
+        if expString == ""{
+            presentErrorToUser(localizedError: "What is your experience level?")
+            return
+        }
+        let oldFriends = user.friends
+        let oldFRs = user.friendRequests
+        let oldBlocked = user.blocked
+        UserController.sharedInstance.dbContainsUsername(username: username) { taken in
+            if taken && !(UserController.sharedInstance.currentUser?.username == username){
+                self.showToast(message: "Username Taken")
+                return
+            }else{
+                let oldUUID = user.uuid
+                let newUser = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instruments, experienceLevel: expString, UUID: oldUUID, friends: oldFriends, blocked: oldBlocked)
+                newUser.friendRequests = oldFRs
+                UserController.sharedInstance.currentUser = newUser
+                UserController.sharedInstance.saveUser(user: UserController.sharedInstance.currentUser!)
+                self.showToast(message: "Saved")
+            }
+        }
+        
+    }
     
-      func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
@@ -120,7 +128,7 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         return pickerData[row]
     }
     @objc func setImage(){
-
+        
         let alert = UIAlertController(title: "Select image", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.imagePicker.dismiss(animated: true, completion: nil)
@@ -153,7 +161,7 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
             profilePicImageView.setImage(pickedImage, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
-
+        
     }
     
     func kyboardDissapear() {
