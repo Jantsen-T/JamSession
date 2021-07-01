@@ -29,15 +29,24 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "borpCell") as? EventTableViewCell else {
             return UITableViewCell()}
         cell.event = pulledEvents[indexPath.row]
+        let gest = UIGestureRecognizer(target: self, action: #selector(tapped))
+        cell.addGestureRecognizer(gest)
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "borp", bundle: nil)
-        guard let vc = sb.instantiateViewController(identifier: "quickLook") as? EventQuickLookViewController else { return}
+        guard let vc = sb.instantiateViewController(identifier: "quickLook") as? EventQuickLookViewController else {
+            return}
         vc.event = pulledEvents[indexPath.row]
         present(vc, animated: true, completion: nil)
     }
     //MARK: search bar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == ""{
+            pulledEvents = []
+            tableView.reloadData()
+        }
+    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text, !searchText.isEmpty else {
             return}
@@ -60,6 +69,9 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         }
     }
 
+    @objc func tapped(){
+        print("t")
+    }
     func kyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
