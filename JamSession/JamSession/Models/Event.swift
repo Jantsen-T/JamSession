@@ -70,13 +70,13 @@ class Event{
                 case .success(let mainUser):
                     creator = mainUser
                     if (attendings ?? []).count > 0{
-                        for uuid in attendings ?? []{
-                            UserController.sharedInstance.grabUserFromUuid(uuid: uuid) { res in
+                        for uuids in attendings?.sorted() ?? []{
+                            UserController.sharedInstance.grabUserFromUuid(uuid: uuids) { res in
                                 DispatchQueue.main.async {
                                     switch res{
                                     case .success(let user):
                                         attending.append(user)
-                                        if uuid == attendings?.last{
+                                        if uuids == attendings?.sorted().last{
                                             guard let time = time,
                                                   let creator = creator else {
                                                 return completion(.failure(.IncorrectFormat))}

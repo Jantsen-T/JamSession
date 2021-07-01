@@ -11,12 +11,18 @@ class AttendingTableViewCell: UITableViewCell {
     var sendery: UIViewController?
     var user:User?
     @IBOutlet weak var oozernameLabel: UILabel!
+    @IBOutlet weak var friendRequestButton: UIButton!
     @IBOutlet weak var pfpView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         if let user = user{
             oozernameLabel.text = user.username
             pfpView.image = user.profilePic
+            if let currentUser = UserController.sharedInstance.currentUser{
+                if currentUser.friends.contains(user.username){
+                    friendRequestButton.isEnabled = false
+                }
+            }
         }
     }
 
@@ -29,6 +35,8 @@ class AttendingTableViewCell: UITableViewCell {
         guard let user = user,
               let currentUser = UserController.sharedInstance.currentUser else { return}
         UserController.sharedInstance.sendFriendRequest(originatingUser: currentUser, receivingUser: user)
+        sendery?.showToast(message: "Sent friend req")
+        friendRequestButton.isEnabled = false
     }
     @IBAction func messageButtonSelect(_ sender: Any) {
         let sb = UIStoryboard(name: "borp", bundle: nil)
