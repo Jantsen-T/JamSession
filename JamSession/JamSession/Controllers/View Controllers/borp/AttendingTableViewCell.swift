@@ -19,7 +19,7 @@ class AttendingTableViewCell: UITableViewCell {
             oozernameLabel.text = user.username
             pfpView.image = user.profilePic
             if let currentUser = UserController.sharedInstance.currentUser{
-                if currentUser.friends.contains(user.username){
+                if currentUser.friends.contains(user.username) || currentUser == user{
                     friendRequestButton.isEnabled = false
                 }
             }

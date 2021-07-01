@@ -53,7 +53,7 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
                 let dateFormat = DateFormatter()
                 dateFormat.dateStyle = .full
                 eventTimeLabel.text = "Date: "+dateFormat.string(from: event.eventTime)
-                descriptionLabel.text = event.description
+                descriptionLabel.text = event.descriptionness
             }
         }
     }
