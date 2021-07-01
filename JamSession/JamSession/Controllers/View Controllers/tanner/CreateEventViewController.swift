@@ -108,8 +108,22 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
                 let newEvent = Event(title: title, eventTime: self.eventDatePicker.date, location: addressLocation, creator: currentUser, descriptoin: description, attending: [], instruments: instruments)
                 EventController.sharedInstance.saveEvent(newEvent)
             }
+            hideKeyboard()
+            showToast(message: "Event Saved")
+            eventNameTextField.text = ""
+            eventLocationTextField.text = ""
+            instrumentsUsedTextField.text = ""
+            eventDetailsTextView.text = ""
+            
             
         }
+    }
+    
+    func hideKeyboard() {
+        eventNameTextField.resignFirstResponder()
+        eventLocationTextField.resignFirstResponder()
+        instrumentsUsedTextField.resignFirstResponder()
+        eventDetailsTextView.resignFirstResponder()
     }
     @objc func goBack(){
         dismiss(animated: true, completion: nil)
