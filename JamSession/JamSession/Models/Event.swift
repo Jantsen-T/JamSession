@@ -75,13 +75,15 @@ class Event{
                                 DispatchQueue.main.async {
                                     switch res{
                                     case .success(let user):
-                                        attending.append(user)
-                                        if uuids == attendings?.sorted().last{
-                                            guard let time = time,
-                                                  let creator = creator else {
-                                                return completion(.failure(.IncorrectFormat))}
-                                            let event = Event(title: title, eventTime: time, location: location, creator: creator, descriptoin: description, attending: attending, instruments: instruments, uuid: uuid)
-                                            return completion(.success(event))
+                                        DispatchQueue.main.async {
+                                            attending.append(user)
+                                            if user.uuid == attendings?.last{
+                                                guard let time = time,
+                                                      let creator = creator else {
+                                                    return completion(.failure(.IncorrectFormat))}
+                                                let event = Event(title: title, eventTime: time, location: location, creator: creator, descriptoin: description, attending: attending, instruments: instruments, uuid: uuid)
+                                                return completion(.success(event))
+                                            }
                                         }
                                     case .failure(let err):
                                         return completion(.failure(.Generic(err)))
