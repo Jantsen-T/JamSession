@@ -2,4 +2,4 @@
 Jam Session app for musicians 
 
 
-develop branch where the code that makes you want to pull out ur hair is located
+develop branch where the code that makes you want to pull out ur hair is located. this why i am bald
