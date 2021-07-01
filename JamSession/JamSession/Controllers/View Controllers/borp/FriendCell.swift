@@ -45,8 +45,8 @@ class FriendCell: UITableViewCell {
     }
     @IBAction func pfpButtonTapped(_ sender: Any) {
         //go to uservc for user
-        guard let user = user,
-              let _ = UserController.sharedInstance.currentUser else {
+        guard let user = user else {
+            
             return}
         let sb = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = sb.instantiateViewController(identifier: "friendDetail") as? FriendDetailViewController else {

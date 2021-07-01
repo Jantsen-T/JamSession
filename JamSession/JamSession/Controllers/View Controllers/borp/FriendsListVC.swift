@@ -20,6 +20,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableVieww.dataSource = self
         FriendViewController.shared = self
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableVieww.reloadData()
+    }
     @IBAction func addUserButtonPressed(_ sender: Any) {
         guard let current = UserController.sharedInstance.currentUser else {
             
@@ -72,13 +76,15 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
-            guard let user = UserController.sharedInstance.currentUser else { return cell}
+            guard let cuser = UserController.sharedInstance.currentUser else {
+                return cell}
             if UserController.sharedInstance.currentUser!.friendRequests.indices.contains(indexPath.row){
-                UserController.sharedInstance.grabUserFromUsername(username: user.friendRequests[indexPath.row].initialUser){result in
+                UserController.sharedInstance.grabUserFromUuid(uuid: cuser.friendRequests[indexPath.row].initialUser){result in
                     switch result{
                     case .success(let user):
                         cell.user = user
-                        
+                        cell.pfpButton.setImage(user.profilePic, for: .normal)
+                        cell.usernameLabel.text = user.username
                     case .failure(let err):
                         print(err)
                     }

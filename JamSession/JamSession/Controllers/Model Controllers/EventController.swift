@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseFirestore
 
 class EventController{
     static let sharedInstance = EventController()
@@ -82,6 +82,29 @@ class EventController{
         }
         
         
+    }
+    func snapshotToEvent(snap: DocumentSnapshot, completion: @escaping(Event)->Void){
+//        let data = snap.data()
+//        guard let data = data else { return}
+//        Event.fromFireObj(data) { res in
+//            switch res{
+//            case .success(let event):
+//                return completion(event)
+//            case .failure(let err):
+//                print(err)
+//                return
+//            }
+//        }
+    }
+    func grabFromUUID(uuid: String, completion: @escaping(Event)->Void){
+//        db.collection("Events").document(uuid).getDocument { snap, err in
+//            if let _ = err {return}
+//            if let snap = snap{
+//                self.snapshotToEvent(snap: snap) { event in
+//                    completion(event)
+//                }
+//            }
+//        }
     }
     func saveEvent(_ event: Event){
         let dict = event.toFireObj()
