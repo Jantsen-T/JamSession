@@ -52,7 +52,15 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             eventDatePicker.date = event.eventTime
             eventDetailsTextView.text = event.descriptionness
         }
-        
+        //creates a toolbar for the keyboard with the done button that dismisses the keyboard
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+        toolBar.items = [flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+        eventNameTextField.inputAccessoryView = toolBar
+        eventLocationTextField.inputAccessoryView = toolBar
+        instrumentsUsedTextField.inputAccessoryView = toolBar
     }
     
     //MARK: - Properties
@@ -117,6 +125,12 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             
             
         }
+    }
+    
+    @objc func didTapDone() {
+        eventNameTextField.resignFirstResponder()
+        eventLocationTextField.resignFirstResponder()
+        instrumentsUsedTextField.resignFirstResponder()
     }
     
     func hideKeyboard() {
