@@ -36,23 +36,23 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
                     imInButton.isEnabled = false
                 }
                 eventNameLabel.text = event.title
-                instrumentsLabel.text = event.instruments
+                instrumentsLabel.text = "Instruments: "+event.instruments
                 LocationManager.sharedInstance.getAddressFromLatLon(event.location) { res in
                     switch res{
                     case .success(let address):
                         DispatchQueue.main.async {
-                            self.locationLabel.text = address
+                            self.locationLabel.text = "Location: "+address
                         }
                     case .failure(let err):
                         DispatchQueue.main.async {
                             self.presentErrorToUser(localizedError: err)
-                            self.locationLabel.text = "NOT FOUND"
+                            self.locationLabel.text = "LOCATION NOT FOUND"
                         }
                     }
                 }
                 let dateFormat = DateFormatter()
                 dateFormat.dateStyle = .full
-                eventTimeLabel.text = dateFormat.string(from: event.eventTime)
+                eventTimeLabel.text = "Date: "+dateFormat.string(from: event.eventTime)
                 descriptionLabel.text = event.description
             }
         }
@@ -95,7 +95,7 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
         let user = event.attending[indexPath.row]
         cell.oozernameLabel.text = user.username
         cell.pfpView.image = user.profilePic
-        
+        cell.sendery = self
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

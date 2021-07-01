@@ -31,8 +31,23 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             self.userStoppedTyping()
         }
         if let event = event{
+            let backslide = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(goBack))
+            backslide.edges = .left
+            self.view.addGestureRecognizer(backslide)
             eventNameTextField.text = event.title
-            eventLocationTextField.text = event.location.description
+            LocationManager.sharedInstance.getAddressFromLatLon(event.location) { res in
+                switch res{
+                case .success(let address):
+                    DispatchQueue.main.async {
+                        self.eventLocationTextField.text = address
+                    }
+                case .failure(let err):
+                    DispatchQueue.main.async {
+                        self.presentErrorToUser(localizedError: err)
+                        self.eventLocationTextField.text = "NOT FOUND"
+                    }
+                }
+            }
             instrumentsUsedTextField.text = event.instruments
             eventDatePicker.date = event.eventTime
             eventDetailsTextView.text = event.description
@@ -75,6 +90,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             event.description = description
             event.instruments = instruments
             EventController.sharedInstance.saveEvent(event)
+            dismiss(animated: true, completion: nil)
         }else{
             let description = eventDetailsTextView.text ?? ""
             let address = eventLocationTextField.text ?? ""
@@ -94,6 +110,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
+    }
+    @objc func goBack(){
+        dismiss(animated: true, completion: nil)
     }
     func userStoppedTyping(){
         let formatter = CNPostalAddressFormatter()

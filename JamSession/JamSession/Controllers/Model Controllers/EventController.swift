@@ -15,14 +15,15 @@ class EventController{
     
     func docsToEvents(completionn: @escaping([Event])->Void){
         var events: [Event] = []
-        for doc in self.documents{
-            guard let data = doc.data() else { return}
+        for i in self.documents.indices{
+            guard let data = documents[i].data() else {
+                return}
             
             Event.fromFireObj(data) { result in
                 switch result{
                 case .success(let event):
                     events.append(event)
-                    if doc == self.documents.last{
+                    if i == self.documents.count-1{
                         return completionn(events)
                     }
                 case .failure(let err):
