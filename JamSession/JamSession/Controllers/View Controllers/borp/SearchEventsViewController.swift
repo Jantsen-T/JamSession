@@ -79,6 +79,7 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
     }
     func kyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     @objc func didTapDone() {
