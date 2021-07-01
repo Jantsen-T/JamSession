@@ -95,6 +95,7 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
         let user = event.attending[indexPath.row]
         cell.oozernameLabel.text = user.username
         cell.pfpView.image = user.profilePic
+        cell.user = user
         cell.sendery = self
         return cell
     }
