@@ -122,6 +122,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="friendRequestButton" destination="LuZ-zy-XKF" id="Dz4-on-neb"/>
                                             <outlet property="oozernameLabel" destination="xVN-37-8E4" id="rQa-xk-Ozt"/>
                                             <outlet property="pfpView" destination="XPX-eJ-e8t" id="ZzN-Jg-GbD"/>
                                         </connections>
