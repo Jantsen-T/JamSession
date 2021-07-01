@@ -578,7 +578,12 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldV-PO-lxB">
-                                                <rect key="frame" x="5" y="20" width="34" height="30"/>
+                                                <rect key="frame" x="10" y="20" width="55" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="ClL-Fn-9lB"/>
+                                                    <constraint firstAttribute="width" constant="55" id="fiL-Cv-y4M"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Save"/>
                                                 <connections>
                                                     <action selector="saveEventButtonTapped:" destination="Feu-EN-TRQ" eventType="touchUpInside" id="hv0-lT-Wbg"/>
@@ -608,7 +613,7 @@
                                             <constraint firstItem="oy2-ad-otq" firstAttribute="leading" secondItem="Tt7-zy-2n9" secondAttribute="leading" constant="5" id="Mwq-0Z-k0b"/>
                                             <constraint firstItem="emR-C6-Ax1" firstAttribute="bottom" secondItem="Tt7-zy-2n9" secondAttribute="bottomMargin" id="Vgv-G3-2xg"/>
                                             <constraint firstAttribute="height" constant="1100" id="ahM-AS-pyH"/>
-                                            <constraint firstItem="ldV-PO-lxB" firstAttribute="leading" secondItem="Tt7-zy-2n9" secondAttribute="leading" constant="5" id="fT7-8u-v18"/>
+                                            <constraint firstItem="ldV-PO-lxB" firstAttribute="leading" secondItem="Tt7-zy-2n9" secondAttribute="leading" constant="10" id="fT7-8u-v18"/>
                                             <constraint firstItem="emR-C6-Ax1" firstAttribute="top" secondItem="oy2-ad-otq" secondAttribute="bottom" constant="12" id="inW-gJ-bOe"/>
                                             <constraint firstAttribute="trailing" secondItem="oy2-ad-otq" secondAttribute="trailing" constant="5" id="jjq-GL-WbS"/>
                                             <constraint firstAttribute="trailing" secondItem="emR-C6-Ax1" secondAttribute="trailing" constant="5" id="pOa-Jw-Nxd"/>
