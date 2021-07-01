@@ -24,6 +24,16 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
         super.viewDidLoad()
         //popViewAndKyboard()
         kyboardDissapear()
+        // creates the toolbar in the keybaord with the done button
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+        toolBar.items = [flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+        usernameTextField.inputAccessoryView = toolBar
+        locationTextField.inputAccessoryView = toolBar
+        instrumentTextField.inputAccessoryView = toolBar
+        bioTextView.inputAccessoryView = toolBar
         self.usernameTextField.delegate = self
         self.locationTextField.delegate = self
         self.instrumentTextField.delegate = self
@@ -168,6 +178,13 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     @objc func dismissMyKeyboard() {
         view.endEditing(true)
+    }
+    
+    @objc func didTapDone() {
+        usernameTextField.resignFirstResponder()
+        instrumentTextField.resignFirstResponder()
+        locationTextField.resignFirstResponder()
+        bioTextView.resignFirstResponder()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

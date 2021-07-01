@@ -26,8 +26,33 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         self.confirmPasswordTextField.delegate = self
+        // creates the toolbar in the keybaord with the done button
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+        toolBar.items = [flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+        emailTextField.inputAccessoryView = toolBar
+        passwordTextField.inputAccessoryView = toolBar
+        confirmPasswordTextField.inputAccessoryView = toolBar
        
     }
+    
+    @objc private func didTapDone() {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        confirmPasswordTextField.resignFirstResponder()
+        
+    }
+//    func setupToolBar() -> UIToolbar  {
+//        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+//
+//        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+//        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+//        toolBar.items = [flexibleSpace, doneButton]
+//        toolBar.sizeToFit()
+//        return toolBar
+//    }
     
     func validateFields() -> String? {
         //Check that all fields are filled in
