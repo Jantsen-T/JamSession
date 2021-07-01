@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
                     self.showToast(message: "create successful")
                     SignUpViewController.successfulUUID = uid
-                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let sb = UIStoryboard(name: "borp", bundle: nil)
                     let vc = sb.instantiateViewController(identifier: "createUser")
                     vc.modalPresentationStyle = .fullScreen
                     DispatchQueue.main.async {
