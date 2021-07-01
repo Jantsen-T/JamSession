@@ -71,7 +71,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         toggleToSignUp()
-        
+      
     }
     
     @IBAction func loginTapped(_ sender: Any) {
