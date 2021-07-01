@@ -23,6 +23,16 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         super.viewDidLoad()
         //popViewAndKyboard()
         kyboardDissapear()
+        // creates the toolbar in the keybaord with the done button
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+        toolBar.items = [flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+        usernameTextField.inputAccessoryView = toolBar
+        locationTextField.inputAccessoryView = toolBar
+        instrumentTextField.inputAccessoryView = toolBar
+        bioTextView.inputAccessoryView = toolBar
         
         pickerData = ["Beginner", "Intermediate", "advanced", "Expert"]
         experienceLevelPicker.dataSource = self
@@ -171,6 +181,12 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         view.addGestureRecognizer(tap)
     }
     func hideKeyboard() {
+        usernameTextField.resignFirstResponder()
+        locationTextField.resignFirstResponder()
+        instrumentTextField.resignFirstResponder()
+        bioTextView.resignFirstResponder()
+    }
+    @objc func didTapDone() {
         usernameTextField.resignFirstResponder()
         locationTextField.resignFirstResponder()
         instrumentTextField.resignFirstResponder()

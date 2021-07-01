@@ -15,7 +15,12 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         kyboardDissapear()
         searchBar.delegate = self
-        // Do any additional setup after loading the view.
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+        toolBar.items = [flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+        searchBar.inputAccessoryView = toolBar
     }
     
     //MARK: tavle biew data source
@@ -75,6 +80,9 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
     func kyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+    }
+    @objc func didTapDone() {
+        searchBar.resignFirstResponder()
     }
 }// End of class
 
