@@ -35,14 +35,13 @@ struct Colors {
 
 struct FontNames {
     static let verdanaBold = "Verdana-Bold"
-    
-    
-    
 }
+
 extension UIView {
     func addCornerRadius(_ radius: CGFloat = 10) {
         self.layer.cornerRadius = radius
     }
+    
     
     func addAccentBorder(width: CGFloat = 1, color: UIColor = Colors.lighterGray) {
         self.layer.borderWidth = width
