@@ -91,10 +91,10 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let event = event else { return UITableViewCell()}
-        let cell = tableView.dequeueReusableCell(withIdentifier: "attendeeCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "attendeeCell", for: indexPath) as! AttendingTableViewCell
         let user = event.attending[indexPath.row]
-        cell.textLabel?.text = user.username
-        cell.imageView?.image = user.profilePic
+        cell.oozernameLabel.text = user.username
+        cell.pfpView.image = user.profilePic
         
         return cell
     }
