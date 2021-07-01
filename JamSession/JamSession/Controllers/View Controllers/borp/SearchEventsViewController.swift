@@ -15,7 +15,6 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         kyboardDissapear()
         searchBar.delegate = self
-        // Do any additional setup after loading the view.
     }
     
     //MARK: tavle biew data source
@@ -74,6 +73,7 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
     }
     func kyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
 }// End of class
