@@ -15,14 +15,14 @@ class Event{
     var instruments: String
     var uuid: String
     
-    var description: String
+    var descriptionness: String
     var attending: [User]
     init(title: String, eventTime: Date, location: CLLocation, creator: User, descriptoin: String, attending: [User], instruments: String, uuid: String = UUID().uuidString){
         self.title = title
         self.eventTime = eventTime
         self.location = location
         self.creator = creator
-        self.description = descriptoin
+        self.descriptionness = descriptoin
         self.attending = attending
         self.instruments = instruments
         self.uuid = uuid
@@ -37,7 +37,7 @@ class Event{
         let lat = location.coordinate.latitude
         dict["location"] = "\(lat),\(long)"
         dict["creator"] = creator.uuid
-        dict["description"] = description
+        dict["description"] = descriptionness
         dict["attending"] = attending.map({$0.uuid})
         dict["instruments"] = instruments
         dict["uuid"] = uuid

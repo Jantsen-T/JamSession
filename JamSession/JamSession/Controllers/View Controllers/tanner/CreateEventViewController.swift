@@ -50,7 +50,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             }
             instrumentsUsedTextField.text = event.instruments
             eventDatePicker.date = event.eventTime
-            eventDetailsTextView.text = event.description
+            eventDetailsTextView.text = event.descriptionness
         }
         
     }
@@ -73,7 +73,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
               let location = eventLocationTextField.text, !location.isEmpty,
               let instruments = instrumentsUsedTextField.text, !instruments.isEmpty else { return}
         if let event = event{
-            event.description = eventDetailsTextView.text
+            event.descriptionness = eventDetailsTextView.text
             event.title = title
             let address = eventLocationTextField.text ?? ""
             let geoCoder = CLGeocoder()
@@ -87,7 +87,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
                 }
                 event.location = locationy
             }
-            event.description = description
+            event.descriptionness = description
             event.instruments = instruments
             EventController.sharedInstance.saveEvent(event)
             dismiss(animated: true, completion: nil)
