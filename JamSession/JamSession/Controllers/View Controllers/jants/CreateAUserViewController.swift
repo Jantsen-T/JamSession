@@ -24,6 +24,8 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
         super.viewDidLoad()
         //popViewAndKyboard()
         kyboardDissapear()
+        bioTextView.text = "Let others know about your musical background"
+        bioTextView.textColor = UIColor.lightGray
         // creates the toolbar in the keybaord with the done button
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -197,6 +199,13 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0{
             self.view.frame.origin.y = 0
+        }
+    }
+    //Jantsen these colors can be changed
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if bioTextView.textColor == UIColor.lightGray {
+            bioTextView.text = nil
+            bioTextView.textColor = UIColor.black
         }
     }
 }// End of class

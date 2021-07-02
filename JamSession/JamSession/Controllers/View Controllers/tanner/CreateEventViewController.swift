@@ -10,7 +10,7 @@ import CoreLocation
 import SearchTextField
 import Contacts
 
-class CreateEventViewController: UIViewController, UITextFieldDelegate {
+class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     //MARK: - Outlets
     
@@ -26,6 +26,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         self.eventNameTextField.delegate = self
         self.eventLocationTextField.delegate = self
         self.instrumentsUsedTextField.delegate = self
+        self.eventDetailsTextView.delegate = self
+        eventDetailsTextView.text = "Tell us about your Jam Session!"
+        eventDetailsTextView.textColor = UIColor.lightGray
         kyboardDissapear()
         eventLocationTextField.userStoppedTypingHandler = {
             self.userStoppedTyping()
@@ -61,6 +64,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         eventNameTextField.inputAccessoryView = toolBar
         eventLocationTextField.inputAccessoryView = toolBar
         instrumentsUsedTextField.inputAccessoryView = toolBar
+        eventDetailsTextView.inputAccessoryView = toolBar
     }
     
     //MARK: - Properties
@@ -131,6 +135,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         eventNameTextField.resignFirstResponder()
         eventLocationTextField.resignFirstResponder()
         instrumentsUsedTextField.resignFirstResponder()
+        eventDetailsTextView.resignFirstResponder()
     }
     
     func hideKeyboard() {
@@ -146,24 +151,24 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         let formatter = CNPostalAddressFormatter()
         let address = eventLocationTextField.text ?? ""
         var strings:[String] = []
-            let geoCoder = CLGeocoder()
-            geoCoder.geocodeAddressString(address) { (placemarks, error) in
-                guard let placemarks = placemarks
-                else {
-                    // handle no location found
-                    return
-                }
-                for loc in placemarks{
-                    if let postal = loc.postalAddress{
-                        strings.append(formatter.string(from: postal))
-                    }
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard let placemarks = placemarks
+            else {
+                // handle no location found
+                return
+            }
+            for loc in placemarks{
+                if let postal = loc.postalAddress{
+                    strings.append(formatter.string(from: postal))
                 }
             }
+        }
         eventLocationTextField.filterStrings(strings)
     }
     //MARK: - Functions
     
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
@@ -177,6 +182,19 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     func kyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+    }//Jantsen this color of text can be changed
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if eventDetailsTextView.textColor == UIColor.lightGray {
+            eventDetailsTextView.text = nil
+            eventDetailsTextView.textColor = UIColor.black
+        }
     }
-
+    //Jantsen these colors can be changed
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if eventDetailsTextView.text.isEmpty {
+            eventDetailsTextView.text = "Tell us about your Jam Session!"
+            eventDetailsTextView.textColor = UIColor.lightGray
+        }
+    }
+    
 }//End of class
