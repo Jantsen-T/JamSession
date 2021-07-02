@@ -57,7 +57,7 @@ grpc_ssl_channel_security_connector_create(
     tsi_ssl_session_cache* ssl_session_cache);
 
 /* Config for ssl servers. */
-typedef struct {
+typedef struct grpc_ssl_server_config {
   tsi_ssl_pem_key_cert_pair* pem_key_cert_pairs = nullptr;
   size_t num_key_cert_pairs = 0;
   char* pem_root_certs = nullptr;

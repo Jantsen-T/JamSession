@@ -106,7 +106,7 @@ typedef enum {
 const char* grpc_chttp2_initiate_write_reason_string(
     grpc_chttp2_initiate_write_reason reason);
 
-typedef struct {
+typedef struct grpc_chttp2_ping_queue {
   grpc_closure_list lists[GRPC_CHTTP2_PCL_COUNT] = {};
   uint64_t inflight_id = 0;
 } grpc_chttp2_ping_queue;
