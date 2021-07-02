@@ -10,6 +10,7 @@ import FirebaseAuth
 import Firebase
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
+    //MARK: - Outlets
     static var successfulUUID: String?
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -17,7 +18,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
-    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         kyboardDissapear()
@@ -35,7 +36,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.inputAccessoryView = toolBar
         confirmPasswordTextField.inputAccessoryView = toolBar
     }
-    
+    //MARK: - Functions
     @objc private func didTapDone() {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()

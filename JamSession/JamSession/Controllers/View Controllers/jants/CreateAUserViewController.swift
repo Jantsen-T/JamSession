@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 
 class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+    //MARK: - Outlets
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -20,6 +21,8 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var imageButton: UIButton!
     var pickerData: [String] = []
     let imagePicker = UIImagePickerController()
+    
+    //MARK: - Outlets
     override func viewDidLoad() {
         super.viewDidLoad()
         //popViewAndKyboard()
@@ -64,6 +67,8 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
             experienceLevelPicker.selectRow(3, inComponent: 1, animated: true)
         }
     }
+    
+    //MARK: - Functions
     
     @IBAction func createProfileTapped(_ sender: Any) {
         let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 0)
