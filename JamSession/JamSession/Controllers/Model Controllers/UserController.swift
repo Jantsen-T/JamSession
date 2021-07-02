@@ -52,31 +52,33 @@ class UserController {
     }
     
     func sendFriendRequest(originatingUser: User, receivingUser: User){
-        if originatingUser.friends.contains(receivingUser.username) {
-            return
+        findWhetherUserHasFriendRequested(receivingUser) { hasDone in
+            if (!(hasDone) && !(originatingUser.friends.contains(receivingUser.uuid))){
+                if originatingUser.friends.contains(receivingUser.username) {
+                    return
+                }
+                let userbase = self.db.collection("Users")
+                let user2Doc = userbase.document(receivingUser.uuid)
+                let friendRequestCollection = user2Doc.collection("friend_requests")
+                let friendRequest = friendRequestCollection.document("\(originatingUser.uuid) to \(receivingUser.uuid)")
+                friendRequest.setData(FriendRequest(initialUser: originatingUser.uuid, receivingUser: receivingUser.uuid).toFireObj())
+            }else{
+                print("cannot do that")
+            }
         }
-        let userbase = db.collection("Users")
-        let user2Doc = userbase.document(receivingUser.uuid)
-        let friendRequestCollection = user2Doc.collection("friend_requests")
-        let friendRequest = friendRequestCollection.document("\(originatingUser.uuid) to \(receivingUser.uuid)")
-        friendRequest.setData(FriendRequest(initialUser: originatingUser.uuid, receivingUser: receivingUser.uuid).toFireObj())
     }
-    
-    
-    
-    
-    
     func ignoreFriendRequest(origin: User, catcher: User){
         let userbase = db.collection("Users")
         let ref = FriendRequest(initialUser: origin.uuid, receivingUser: catcher.uuid)
-        guard let index = catcher.friendRequests.firstIndex(of: ref) else { return}
+        guard let index = catcher.friendRequests.firstIndex(of: ref) else {
+            return}
         catcher.friendRequests.remove(at: index)
         let user2Doc = userbase.document(catcher.uuid)
         let friendRequestCollection = user2Doc.collection("friend_requests")
         let friendRequest = friendRequestCollection.document("\(origin.uuid) to \(catcher.uuid)")
         friendRequest.delete()
         saveData(){
-            FriendViewController.sharedInstance?.tableVieww.reloadData()
+            FriendViewController.sharedInstance?.friendsTableView.reloadData()
         }
     }
     func loadCurrentFriendRequests(){
@@ -101,7 +103,7 @@ class UserController {
         }
         currentUser.blocked.append(user.username)
         saveData(){
-            FriendViewController.sharedInstance?.tableVieww.reloadData()
+            FriendViewController.sharedInstance?.friendsTableView.reloadData()
             ChatsController.sharedInstance.deleteChatsBetween(user1: currentUser, user2: user)
         }
     }
@@ -116,7 +118,7 @@ class UserController {
         user.friends.remove(at: index2)
         saveUser(user: user)
         saveData(){
-            FriendViewController.sharedInstance?.tableVieww.reloadData()
+            FriendViewController.sharedInstance?.friendsTableView.reloadData()
         }
     }
     func saveUser(user: User){
@@ -149,7 +151,7 @@ class UserController {
                         return}
                     receivingUser.friendRequests.remove(at: index)
                     self.saveData(){
-                        FriendViewController.sharedInstance?.tableVieww.reloadData()
+                        FriendViewController.sharedInstance?.friendsTableView.reloadData()
                     }
                 }
             }
@@ -173,6 +175,16 @@ class UserController {
             let stringAny = snap.documents[0].data()
             guard let user = User.fromStringAny(stringAny) else { return completion(.failure(.noSuchUser))}
             return completion(.success(user))
+        }
+    }
+    func findWhetherUserHasFriendRequested(_ target: User, onComplete: @escaping(Bool)->Void){
+        guard let currentUser = currentUser else { return}
+        let targetQuery = db.collection("Users").document(target.uuid).collection("friend_requests").whereField("sendingUser", isEqualTo: currentUser.uuid)
+        targetQuery.getDocuments { snap, err in
+            if let snap = snap{
+                return onComplete(!(snap.isEmpty))
+            }
+            else {return onComplete(false)}
         }
     }
     func grabUserFromUuid(uuid: String, completion: @escaping(Result<User, ManErr>)->Void){

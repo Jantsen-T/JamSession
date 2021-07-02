@@ -536,7 +536,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="person.2.fill" catalog="system" id="mZy-jx-1Fo"/>
                     <connections>
-                        <outlet property="tableVieww" destination="cUU-lc-Brb" id="6Gx-y3-GWT"/>
+                        <outlet property="friendsTableView" destination="cUU-lc-Brb" id="6Gx-y3-GWT"/>
                         <outlet property="usernameField" destination="LKG-Bb-hjF" id="vHZ-gF-7nO"/>
                     </connections>
                 </viewController>

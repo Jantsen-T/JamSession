@@ -45,15 +45,18 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         //When use press send button this method is called.
-        let message = Message(id: UUID().uuidString, content: text, created: Timestamp(), senderID: currentUser.uuid, senderName: currentUser.username)
-        //calling function to insert and save message
-        insertNewMessage(message)
-        save(message)
-        //clearing input field
-        inputBar.inputTextView.text = ""
-        messagesCollectionView.reloadData()
-        messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
-        // messagesCollectionView.scrollToBottom(animated: true)
+        loadChat(){
+            let message = Message(id: UUID().uuidString, content: text, created: Timestamp(), senderID: self.currentUser.uuid, senderName: self.currentUser.username)
+            //calling function to insert and save message
+            self.insertNewMessage(message)
+            self.save(message)
+            //clearing input field
+            inputBar.inputTextView.text = ""
+            self.messagesCollectionView.reloadData()
+            self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
+            // messagesCollectionView.scrollToBottom(animated: true)
+        }
+        
     }
     private func insertNewMessage(_ message: Message) {
         //add the message to the messages array and reload it
@@ -133,6 +136,57 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
                         //Get the chat which has user2 id
                         if (chat?.users.contains(targetUser.uuid)) == true {
                             self.docReference = doc.reference
+                            //fetch it's thread collection
+                            doc.reference.collection("thread")
+                                .order(by: "created", descending: false)
+                                .addSnapshotListener(includeMetadataChanges: true, listener: { (threadQuery, error) in
+                                    if let error = error {
+                                        print("Error: \(error)")
+                                        return
+                                    } else {
+                                        self.messages.removeAll()
+                                        for message in threadQuery!.documents {
+                                            let msg = Message(dictionary: message.data())
+                                            self.messages.append(msg!)
+                                            print("Data: \(msg?.content ?? "No message found")")
+                                        }
+                                        self.messagesCollectionView.reloadData()
+                                        self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
+                                    }
+                                })
+                            return
+                        }
+                    }
+                    ChatsController.sharedInstance.createNewChatWith(user: targetUser)
+                } else {
+                    print("force close simulator")
+                }}}}
+    func loadChat(afterGrab: @escaping()->Void) {
+        //Fetch all the chats which has current user in it
+        guard let targetUser = targetUser else {
+            return}
+        let db = Firestore.firestore().collection("Chats").whereField("users", arrayContains: currentUser.uuid)
+        db.getDocuments { (chatQuerySnap, error) in
+            if let error = error {
+                print("Error: \(error)")
+                return
+            } else {
+                //Count the no. of documents returned
+                guard let queryCount = chatQuerySnap?.documents.count else {
+                    return
+                }
+                if queryCount == 0 {
+                    //If documents count is zero that means there is no chat available and we need to create a new instance
+                    ChatsController.sharedInstance.createNewChatWith(user: targetUser)
+                }
+                else if queryCount >= 1 {
+                    //Chat(s) found for currentUser
+                    for doc in chatQuerySnap!.documents {
+                        let chat = Chat(dictionary: doc.data())
+                        //Get the chat which has user2 id
+                        if (chat?.users.contains(targetUser.uuid)) == true {
+                            self.docReference = doc.reference
+                            afterGrab()
                             //fetch it's thread collection
                             doc.reference.collection("thread")
                                 .order(by: "created", descending: false)
