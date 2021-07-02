@@ -115,7 +115,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             presentErrorToUser(localizedError: "passwords must match")
         }
     }
-    
+    //Jantsen we can change these colors
     func toggleTologin() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.25) {
@@ -127,7 +127,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
+    //Jantsen we an change these colors
     func toggleToSignUp() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.25) {

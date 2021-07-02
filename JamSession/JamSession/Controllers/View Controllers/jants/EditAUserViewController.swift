@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import CoreLocation
 
 class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -63,6 +64,16 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func signOutTapped(_ sender: Any) {
+        
+        do {
+            
+            try Auth.auth().signOut()
+            UserController.sharedInstance.currentUser = nil
+        }
+        catch {
+                print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+        }
+        
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(identifier: "signUp")
         vc.modalPresentationStyle = .fullScreen
