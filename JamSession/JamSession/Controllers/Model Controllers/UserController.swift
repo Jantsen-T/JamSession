@@ -13,7 +13,7 @@ class UserController {
     weak var presentationDelegate: presDelegate?
     static let sharedInstance = UserController()
     var currentUser: User?{didSet{
-        guard let user = currentUser else {return}
+        guard currentUser != nil else {return}
         let userbase = db.collection("Users")
         let user2Doc = userbase.document(currentUser!.uuid)
         let friendRequestCollection = user2Doc.collection("friend_requests")
