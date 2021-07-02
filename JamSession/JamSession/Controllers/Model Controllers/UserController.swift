@@ -102,6 +102,7 @@ class UserController {
         currentUser.blocked.append(user.username)
         saveData(){
             FriendViewController.sharedInstance?.tableVieww.reloadData()
+            ChatsController.sharedInstance.deleteChatsBetween(user1: currentUser, user2: user)
         }
     }
     func unfriendUser(user: User){
