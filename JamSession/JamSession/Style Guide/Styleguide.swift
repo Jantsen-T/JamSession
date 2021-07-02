@@ -35,6 +35,13 @@ struct Colors {
 
 struct FontNames {
     static let verdanaBold = "Verdana-Bold"
+    static let courtierNew = "CourierNewPSMT"
+    static let helveticaNeue = "HelveticaNeue"
+    static let georgia = "Georgia"
+    static let georgiaItalic = "Georgia-Italic"
+    static let georgiaBold = "Georgia-Bold"
+    
+
 }
 
 extension UIView {
@@ -42,7 +49,7 @@ extension UIView {
         self.layer.cornerRadius = radius
     }
     
-    
+    // Jantsen we can change this color
     func addAccentBorder(width: CGFloat = 1, color: UIColor = Colors.lighterGray) {
         self.layer.borderWidth = width
         self.layer.borderColor = color.cgColor
