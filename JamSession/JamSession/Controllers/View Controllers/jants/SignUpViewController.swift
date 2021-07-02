@@ -19,7 +19,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var createButton: UIButton!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         kyboardDissapear()
         toggleTologin()
@@ -35,24 +34,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         emailTextField.inputAccessoryView = toolBar
         passwordTextField.inputAccessoryView = toolBar
         confirmPasswordTextField.inputAccessoryView = toolBar
-       
     }
     
     @objc private func didTapDone() {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         confirmPasswordTextField.resignFirstResponder()
-        
     }
-//    func setupToolBar() -> UIToolbar  {
-//        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
-//
-//        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-//        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
-//        toolBar.items = [flexibleSpace, doneButton]
-//        toolBar.sizeToFit()
-//        return toolBar
-//    }
     
     func validateFields() -> String? {
         //Check that all fields are filled in
@@ -61,7 +49,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         //check if password is secure
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
         if Password.isPasswordValid(cleanedPassword) == false {
             // Password isnt secure enough
             return "\(presentErrorToUser(localizedError: " Please make sure password has at least 8 characters, contains a special character and a number."))"
@@ -71,7 +58,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         toggleToSignUp()
-      
     }
     
     @IBAction func loginTapped(_ sender: Any) {
@@ -79,11 +65,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createButtonTapped(_ sender: Any) {
-        
-    
-        
         if confirmPasswordTextField.text == passwordTextField.text {
-            
             let error = validateFields()
             if let error = error {
                 // there is something wrong with the fields, show error message
@@ -91,7 +73,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 presentErrorToUser(localizedError: error)
             }
             else {
-                
                 //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
                 let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -104,21 +85,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     DispatchQueue.main.async {
                         self.present(vc, animated: true, completion: nil)
                     }
-                    
                 }
             }
-        }
-        
-        else if confirmPasswordTextField.text == "" {
+        }else if confirmPasswordTextField.text == "" {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
             LoginController.sharedInstance.loginUser(email: email, password: password) { result in
                 switch result {
                 case .success(let userUuid):
                     UserController.sharedInstance.grabUserFromUuid(uuid: userUuid) { result in
                         switch result {
-                        
                         case .success(let user):
                             UserController.sharedInstance.currentUser = user
                             let sb = UIStoryboard(name: "borp", bundle: nil)
@@ -130,8 +106,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             self.presentErrorToUser(localizedError: error)
                         }
                     }
-                case .failure(let error):
-                    self.presentErrorToUser(localizedError: "Incorect Password")
+                case .failure(_):
+                    self.presentErrorToUser(localizedError: "Incorect Username or Password")
                 }
             }
         }

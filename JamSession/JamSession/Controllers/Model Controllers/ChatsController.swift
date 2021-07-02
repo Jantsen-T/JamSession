@@ -6,20 +6,17 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseFirestore
 class ChatsController{
     static let sharedInstance = ChatsController()
     var chats: [Chat] = []{
         didSet{
-            MenTableViewController.sharedInstance?.tableView.reloadData()
+            MessageTableController.sharedInstance?.tableView.reloadData()
         }
     }
-    
     init(){
         self.getNumberofChats()
     }
-    
-    
     func createNewChatWith(user: User) {
         guard let cu = UserController.sharedInstance.currentUser else { return}
         let users = [cu.uuid, user.uuid]

@@ -10,15 +10,12 @@
 		03016586267A3B1000BF1D7C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03016585267A3B1000BF1D7C /* UserController.swift */; };
 		030EB57D268A2A8600DEC691 /* AttendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030EB57C268A2A8600DEC691 /* AttendingTableViewCell.swift */; };
 		0340211F26864F890093B135 /* FriendsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211626864F870093B135 /* FriendsListVC.swift */; };
-		0340212026864F890093B135 /* MenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211726864F870093B135 /* MenTableViewController.swift */; };
-		0340212126864F890093B135 /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211826864F870093B135 /* LoginViewController2.swift */; };
+		0340212026864F890093B135 /* MessageTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211726864F870093B135 /* MessageTableController.swift */; };
 		0340212226864F890093B135 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211926864F880093B135 /* FriendCell.swift */; };
-		0340212426864F890093B135 /* ChatViewController_possiblyBad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211B26864F880093B135 /* ChatViewController_possiblyBad.swift */; };
 		0340212526864F890093B135 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340211C26864F880093B135 /* MessageCell.swift */; };
 		0340212826864FAE0093B135 /* borp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0340212726864FAE0093B135 /* borp.storyboard */; };
 		0340212A26865BA40093B135 /* ChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340212926865BA40093B135 /* ChatsController.swift */; };
 		0340212F2689EA9C0093B135 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340212D2689EA9C0093B135 /* CreateEventViewController.swift */; };
-		034021302689EA9C0093B135 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340212E2689EA9C0093B135 /* EventDetailViewController.swift */; };
 		034021322689EAB20093B135 /* tanman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034021312689EAB20093B135 /* tanman.storyboard */; };
 		03412B0F2680E7E800B045A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03412B0E2680E7E800B045A4 /* Main.storyboard */; };
 		03412B162680F1BB00B045A4 /* EventQuickLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */; };
@@ -57,15 +54,12 @@
 		03016585267A3B1000BF1D7C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		030EB57C268A2A8600DEC691 /* AttendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingTableViewCell.swift; sourceTree = "<group>"; };
 		0340211626864F870093B135 /* FriendsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListVC.swift; sourceTree = "<group>"; };
-		0340211726864F870093B135 /* MenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenTableViewController.swift; sourceTree = "<group>"; };
-		0340211826864F870093B135 /* LoginViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
+		0340211726864F870093B135 /* MessageTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableController.swift; sourceTree = "<group>"; };
 		0340211926864F880093B135 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
-		0340211B26864F880093B135 /* ChatViewController_possiblyBad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController_possiblyBad.swift; sourceTree = "<group>"; };
 		0340211C26864F880093B135 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		0340212726864FAE0093B135 /* borp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = borp.storyboard; sourceTree = "<group>"; };
 		0340212926865BA40093B135 /* ChatsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsController.swift; sourceTree = "<group>"; };
 		0340212D2689EA9C0093B135 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
-		0340212E2689EA9C0093B135 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		034021312689EAB20093B135 /* tanman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = tanman.storyboard; sourceTree = "<group>"; };
 		03412B0E2680E7E800B045A4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventQuickLookViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				0340212D2689EA9C0093B135 /* CreateEventViewController.swift */,
-				0340212E2689EA9C0093B135 /* EventDetailViewController.swift */,
 			);
 			path = tanner;
 			sourceTree = "<group>";
@@ -177,12 +170,10 @@
 		03412B142680F10100B045A4 /* borp */ = {
 			isa = PBXGroup;
 			children = (
-				0340211B26864F880093B135 /* ChatViewController_possiblyBad.swift */,
 				03412B152680F1BB00B045A4 /* EventQuickLookViewController.swift */,
 				0340211926864F880093B135 /* FriendCell.swift */,
 				0340211626864F870093B135 /* FriendsListVC.swift */,
-				0340211826864F870093B135 /* LoginViewController2.swift */,
-				0340211726864F870093B135 /* MenTableViewController.swift */,
+				0340211726864F870093B135 /* MessageTableController.swift */,
 				0340211C26864F880093B135 /* MessageCell.swift */,
 				03412B1C268114D300B045A4 /* SearchEventsViewController.swift */,
 				03412B262681282900B045A4 /* ChatViewController.swift */,
@@ -497,16 +488,13 @@
 				0340212226864F890093B135 /* FriendCell.swift in Sources */,
 				C0D0A923268BDBC700B3EAD1 /* Styleguide.swift in Sources */,
 				03016586267A3B1000BF1D7C /* UserController.swift in Sources */,
-				0340212026864F890093B135 /* MenTableViewController.swift in Sources */,
+				0340212026864F890093B135 /* MessageTableController.swift in Sources */,
 				0340211F26864F890093B135 /* FriendsListVC.swift in Sources */,
 				0340212F2689EA9C0093B135 /* CreateEventViewController.swift in Sources */,
 				039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */,
-				0340212426864F890093B135 /* ChatViewController_possiblyBad.swift in Sources */,
 				03412B1A26810ECE00B045A4 /* LocationManager.swift in Sources */,
 				C0876896268A378B0042C8EC /* CreateAUserViewController.swift in Sources */,
-				0340212126864F890093B135 /* LoginViewController2.swift in Sources */,
 				03412B182680F27400B045A4 /* Event.swift in Sources */,
-				034021302689EA9C0093B135 /* EventDetailViewController.swift in Sources */,
 				C0839D492679637A00FF1369 /* PasswordTest.swift in Sources */,
 				C0839D3626794B8700FF1369 /* User.swift in Sources */,
 				0340212526864F890093B135 /* MessageCell.swift in Sources */,
@@ -649,6 +637,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -659,8 +648,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

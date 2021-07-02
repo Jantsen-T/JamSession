@@ -22,8 +22,8 @@ class EventTableViewCell: UITableViewCell {
                     DispatchQueue.main.async {
                         self.locationLabel.text = address
                     }
-                case .failure(let err):
-                    print(err)
+                case .failure(let error):
+                    print(error)
                 }
             }
             
@@ -41,8 +41,8 @@ class EventTableViewCell: UITableViewCell {
                     DispatchQueue.main.async {
                         self.locationLabel.text = address
                     }
-                case .failure(let err):
-                    print(err)
+                case .failure(let error):
+                    print(error)
                 }
             }
         }

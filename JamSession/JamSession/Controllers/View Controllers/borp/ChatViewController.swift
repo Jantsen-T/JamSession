@@ -110,7 +110,8 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
     
     func loadChat() {
         //Fetch all the chats which has current user in it
-        guard let targetUser = targetUser else { return}
+        guard let targetUser = targetUser else {
+            return}
         let db = Firestore.firestore().collection("Chats").whereField("users", arrayContains: currentUser.uuid)
         db.getDocuments { (chatQuerySnap, error) in
             if let error = error {
@@ -146,17 +147,16 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
                                             self.messages.append(msg!)
                                             print("Data: \(msg?.content ?? "No message found")")
                                         }
-                                        //We'll edit viewDidload below which will solve the error
                                         self.messagesCollectionView.reloadData()
                                         self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
                                     }
                                 })
                             return
-                        } //end of if
-                    } //end of for
+                        }
+                    }
                     ChatsController.sharedInstance.createNewChatWith(user: targetUser)
                 } else {
-                    print("if you see this, i am a literal failure - borp")
+                    print("force close simulator")
                 }}}}
     @objc func goBack(){
         dismiss(animated: true, completion: nil)

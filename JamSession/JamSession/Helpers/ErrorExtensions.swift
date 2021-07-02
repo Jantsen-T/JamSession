@@ -9,6 +9,9 @@ protocol ErrorDelegate: AnyObject{
     func presentErrorToUser(localizedError: LocalizedError)
     func showToast(message : String)
 }
+protocol presDelegate: AnyObject{
+    func errOut(_ s: String)
+}
 extension UIViewController: ErrorDelegate {
     func presentErrorToUser(localizedError: LocalizedError) {
         let alertController = UIAlertController(title: "ERROR", message: localizedError.errorDescription, preferredStyle: .actionSheet)

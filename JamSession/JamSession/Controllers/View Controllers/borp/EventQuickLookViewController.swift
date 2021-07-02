@@ -20,7 +20,6 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var instrumentsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         attendingTableView.dataSource = self
@@ -43,9 +42,9 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
                         DispatchQueue.main.async {
                             self.locationLabel.text = "Location: "+address
                         }
-                    case .failure(let err):
+                    case .failure(let error):
                         DispatchQueue.main.async {
-                            self.presentErrorToUser(localizedError: err)
+                            self.presentErrorToUser(localizedError: error)
                             self.locationLabel.text = "LOCATION NOT FOUND"
                         }
                     }
@@ -93,10 +92,10 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
         guard let event = event else { return UITableViewCell()}
         let cell = tableView.dequeueReusableCell(withIdentifier: "attendeeCell", for: indexPath) as! AttendingTableViewCell
         let user = event.attending[indexPath.row]
-        cell.oozernameLabel.text = user.username
-        cell.pfpView.image = user.profilePic
+        cell.usernameLabel.text = user.username
+        cell.imageViewOfProfilePic.image = user.profilePic
         cell.user = user
-        cell.sendery = self
+        cell.sender = self
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

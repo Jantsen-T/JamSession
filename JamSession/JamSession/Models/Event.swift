@@ -85,8 +85,8 @@ class Event{
                                                 return completion(.success(event))
                                             }
                                         }
-                                    case .failure(let err):
-                                        return completion(.failure(.Generic(err)))
+                                    case .failure(let error):
+                                        return completion(.failure(.Generic(error)))
                                     }
                                 }
                             }
@@ -99,8 +99,8 @@ class Event{
                         return completion(.success(event))
                     }
                     
-                case .failure(let err):
-                    return completion(.failure(.Generic(err)))
+                case .failure(let error):
+                    return completion(.failure(.Generic(error)))
                 }
             }
         }

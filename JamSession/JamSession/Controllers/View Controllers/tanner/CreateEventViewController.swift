@@ -41,9 +41,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
                     DispatchQueue.main.async {
                         self.eventLocationTextField.text = address
                     }
-                case .failure(let err):
+                case .failure(let error):
                     DispatchQueue.main.async {
-                        self.presentErrorToUser(localizedError: err)
+                        self.presentErrorToUser(localizedError: error)
                         self.eventLocationTextField.text = "NOT FOUND"
                     }
                 }
@@ -81,7 +81,8 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
               let location = eventLocationTextField.text, !location.isEmpty,
               let instruments = instrumentsUsedTextField.text, !instruments.isEmpty else { return}
         if let event = event{
-            event.descriptionness = eventDetailsTextView.text
+            guard let descText = eventDetailsTextView.text, !descText.isEmpty else { return}
+            event.descriptionness = descText
             event.title = title
             let address = eventLocationTextField.text ?? ""
             let geoCoder = CLGeocoder()
@@ -95,7 +96,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
                 }
                 event.location = locationy
             }
-            event.descriptionness = description
             event.instruments = instruments
             EventController.sharedInstance.saveEvent(event)
             dismiss(animated: true, completion: nil)
@@ -165,12 +165,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var vc = segue.destination as! EventDetailViewController
-        vc.finalName = self.name
-        vc.finalLocation = self.location
-        vc.finalTime =  "\(self.selectedDate)"
-        vc.finalInstuments = self.instruments
-        vc.finalDetails = self.details
+        
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
