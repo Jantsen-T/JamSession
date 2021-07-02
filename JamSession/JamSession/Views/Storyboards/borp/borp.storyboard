@@ -596,7 +596,7 @@
                                                     <constraint firstAttribute="height" constant="385" id="MxE-Gv-PAa"/>
                                                 </constraints>
                                             </datePicker>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="details" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="emR-C6-Ax1">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="emR-C6-Ax1">
                                                 <rect key="frame" x="5" y="625" width="404" height="467"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <color key="textColor" systemColor="labelColor"/>
