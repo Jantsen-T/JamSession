@@ -17,8 +17,8 @@ class User: Equatable{
                 switch res{
                 case .success(let user):
                     friendds.append(user)
-                case .failure(let err):
-                    print("err")
+                case .failure(let error):
+                    print(error)
                 }
                 
             }
@@ -34,10 +34,10 @@ class User: Equatable{
         willSet{
             if newValue.count > friendRequests.count{
                 print("adding a request")
-                FriendViewController.shared?.tableVieww.reloadData()
+                FriendViewController.sharedInstance?.tableVieww.reloadData()
             }else{
                 print("i hope you accepted bc otherwise theres a problem")
-                FriendViewController.shared?.tableVieww.reloadData()
+                FriendViewController.sharedInstance?.tableVieww.reloadData()
             }
         }
     }

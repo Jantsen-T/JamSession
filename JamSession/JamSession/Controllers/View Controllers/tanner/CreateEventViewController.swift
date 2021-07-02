@@ -41,9 +41,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
                     DispatchQueue.main.async {
                         self.eventLocationTextField.text = address
                     }
-                case .failure(let err):
+                case .failure(let error):
                     DispatchQueue.main.async {
-                        self.presentErrorToUser(localizedError: err)
+                        self.presentErrorToUser(localizedError: error)
                         self.eventLocationTextField.text = "NOT FOUND"
                     }
                 }
@@ -165,12 +165,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var vc = segue.destination as! EventDetailViewController
-        vc.finalName = self.name
-        vc.finalLocation = self.location
-        vc.finalTime =  "\(self.selectedDate)"
-        vc.finalInstuments = self.instruments
-        vc.finalDetails = self.details
+        
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

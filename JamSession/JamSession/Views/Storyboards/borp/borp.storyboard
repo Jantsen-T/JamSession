@@ -123,8 +123,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="friendRequestButton" destination="LuZ-zy-XKF" id="Dz4-on-neb"/>
-                                            <outlet property="oozernameLabel" destination="xVN-37-8E4" id="rQa-xk-Ozt"/>
-                                            <outlet property="pfpView" destination="XPX-eJ-e8t" id="ZzN-Jg-GbD"/>
+                                            <outlet property="imageViewOfProfilePic" destination="XPX-eJ-e8t" id="ZzN-Jg-GbD"/>
+                                            <outlet property="usernameLabel" destination="xVN-37-8E4" id="rQa-xk-Ozt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -193,7 +193,7 @@
         <!--Messages List-->
         <scene sceneID="mOq-ca-jGd">
             <objects>
-                <tableViewController id="7BH-Kl-LSs" userLabel="Messages List" customClass="MenTableViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7BH-Kl-LSs" userLabel="Messages List" customClass="MessageTableController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="q5m-Sz-pjj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,7 +307,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" text="" id="j51-jx-14d">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="228" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                         </searchBar>
@@ -517,7 +517,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="pfpButton" destination="vCR-OW-6SA" id="pgo-bw-kfs"/>
+                                            <outlet property="buttonContainingProfilePic" destination="vCR-OW-6SA" id="pgo-bw-kfs"/>
                                             <outlet property="usernameLabel" destination="wEZ-z9-XKC" id="Ixr-5K-JZm"/>
                                         </connections>
                                     </tableViewCell>
@@ -533,7 +533,7 @@
                             <constraint firstItem="cUU-lc-Brb" firstAttribute="top" secondItem="I6S-vp-L8M" secondAttribute="top" id="xeE-2t-evH"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friends" image="person.and.person.fill" catalog="system" id="mZy-jx-1Fo"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="person.2.fill" catalog="system" id="mZy-jx-1Fo"/>
                     <connections>
                         <outlet property="tableVieww" destination="cUU-lc-Brb" id="6Gx-y3-GWT"/>
                         <outlet property="usernameField" destination="LKG-Bb-hjF" id="vHZ-gF-7nO"/>
@@ -940,7 +940,7 @@
         <image name="oompa" width="494" height="412"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="person.and.person.fill" catalog="system" width="128" height="80"/>
+        <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.badge.plus" catalog="system" width="128" height="124"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>

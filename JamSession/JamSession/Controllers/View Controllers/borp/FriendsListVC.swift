@@ -11,14 +11,14 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //MARK: outlets
     @IBOutlet weak var tableVieww: UITableView!
     @IBOutlet weak var usernameField: UITextField!
-    static var shared: FriendViewController?
+    static var sharedInstance: FriendViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
-        kyboardDissapear()
+        keyboardDissapear()
         self.usernameField.delegate = self
         tableVieww.delegate = self
         tableVieww.dataSource = self
-        FriendViewController.shared = self
+        FriendViewController.sharedInstance = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,9 +41,9 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     switch result{
                     case .success(let user):
                         UserController.sharedInstance.sendFriendRequest(originatingUser: current, receivingUser: user)
-                    case .failure(let err):
+                    case .failure(let error):
                         DispatchQueue.main.async {
-                            self.presentErrorToUser(localizedError: err)
+                            self.presentErrorToUser(localizedError: error)
                         }
                     }
                 }
@@ -67,8 +67,8 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     switch result{
                     case .success(let user):
                         cell.user = user
-                    case .failure(let err):
-                        print(err)
+                    case .failure(let error):
+                        print(error)
                     }
                 }
             }
@@ -83,10 +83,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     switch result{
                     case .success(let user):
                         cell.user = user
-                        cell.pfpButton.setImage(user.profilePic, for: .normal)
+                        cell.buttonContainingProfilePic.setImage(user.profilePic, for: .normal)
                         cell.usernameLabel.text = user.username
-                    case .failure(let err):
-                        print(err)
+                    case .failure(let error):
+                        print(error)
                     }
                 }
             }
@@ -112,8 +112,8 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         switch result{
                         case .success(let user):
                             UserController.sharedInstance.unfriendUser(user: user)
-                        case .failure(let err):
-                            print("err "+err.localizedDescription)
+                        case .failure(let error):
+                            print("err "+error.localizedDescription)
                         }
                     }
                 }
@@ -126,8 +126,8 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         switch result{
                         case .success(let user):
                             UserController.sharedInstance.blockUser(user: user)
-                        case .failure(let err):
-                            print("err "+err.localizedDescription)
+                        case .failure(let error):
+                            print("err "+error.localizedDescription)
                         }
                     }
                 }
@@ -142,8 +142,8 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         case .success(let user):
                             guard let cu = UserController.sharedInstance.currentUser else { return}
                             UserController.sharedInstance.ignoreFriendRequest(origin: user, catcher: cu)
-                        case .failure(let err):
-                            print("err "+err.localizedDescription)
+                        case .failure(let error):
+                            print("err "+error.localizedDescription)
                         }
                     }
                 }
@@ -155,8 +155,8 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         switch result{
                         case .success(let user):
                             UserController.sharedInstance.unfriendUser(user: user)
-                        case .failure(let err):
-                            print("err "+err.localizedDescription)
+                        case .failure(let error):
+                            print("err "+error.localizedDescription)
                         }
                     }
                 }
@@ -177,14 +177,14 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         UserController.sharedInstance.grabUserFromUuid(uuid: un) { res in
             switch res{
-            case .success(let userr):
-                UserController.sharedInstance.acceptFriendRequest(originatingUser: userr, receivingUser: UserController.sharedInstance.currentUser!)
+            case .success(let user):
+                UserController.sharedInstance.acceptFriendRequest(originatingUser: user, receivingUser: UserController.sharedInstance.currentUser!)
                 DispatchQueue.main.async {
                     self.tableVieww.reloadData()
                 }
-            case .failure(let err):
+            case .failure(let error):
                 DispatchQueue.main.async {
-                    self.presentErrorToUser(localizedError: err)
+                    self.presentErrorToUser(localizedError: error)
                 }
             }
         }
@@ -204,7 +204,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return true
     }
     
-    func kyboardDissapear() {
+    func keyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)

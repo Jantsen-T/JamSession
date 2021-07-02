@@ -193,13 +193,7 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
                 self.view.frame.origin.y -= keyboardSize.height
             }
         }
-    }
-    
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
-//
-//        self.view.frame.origin.y = 200 - keyboardSize.height + 0   }
-    
+    }    
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0{
             self.view.frame.origin.y = 0

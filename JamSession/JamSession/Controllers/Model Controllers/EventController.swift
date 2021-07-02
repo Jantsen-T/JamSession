@@ -13,12 +13,13 @@ class EventController{
     let db = Firestore.firestore()
     var documents: [DocumentSnapshot] = []
     
+    
+    //MARK: functions
     func docsToEvents(completionn: @escaping([Event])->Void){
         var events: [Event] = []
         for i in self.documents.indices{
             guard let data = documents[i].data() else {
                 return}
-            
             Event.fromFireObj(data) { result in
                 switch result{
                 case .success(let event):
@@ -26,8 +27,8 @@ class EventController{
                     if i == self.documents.count-1{
                         return completionn(events)
                     }
-                case .failure(let err):
-                    print(err)
+                case .failure(let error):
+                    print(error)
                 }
             }
             
@@ -50,14 +51,9 @@ class EventController{
             }
         }
     }
-    
-    
-    
     func getAllEventsMatching(term: String, completion: @escaping(Result<[Event], FireError>)->Void){
-        
         let eventBase = db.collection("Events")
         let query = eventBase.whereField("title", isEqualTo: term)
-        
         var docs: [QueryDocumentSnapshot] = []
         var events: [Event] = []
         query.getDocuments { snap, err in
@@ -73,38 +69,13 @@ class EventController{
                     switch res{
                     case .success(let event):
                         events.append(event)
-                    case .failure(let err):
-                        return completion(.failure(.IncorrectFormat))
+                    case .failure(let error):
+                        return completion(.failure(.Generic(error)))
                     }
                 }
             }
             return completion(.success(events))
         }
-        
-        
-    }
-    func snapshotToEvent(snap: DocumentSnapshot, completion: @escaping(Event)->Void){
-//        let data = snap.data()
-//        guard let data = data else { return}
-//        Event.fromFireObj(data) { res in
-//            switch res{
-//            case .success(let event):
-//                return completion(event)
-//            case .failure(let err):
-//                print(err)
-//                return
-//            }
-//        }
-    }
-    func grabFromUUID(uuid: String, completion: @escaping(Event)->Void){
-//        db.collection("Events").document(uuid).getDocument { snap, err in
-//            if let _ = err {return}
-//            if let snap = snap{
-//                self.snapshotToEvent(snap: snap) { event in
-//                    completion(event)
-//                }
-//            }
-//        }
     }
     func saveEvent(_ event: Event){
         let dict = event.toFireObj()

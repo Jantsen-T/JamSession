@@ -20,49 +20,6 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var instrumentsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if attendingTableView.delegate != nil{
-            if let user = UserController.sharedInstance.currentUser{
-                if let event = event{
-                    
-                    //update then paste
-                    let uuid = event.uuid
-                    EventController.sharedInstance.grabFromUUID(uuid: uuid) { [weak self] event in
-                        self?.event = event
-                        if event.creator.uuid == user.uuid{
-                            self?.editButton.isEnabled = true
-                        }else{
-                            self?.editButton.isEnabled = false
-                        }
-                        if event.attending.contains(user){
-                            self?.imInButton.isEnabled = false
-                        }
-                        self?.eventNameLabel.text = event.title
-                        self?.instrumentsLabel.text = "Instruments: "+event.instruments
-                        LocationManager.sharedInstance.getAddressFromLatLon(event.location) { res in
-                            switch res{
-                            case .success(let address):
-                                DispatchQueue.main.async {
-                                    self?.locationLabel.text = "Location: "+address
-                                }
-                            case .failure(let err):
-                                DispatchQueue.main.async {
-                                    self?.presentErrorToUser(localizedError: err)
-                                    self?.locationLabel.text = "LOCATION NOT FOUND"
-                                }
-                            }
-                        }
-                        let dateFormat = DateFormatter()
-                        dateFormat.dateStyle = .full
-                        self?.eventTimeLabel.text = "Date: "+dateFormat.string(from: event.eventTime)
-                        self?.descriptionLabel.text = event.descriptionness
-                    }
-                    
-                }
-            }
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         attendingTableView.dataSource = self
@@ -85,9 +42,9 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
                         DispatchQueue.main.async {
                             self.locationLabel.text = "Location: "+address
                         }
-                    case .failure(let err):
+                    case .failure(let error):
                         DispatchQueue.main.async {
-                            self.presentErrorToUser(localizedError: err)
+                            self.presentErrorToUser(localizedError: error)
                             self.locationLabel.text = "LOCATION NOT FOUND"
                         }
                     }
@@ -135,10 +92,10 @@ class EventQuickLookViewController: UIViewController, UITableViewDelegate, UITab
         guard let event = event else { return UITableViewCell()}
         let cell = tableView.dequeueReusableCell(withIdentifier: "attendeeCell", for: indexPath) as! AttendingTableViewCell
         let user = event.attending[indexPath.row]
-        cell.oozernameLabel.text = user.username
-        cell.pfpView.image = user.profilePic
+        cell.usernameLabel.text = user.username
+        cell.imageViewOfProfilePic.image = user.profilePic
         cell.user = user
-        cell.sendery = self
+        cell.sender = self
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

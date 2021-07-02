@@ -3,9 +3,10 @@ import FirebaseAuth
 import Firebase
 import FirebaseFirestore
 
-protocol presDelegate: AnyObject{
-    func err(_ s: String)
-}
+
+
+
+
 class UserController {
     let db = Firestore.firestore()
     //var users: [User] = []
@@ -46,7 +47,6 @@ class UserController {
             let doc = collection.document(title)
             doc.setData(req.toFireObj())
         }
-        //FriendViewController.shared?.tableVieww.reloadData()
     }
     
     func sendFriendRequest(originatingUser: User, receivingUser: User){
@@ -74,7 +74,6 @@ class UserController {
         let friendRequest = friendRequestCollection.document("\(origin.uuid) to \(catcher.uuid)")
         friendRequest.delete()
         saveData()
-        // FriendViewController.shared?.tableVieww.reloadData()
     }
     func loadCurrentFriendRequests(){
         guard let user = currentUser else { return}
@@ -107,7 +106,6 @@ class UserController {
         user.friends.remove(at: index2)
         saveUser(user: user)
         saveData()
-        // FriendViewController.shared?.tableVieww.reloadData()
     }
     func saveUser(user: User){
         let userbase = db.collection("Users")
@@ -127,18 +125,15 @@ class UserController {
         let friendRequestCollection = user2Doc.collection("friend_requests")
         print("\(originatingUser.uuid) to \(receivingUser.uuid)")
         let friendRequest = friendRequestCollection.document("\(originatingUser.uuid) to \(receivingUser.uuid)")
-        friendRequest.delete { err in
-            
-            print(err)
-            if err == nil{
+        friendRequest.delete { error in
+            print(error ?? "")
+            if error == nil{
                 if !(receivingUser.friends.contains(originatingUser.username)){
                     receivingUser.friends.append(originatingUser.username)
                     originatingUser.friends.append(receivingUser.username)
                     self.saveUser(user: originatingUser)
                     //self.saveUser(user: receivingUser)
                     guard let index = receivingUser.friendRequests.firstIndex(of: FriendRequest(initialUser: originatingUser.uuid, receivingUser: receivingUser.uuid)) else {
-                        
-                        
                         return}
                     receivingUser.friendRequests.remove(at: index)
                     self.saveData()
@@ -150,9 +145,9 @@ class UserController {
     func grabUserFromUsername(username: String, completion: @escaping(Result<User, ManErr>)->Void){
         let userRef = db.collection("Users")
         let query = userRef.whereField("username", isEqualTo: username)
-        query.getDocuments { snap, err in
-            if let err = err{
-                return completion(.failure(.firebaseError(err)))
+        query.getDocuments { snap, error in
+            if let error = error{
+                return completion(.failure(.firebaseError(error)))
             }
             guard let snap = snap else { return completion(.failure(.noSuchUser))}
             if snap.count > 1{
@@ -169,9 +164,9 @@ class UserController {
     func grabUserFromUuid(uuid: String, completion: @escaping(Result<User, ManErr>)->Void){
         let userRef = db.collection("Users")
         let query = userRef.whereField("uuid", isEqualTo: uuid)
-        query.getDocuments { snap, err in
-            if let err = err{
-                return completion(.failure(.firebaseError(err)))
+        query.getDocuments { snap, error in
+            if let error = error{
+                return completion(.failure(.firebaseError(error)))
             }
             guard let snap = snap else { return completion(.failure(.noSuchUser))}
             if snap.count > 1{
@@ -203,7 +198,7 @@ class UserController {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-                self.presentationDelegate?.err("error")
+                self.presentationDelegate?.errOut("error")
             }
             else {
                 //User created successfully
@@ -223,6 +218,4 @@ class UserController {
             completion(user)
         }
     }
-}// End of class
-
-// This File has the code from the ham intercession freidn requests
+}
