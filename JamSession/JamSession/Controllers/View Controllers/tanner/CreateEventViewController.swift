@@ -176,6 +176,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     }
     func kyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
 
