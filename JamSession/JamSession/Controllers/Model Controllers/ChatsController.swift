@@ -49,5 +49,21 @@ class ChatsController{
             }
         }
     }
-    
+    func deleteChatsBetween(user1: User, user2: User){
+        let db = Firestore.firestore().collection("Chats").whereField("users", arrayContains: user1.uuid)
+                                                          .whereField("users", arrayContains: user2.uuid)
+        db.getDocuments { snap, error in
+            if let err = error{
+                print(err)
+            }
+            guard let snap = snap else { return}
+            if snap.documents.count > 0{
+                for i in snap.documents.indices{
+                    let name = snap.documents[i].documentID
+                    let chatDoc = Firestore.firestore().collection("Chats").document(name)
+                    chatDoc.delete()
+                }
+            }
+        }
+    }
 }
