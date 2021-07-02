@@ -26,8 +26,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     @IBAction func addUserButtonPressed(_ sender: Any) {
         guard let current = UserController.sharedInstance.currentUser else {
-            
-            
             return}
         guard let un = usernameField.text, !un.isEmpty else {
             return}
@@ -41,6 +39,9 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     switch result{
                     case .success(let user):
                         UserController.sharedInstance.sendFriendRequest(originatingUser: current, receivingUser: user)
+                        DispatchQueue.main.async {
+                            self.showToast(message: "Friend Request Sent")
+                        }
                     case .failure(let error):
                         DispatchQueue.main.async {
                             self.presentErrorToUser(localizedError: error)
@@ -103,10 +104,12 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }else{return "Incoming requests"}
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let cell = self.tableVieww.cellForRow(at: indexPath) as? FriendCell else {
+            return nil}
         if indexPath.section==0{
             let unfriendAction = UIContextualAction(style: .normal, title: "unfriend") { action, view, handler in
                 print("unfriend")
-                let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
+                let str = cell.usernameLabel.text
                 if let str = str{
                     UserController.sharedInstance.grabUserFromUsername(username: str) { result in
                         switch result{
@@ -120,7 +123,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
             let blockAction = UIContextualAction(style: .destructive, title: "block") { action, view, handler in
-                let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
+                let str = cell.usernameLabel.text
                 if let str = str{
                     UserController.sharedInstance.grabUserFromUsername(username: str) { result in
                         switch result{
@@ -135,7 +138,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return UISwipeActionsConfiguration(actions: [unfriendAction, blockAction])
         }else{
             let unfriendAction = UIContextualAction(style: .normal, title: "ignore") { action, view, handler in
-                let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
+                let str = cell.usernameLabel.text
                 if let str = str{
                     UserController.sharedInstance.grabUserFromUuid(uuid: str) { result in
                         switch result{
@@ -149,7 +152,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
             let blockAction = UIContextualAction(style: .destructive, title: "block") { action, view, handler in
-                let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
+                let str = cell.usernameLabel.text
                 if let str = str{
                     UserController.sharedInstance.grabUserFromUuid(uuid: str) { result in
                         switch result{
