@@ -12,8 +12,15 @@ class MessageTableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MessageTableController.sharedInstance = self
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
-
+    @objc func refresh(_ sender: AnyObject){
+        tableView.reloadData()
+        sender.endRefreshing()
+    }
     @IBAction func plusPressed(_ sender: Any) {
         let vc = UIAlertController(title: "new message", message: nil, preferredStyle: .alert)
         vc.addTextField(configurationHandler: nil)

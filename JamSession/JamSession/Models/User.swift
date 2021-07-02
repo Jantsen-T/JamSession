@@ -34,10 +34,10 @@ class User: Equatable{
         willSet{
             if newValue.count > friendRequests.count{
                 print("adding a request")
-                FriendViewController.sharedInstance?.tableVieww.reloadData()
+                FriendViewController.sharedInstance?.friendsTableView.reloadData()
             }else{
                 print("i hope you accepted bc otherwise theres a problem")
-                FriendViewController.sharedInstance?.tableVieww.reloadData()
+                FriendViewController.sharedInstance?.friendsTableView.reloadData()
             }
         }
     }

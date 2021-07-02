@@ -9,21 +9,30 @@
 import UIKit
 class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
     //MARK: outlets
-    @IBOutlet weak var tableVieww: UITableView!
+    @IBOutlet weak var friendsTableView: UITableView!
     @IBOutlet weak var usernameField: UITextField!
     static var sharedInstance: FriendViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        friendsTableView.addSubview(refreshControl)
         keyboardDissapear()
         self.usernameField.delegate = self
-        tableVieww.delegate = self
-        tableVieww.dataSource = self
+        friendsTableView.delegate = self
+        friendsTableView.dataSource = self
         FriendViewController.sharedInstance = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableVieww.reloadData()
+        friendsTableView.reloadData()
     }
+    @objc func refresh(_ sender: AnyObject){
+        friendsTableView.reloadData()
+        sender.endRefreshing()
+    }
+    
     @IBAction func addUserButtonPressed(_ sender: Any) {
         guard let current = UserController.sharedInstance.currentUser else {
             return}
@@ -104,7 +113,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }else{return "Incoming requests"}
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        guard let cell = self.tableVieww.cellForRow(at: indexPath) as? FriendCell else {
+        guard let cell = self.friendsTableView.cellForRow(at: indexPath) as? FriendCell else {
             return nil}
         if indexPath.section==0{
             let unfriendAction = UIContextualAction(style: .normal, title: "unfriend") { action, view, handler in
@@ -123,7 +132,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
             let blockAction = UIContextualAction(style: .destructive, title: "block") { action, view, handler in
-                let str = cell.usernameLabel.text
+                let str = cell.user?.uuid
                 if let str = str{
                     UserController.sharedInstance.grabUserFromUsername(username: str) { result in
                         switch result{
@@ -138,7 +147,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return UISwipeActionsConfiguration(actions: [unfriendAction, blockAction])
         }else{
             let unfriendAction = UIContextualAction(style: .normal, title: "ignore") { action, view, handler in
-                let str = cell.usernameLabel.text
+                let str = cell.user?.uuid
                 if let str = str{
                     UserController.sharedInstance.grabUserFromUuid(uuid: str) { result in
                         switch result{
@@ -183,7 +192,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             case .success(let user):
                 UserController.sharedInstance.acceptFriendRequest(originatingUser: user, receivingUser: UserController.sharedInstance.currentUser!)
                 DispatchQueue.main.async {
-                    self.tableVieww.reloadData()
+                    self.friendsTableView.reloadData()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
