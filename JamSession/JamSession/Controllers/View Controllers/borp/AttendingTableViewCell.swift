@@ -19,6 +19,9 @@ class AttendingTableViewCell: UITableViewCell {
                     if currentUser.friends.contains(user.username) || currentUser == user{
                         friendRequestButton.isEnabled = false
                     }
+                    if user == currentUser{
+                        messageButton.isEnabled = false
+                    }
                 }
             }
         }
@@ -26,6 +29,7 @@ class AttendingTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var friendRequestButton: UIButton!
     @IBOutlet weak var imageViewOfProfilePic: UIImageView!
+    @IBOutlet weak var messageButton: UIButton!
     
     
     //MARK: fun stuff

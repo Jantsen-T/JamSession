@@ -124,6 +124,7 @@
                                         <connections>
                                             <outlet property="friendRequestButton" destination="LuZ-zy-XKF" id="Dz4-on-neb"/>
                                             <outlet property="imageViewOfProfilePic" destination="XPX-eJ-e8t" id="ZzN-Jg-GbD"/>
+                                            <outlet property="messageButton" destination="hKe-wk-shu" id="5em-Ov-AKW"/>
                                             <outlet property="usernameLabel" destination="xVN-37-8E4" id="rQa-xk-Ozt"/>
                                         </connections>
                                     </tableViewCell>
@@ -307,7 +308,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" text="" id="j51-jx-14d">
-                            <rect key="frame" x="0.0" y="0.0" width="228" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                         </searchBar>

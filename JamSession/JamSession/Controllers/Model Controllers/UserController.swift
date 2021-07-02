@@ -35,7 +35,7 @@ class UserController {
     init(){
     }
     
-    func saveData(){
+    func saveData(completion: @escaping()->Void){
         let userbase = db.collection("Users")
         guard let u = currentUser else { return}
         let dict = u.toFireObj()
@@ -45,8 +45,10 @@ class UserController {
         for req in u.friendRequests{
             let title = "\(req.initialUser) to \(req.receivingUser)"
             let doc = collection.document(title)
-            doc.setData(req.toFireObj())
+            doc.setData(req.toFireObj()) { error in
+            }
         }
+        completion()
     }
     
     func sendFriendRequest(originatingUser: User, receivingUser: User){
@@ -73,7 +75,9 @@ class UserController {
         let friendRequestCollection = user2Doc.collection("friend_requests")
         let friendRequest = friendRequestCollection.document("\(origin.uuid) to \(catcher.uuid)")
         friendRequest.delete()
-        saveData()
+        saveData(){
+            FriendViewController.sharedInstance?.tableVieww.reloadData()
+        }
     }
     func loadCurrentFriendRequests(){
         guard let user = currentUser else { return}
@@ -96,16 +100,23 @@ class UserController {
             unfriendUser(user: user)
         }
         currentUser.blocked.append(user.username)
-        saveData()
+        saveData(){
+            FriendViewController.sharedInstance?.tableVieww.reloadData()
+        }
     }
     func unfriendUser(user: User){
-        guard let currentUser = currentUser else { return}
-        guard let index = currentUser.friends.firstIndex(of: user.username) else { return}
+        guard let currentUser = currentUser else {
+            return}
+        guard let index = currentUser.friends.firstIndex(of: user.username) else {
+            return}
         currentUser.friends.remove(at: index)
-        guard let index2 = user.friends.firstIndex(of: currentUser.username) else { return}
+        guard let index2 = user.friends.firstIndex(of: currentUser.username) else {
+            return}
         user.friends.remove(at: index2)
         saveUser(user: user)
-        saveData()
+        saveData(){
+            FriendViewController.sharedInstance?.tableVieww.reloadData()
+        }
     }
     func saveUser(user: User){
         let userbase = db.collection("Users")
@@ -136,7 +147,9 @@ class UserController {
                     guard let index = receivingUser.friendRequests.firstIndex(of: FriendRequest(initialUser: originatingUser.uuid, receivingUser: receivingUser.uuid)) else {
                         return}
                     receivingUser.friendRequests.remove(at: index)
-                    self.saveData()
+                    self.saveData(){
+                        FriendViewController.sharedInstance?.tableVieww.reloadData()
+                    }
                 }
             }
             
