@@ -13,7 +13,7 @@ class PrimaryButton: UIButton {
         super.awakeFromNib()
         setupButton()
     }
-    
+    //Jantsen we can change this color and font
     func setupButton() {
         updateFontTo(font: FontNames.verdanaBold)
         setTitleColor(.white, for: .normal)
