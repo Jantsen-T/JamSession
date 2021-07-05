@@ -21,6 +21,9 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         toolBar.items = [flexibleSpace, doneButton]
         toolBar.sizeToFit()
         searchBar.inputAccessoryView = toolBar
+        getThings(searchText: "") {
+            self.tableView.reloadData()
+        }
     }
     
     //MARK: tavle biew data source
@@ -58,22 +61,42 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         
         
         //step one get document
+        getThings(searchText: searchText){}
         
-        EventController.sharedInstance.fetchDocuments(term: searchText) { complete in
-            DispatchQueue.main.async {
-                switch complete{
-                case true:
-                    EventController.sharedInstance.docsToEvents { events in
-                        self.pulledEvents = events
-                        self.tableView.reloadData()
+    }
+    func getThings(searchText: String, completion: @escaping()->Void){
+        if !(searchText.isEmpty){
+            EventController.sharedInstance.fetchDocuments(term: searchText) { complete in
+                DispatchQueue.main.async {
+                    switch complete{
+                    case true:
+                        EventController.sharedInstance.docsToEvents { events in
+                            self.pulledEvents = events
+                            self.tableView.reloadData()
+                            completion()
+                        }
+                    case false:
+                        print("false")
                     }
-                case false:
-                    print("false")
+                }
+            }
+        }else{
+            EventController.sharedInstance.fetchDocuments() { complete in
+                DispatchQueue.main.async {
+                    switch complete{
+                    case true:
+                        EventController.sharedInstance.docsToEvents { events in
+                            self.pulledEvents = events
+                            self.tableView.reloadData()
+                            completion()
+                        }
+                    case false:
+                        print("false")
+                    }
                 }
             }
         }
     }
-
     @objc func tapped(){
         print("t")
     }
