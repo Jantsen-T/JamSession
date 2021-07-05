@@ -215,7 +215,9 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         textField.resignFirstResponder()
         return true
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
     func keyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
