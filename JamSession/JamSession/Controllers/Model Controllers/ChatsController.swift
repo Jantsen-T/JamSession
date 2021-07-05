@@ -6,20 +6,17 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseFirestore
 class ChatsController{
     static let sharedInstance = ChatsController()
     var chats: [Chat] = []{
         didSet{
-            MenTableViewController.sharedInstance?.tableView.reloadData()
+            MessageTableController.sharedInstance?.tableView.reloadData()
         }
     }
-    
     init(){
         self.getNumberofChats()
     }
-    
-    
     func createNewChatWith(user: User) {
         guard let cu = UserController.sharedInstance.currentUser else { return}
         let users = [cu.uuid, user.uuid]
@@ -52,5 +49,23 @@ class ChatsController{
             }
         }
     }
-    
+    func deleteChatsBetween(user1: User, user2: User){
+        let db = Firestore.firestore().collection("Chats").whereField("users", arrayContains: user1.uuid)
+                                                          
+        db.getDocuments { snap, error in
+            if let err = error{
+                print(err)
+            }
+            guard let snap = snap else { return}
+            if snap.documents.count > 0{
+                for i in snap.documents.indices{
+                    let name = snap.documents[i].documentID
+                    guard let t = Chat(dictionary: snap.documents[i].data()) else {continue}
+                    guard(t.users.contains(user2.uuid))else{continue}
+                    let chatDoc = Firestore.firestore().collection("Chats").document(name)
+                    chatDoc.delete()
+                }
+            }
+        }
+    }
 }

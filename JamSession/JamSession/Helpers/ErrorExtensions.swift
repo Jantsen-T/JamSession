@@ -9,6 +9,9 @@ protocol ErrorDelegate: AnyObject{
     func presentErrorToUser(localizedError: LocalizedError)
     func showToast(message : String)
 }
+protocol presDelegate: AnyObject{
+    func errOut(_ s: String)
+}
 extension UIViewController: ErrorDelegate {
     func presentErrorToUser(localizedError: LocalizedError) {
         let alertController = UIAlertController(title: "ERROR", message: localizedError.errorDescription, preferredStyle: .actionSheet)
@@ -25,7 +28,7 @@ extension UIViewController: ErrorDelegate {
     func showToast(message : String) {
         let darkMode = (traitCollection.userInterfaceStyle == .dark)
         print(darkMode)
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/4 - 75, y: self.view.frame.size.height-100, width: self.view.frame.width*0.9, height: 35))
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/4 - 75, y: self.view.frame.size.height-200, width: self.view.frame.width*0.9, height: 35))
         toastLabel.backgroundColor = darkMode ? UIColor.white.withAlphaComponent(0.6) : UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = .white
         toastLabel.textAlignment = .center;

@@ -37,6 +37,6 @@ enum ManErr: LocalizedError{
 enum FireError: LocalizedError{
     case NoData
     case IncorrectFormat
-    case Fat(Error)
+    case Generic(Error)
     case StringDecode
 }

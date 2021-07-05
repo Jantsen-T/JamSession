@@ -13,8 +13,14 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        kyboardDissapear()
         searchBar.delegate = self
-        // Do any additional setup after loading the view.
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+        toolBar.items = [flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+        searchBar.inputAccessoryView = toolBar
     }
     
     //MARK: tavle biew data source
@@ -25,31 +31,59 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         return pulledEvents.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "borpCell") as? EventTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "borpCell") as? EventTableViewCell else {
+            return UITableViewCell()}
         cell.event = pulledEvents[indexPath.row]
+        let gest = UIGestureRecognizer(target: self, action: #selector(tapped))
+        cell.addGestureRecognizer(gest)
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "borp", bundle: nil)
-        guard let vc = sb.instantiateViewController(identifier: "quickLook") as? EventQuickLookViewController else { return}
+        guard let vc = sb.instantiateViewController(identifier: "quickLook") as? EventQuickLookViewController else {
+            return}
         vc.event = pulledEvents[indexPath.row]
         present(vc, animated: true, completion: nil)
     }
     //MARK: search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let term = searchBar.text, !term.isEmpty else { return}
-        EventController.sharedInstance.getAllEventsMatching(term: term) { res in
-            switch res{
-            case .success(let events):
-                self.pulledEvents = events
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            case .failure(let err):
-                DispatchQueue.main.async {
-                    self.presentErrorToUser(localizedError: err)
+        if searchText == ""{
+            pulledEvents = []
+            tableView.reloadData()
+        }
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            return}
+        
+        
+        //step one get document
+        
+        EventController.sharedInstance.fetchDocuments(term: searchText) { complete in
+            DispatchQueue.main.async {
+                switch complete{
+                case true:
+                    EventController.sharedInstance.docsToEvents { events in
+                        self.pulledEvents = events
+                        self.tableView.reloadData()
+                    }
+                case false:
+                    print("false")
                 }
             }
         }
     }
-}
+
+    @objc func tapped(){
+        print("t")
+    }
+    func kyboardDissapear() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func didTapDone() {
+        searchBar.resignFirstResponder()
+    }
+}// End of class
+

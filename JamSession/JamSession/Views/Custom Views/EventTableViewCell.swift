@@ -12,21 +12,37 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var instrumentsLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    var event: Event?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        if let evebt = event{
-            titleLabel.text = evebt.title
-            instrumentsLabel.text = evebt.instruments
-            LocationManager.sharedInstance.getAddressFromLatLon(evebt.location) { res in
+    var event: Event?{
+        didSet{
+            titleLabel.text = event?.title
+            instrumentsLabel.text = event?.instruments
+            LocationManager.sharedInstance.getAddressFromLatLon(event!.location) { res in
                 switch res{
                 case .success(let address):
                     DispatchQueue.main.async {
                         self.locationLabel.text = address
                     }
-                case .failure(let err):
-                    print(err)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if let event = event{
+            titleLabel.text = event.title
+            instrumentsLabel.text = event.instruments
+            LocationManager.sharedInstance.getAddressFromLatLon(event.location) { res in
+                switch res{
+                case .success(let address):
+                    DispatchQueue.main.async {
+                        self.locationLabel.text = address
+                    }
+                case .failure(let error):
+                    print(error)
                 }
             }
         }

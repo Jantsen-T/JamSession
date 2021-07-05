@@ -11,17 +11,14 @@ import Foundation
 class LocationManager{
     static let sharedInstance = LocationManager()
     func getAddressFromLatLon(_ loc: CLLocation, completion: @escaping(Result<String, FireError>)->Void){
-            
             let ceo: CLGeocoder = CLGeocoder()
-
             ceo.reverseGeocodeLocation(loc, completionHandler:
                 {(placemarks, error) in
                     if (error != nil)
                     {
-                        return completion(.failure(.Fat(error!)))
+                        return completion(.failure(.Generic(error!)))
                     }
                     let pm = placemarks! as [CLPlacemark]
-
                     if pm.count > 0 {
                         let pm = placemarks![0]
                         var addressString : String = ""
@@ -40,8 +37,6 @@ class LocationManager{
                         if pm.postalCode != nil {
                             addressString = addressString + pm.postalCode! + " "
                         }
-
-
                         return completion(.success(addressString))
                   }
             })

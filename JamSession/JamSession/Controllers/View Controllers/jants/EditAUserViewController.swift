@@ -1,14 +1,15 @@
 //
-//  EditUserViewController.swift
+//  EditAUserViewController.swift
 //  JamSession
 //
-//  Created by Jantsen Tanner on 6/21/21.
+//  Created by Jantsen Tanner on 6/28/21.
 //
 
 import UIKit
+import FirebaseAuth
 import CoreLocation
 
-class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UIImagePickerControllerDelegate {
+class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var profilePicImageView: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -21,34 +22,79 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        //popViewAndKyboard()
+        kyboardDissapear()
+        // creates the toolbar in the keybaord with the done button
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+        toolBar.items = [flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+        usernameTextField.inputAccessoryView = toolBar
+        locationTextField.inputAccessoryView = toolBar
+        instrumentTextField.inputAccessoryView = toolBar
+        bioTextView.inputAccessoryView = toolBar
         
         pickerData = ["Beginner", "Intermediate", "advanced", "Expert"]
         experienceLevelPicker.dataSource = self
         experienceLevelPicker.delegate = self
+        experienceLevelPicker.reloadAllComponents()
         imageButton.addTarget(self, action: #selector(setImage), for: .touchUpInside)
+        imageButton.imageView?.contentMode = .scaleAspectFit
         
         //do this last
-        guard let user = UserController.sharedInstance.currentUser else { return}
+        guard let user = UserController.sharedInstance.currentUser else {
+            return}
         usernameTextField.text = user.username
         locationTextField.text = user.location
         instrumentTextField.text = user.instrument
+        imagePicker.delegate = self
+        profilePicImageView.setImage(user.profilePic, for: .normal)
+        
         bioTextView.text = user.bio
         if user.experienceLevel.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)=="beginner"{
-            experienceLevelPicker.selectRow(0, inComponent: 1, animated: true)
+            experienceLevelPicker.selectRow(0, inComponent: 0, animated: true)
         }else if user.experienceLevel.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)=="intermediate"{
-            experienceLevelPicker.selectRow(1, inComponent: 1, animated: true)
+            experienceLevelPicker.selectRow(1, inComponent: 0, animated: true)
         }else if user.experienceLevel.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)=="advanced"{
-            experienceLevelPicker.selectRow(2, inComponent: 1, animated: true)
+            experienceLevelPicker.selectRow(2, inComponent: 0, animated: true)
         }else if user.experienceLevel.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)=="expert"{
-            experienceLevelPicker.selectRow(3, inComponent: 1, animated: true)
+            experienceLevelPicker.selectRow(3, inComponent: 0, animated: true)
         }
     }
     
+    @IBAction func signOutTapped(_ sender: Any) {
+        
+        do {
+            
+            try Auth.auth().signOut()
+            UserController.sharedInstance.currentUser = nil
+        }
+        catch {
+                print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+        }
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "signUp")
+        vc.modalPresentationStyle = .fullScreen
+        DispatchQueue.main.async {
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
     
+    func popViewAndKyboard() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAUserViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAUserViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
     @IBAction func saveTapped(_ sender: Any) {
+        
         guard let user = UserController.sharedInstance.currentUser else { return}
-        let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 1)
+        let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 0)
         var expString = ""
         switch selectedIndex{
         case 0:
@@ -69,7 +115,7 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
             pfp = image
         }
         guard let instruments = instrumentTextField.text, !instruments.isEmpty else {presentErrorToUser(localizedError: "Please let others know what indstruments you play") ;return}
-        guard let bio = locationTextField.text, !bio.isEmpty else {presentErrorToUser(localizedError: "Please provide a bio") ;return}
+        guard let bio = bioTextView.text, !bio.isEmpty else {presentErrorToUser(localizedError: "Please provide a bio") ;return}
         if expString == ""{
             presentErrorToUser(localizedError: "What is your experience level?")
             return
@@ -77,13 +123,23 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         let oldFriends = user.friends
         let oldFRs = user.friendRequests
         let oldBlocked = user.blocked
-        let oldUUID = user.uuid
-        let newUser = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instruments, experienceLevel: expString, UUID: oldUUID, friends: oldFriends, blocked: oldBlocked)
-        newUser.friendRequests = oldFRs
-        UserController.sharedInstance.currentUser = newUser
-        UserController.sharedInstance.saveUser(user: UserController.sharedInstance.currentUser!)
-        dismiss(animated: true, completion: nil)
+        UserController.sharedInstance.dbContainsUsername(username: username) { taken in
+            if taken && !(UserController.sharedInstance.currentUser?.username == username){
+                self.showToast(message: "Username Taken")
+                return
+            }else{
+                self.hideKeyboard()
+                let oldUUID = user.uuid
+                let newUser = User(username: username, profilePic: pfp, location: location, bio: bio, instrument: instruments, experienceLevel: expString, UUID: oldUUID, friends: oldFriends, blocked: oldBlocked)
+                newUser.friendRequests = oldFRs
+                UserController.sharedInstance.currentUser = newUser
+                UserController.sharedInstance.saveUser(user: UserController.sharedInstance.currentUser!)
+                self.showToast(message: "Saved")
+            }
+        }
+        
     }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -95,9 +151,7 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return pickerData[row]
     }
     @objc func setImage(){
-
         
-
         let alert = UIAlertController(title: "Select image", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.imagePicker.dismiss(animated: true, completion: nil)
@@ -113,7 +167,6 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
         alert.addAction(usePhotoLibAction)
         present(alert, animated: true)
     }
-    
     
     func openPickerWith(option: UIImagePickerController.SourceType){
         if UIImagePickerController.isSourceTypeAvailable(option){
@@ -131,6 +184,31 @@ class EditUserViewController: UIViewController, UIPickerViewDataSource, UIPicker
             profilePicImageView.setImage(pickedImage, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
-
+        
     }
-}
+    
+    func kyboardDissapear() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    func hideKeyboard() {
+        usernameTextField.resignFirstResponder()
+        locationTextField.resignFirstResponder()
+        instrumentTextField.resignFirstResponder()
+        bioTextView.resignFirstResponder()
+    }
+    @objc func didTapDone() {
+        usernameTextField.resignFirstResponder()
+        locationTextField.resignFirstResponder()
+        instrumentTextField.resignFirstResponder()
+        bioTextView.resignFirstResponder()
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+        self.view.frame.origin.y = 200 - keyboardSize.height + 0
+    }
+    
+    
+}// End of class
+

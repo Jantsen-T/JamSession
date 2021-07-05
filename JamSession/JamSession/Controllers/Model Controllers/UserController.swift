@@ -3,16 +3,17 @@ import FirebaseAuth
 import Firebase
 import FirebaseFirestore
 
-protocol presDelegate: AnyObject{
-    func err(_ s: String)
-}
+
+
+
+
 class UserController {
     let db = Firestore.firestore()
     //var users: [User] = []
     weak var presentationDelegate: presDelegate?
     static let sharedInstance = UserController()
     var currentUser: User?{didSet{
-        //   ViewController.shared?.userAppeared()
+        guard currentUser != nil else {return}
         let userbase = db.collection("Users")
         let user2Doc = userbase.document(currentUser!.uuid)
         let friendRequestCollection = user2Doc.collection("friend_requests")
@@ -34,7 +35,7 @@ class UserController {
     init(){
     }
     
-    func saveData(){
+    func saveData(completion: @escaping()->Void){
         let userbase = db.collection("Users")
         guard let u = currentUser else { return}
         let dict = u.toFireObj()
@@ -44,37 +45,41 @@ class UserController {
         for req in u.friendRequests{
             let title = "\(req.initialUser) to \(req.receivingUser)"
             let doc = collection.document(title)
-            doc.setData(req.toFireObj())
+            doc.setData(req.toFireObj()) { error in
+            }
         }
-        //FriendViewController.shared?.tableVieww.reloadData()
+        completion()
     }
     
     func sendFriendRequest(originatingUser: User, receivingUser: User){
-        if originatingUser.friends.contains(receivingUser.username) {
-            return
+        findWhetherUserHasFriendRequested(receivingUser) { hasDone in
+            if (!(hasDone) && !(originatingUser.friends.contains(receivingUser.uuid))){
+                if originatingUser.friends.contains(receivingUser.username) {
+                    return
+                }
+                let userbase = self.db.collection("Users")
+                let user2Doc = userbase.document(receivingUser.uuid)
+                let friendRequestCollection = user2Doc.collection("friend_requests")
+                let friendRequest = friendRequestCollection.document("\(originatingUser.uuid) to \(receivingUser.uuid)")
+                friendRequest.setData(FriendRequest(initialUser: originatingUser.uuid, receivingUser: receivingUser.uuid).toFireObj())
+            }else{
+                print("cannot do that")
+            }
         }
-        let userbase = db.collection("Users")
-        let user2Doc = userbase.document(receivingUser.uuid)
-        let friendRequestCollection = user2Doc.collection("friend_requests")
-        let friendRequest = friendRequestCollection.document("\(originatingUser.uuid) to \(receivingUser.uuid)")
-        friendRequest.setData(FriendRequest(initialUser: originatingUser.uuid, receivingUser: receivingUser.uuid).toFireObj())
     }
-    
-    
-    
-    
-    
     func ignoreFriendRequest(origin: User, catcher: User){
         let userbase = db.collection("Users")
         let ref = FriendRequest(initialUser: origin.uuid, receivingUser: catcher.uuid)
-        guard let index = catcher.friendRequests.firstIndex(of: ref) else { return}
+        guard let index = catcher.friendRequests.firstIndex(of: ref) else {
+            return}
         catcher.friendRequests.remove(at: index)
         let user2Doc = userbase.document(catcher.uuid)
         let friendRequestCollection = user2Doc.collection("friend_requests")
         let friendRequest = friendRequestCollection.document("\(origin.uuid) to \(catcher.uuid)")
         friendRequest.delete()
-        saveData()
-        // FriendViewController.shared?.tableVieww.reloadData()
+        saveData(){
+            FriendViewController.sharedInstance?.friendsTableView.reloadData()
+        }
     }
     func loadCurrentFriendRequests(){
         guard let user = currentUser else { return}
@@ -97,17 +102,24 @@ class UserController {
             unfriendUser(user: user)
         }
         currentUser.blocked.append(user.username)
-        saveData()
+        saveData(){
+            FriendViewController.sharedInstance?.friendsTableView.reloadData()
+            ChatsController.sharedInstance.deleteChatsBetween(user1: currentUser, user2: user)
+        }
     }
     func unfriendUser(user: User){
-        guard let currentUser = currentUser else { return}
-        guard let index = currentUser.friends.firstIndex(of: user.username) else { return}
+        guard let currentUser = currentUser else {
+            return}
+        guard let index = currentUser.friends.firstIndex(of: user.username) else {
+            return}
         currentUser.friends.remove(at: index)
-        guard let index2 = user.friends.firstIndex(of: currentUser.username) else { return}
+        guard let index2 = user.friends.firstIndex(of: currentUser.username) else {
+            return}
         user.friends.remove(at: index2)
         saveUser(user: user)
-        saveData()
-        // FriendViewController.shared?.tableVieww.reloadData()
+        saveData(){
+            FriendViewController.sharedInstance?.friendsTableView.reloadData()
+        }
     }
     func saveUser(user: User){
         let userbase = db.collection("Users")
@@ -127,21 +139,20 @@ class UserController {
         let friendRequestCollection = user2Doc.collection("friend_requests")
         print("\(originatingUser.uuid) to \(receivingUser.uuid)")
         let friendRequest = friendRequestCollection.document("\(originatingUser.uuid) to \(receivingUser.uuid)")
-        friendRequest.delete { err in
-            
-            print(err)
-            if err == nil{
+        friendRequest.delete { error in
+            print(error ?? "")
+            if error == nil{
                 if !(receivingUser.friends.contains(originatingUser.username)){
                     receivingUser.friends.append(originatingUser.username)
                     originatingUser.friends.append(receivingUser.username)
                     self.saveUser(user: originatingUser)
                     //self.saveUser(user: receivingUser)
                     guard let index = receivingUser.friendRequests.firstIndex(of: FriendRequest(initialUser: originatingUser.uuid, receivingUser: receivingUser.uuid)) else {
-                        
-                        
                         return}
                     receivingUser.friendRequests.remove(at: index)
-                    self.saveData()
+                    self.saveData(){
+                        FriendViewController.sharedInstance?.friendsTableView.reloadData()
+                    }
                 }
             }
             
@@ -150,9 +161,9 @@ class UserController {
     func grabUserFromUsername(username: String, completion: @escaping(Result<User, ManErr>)->Void){
         let userRef = db.collection("Users")
         let query = userRef.whereField("username", isEqualTo: username)
-        query.getDocuments { snap, err in
-            if let err = err{
-                return completion(.failure(.firebaseError(err)))
+        query.getDocuments { snap, error in
+            if let error = error{
+                return completion(.failure(.firebaseError(error)))
             }
             guard let snap = snap else { return completion(.failure(.noSuchUser))}
             if snap.count > 1{
@@ -166,12 +177,22 @@ class UserController {
             return completion(.success(user))
         }
     }
+    func findWhetherUserHasFriendRequested(_ target: User, onComplete: @escaping(Bool)->Void){
+        guard let currentUser = currentUser else { return}
+        let targetQuery = db.collection("Users").document(target.uuid).collection("friend_requests").whereField("sendingUser", isEqualTo: currentUser.uuid)
+        targetQuery.getDocuments { snap, err in
+            if let snap = snap{
+                return onComplete(!(snap.isEmpty))
+            }
+            else {return onComplete(false)}
+        }
+    }
     func grabUserFromUuid(uuid: String, completion: @escaping(Result<User, ManErr>)->Void){
         let userRef = db.collection("Users")
         let query = userRef.whereField("uuid", isEqualTo: uuid)
-        query.getDocuments { snap, err in
-            if let err = err{
-                return completion(.failure(.firebaseError(err)))
+        query.getDocuments { snap, error in
+            if let error = error{
+                return completion(.failure(.firebaseError(error)))
             }
             guard let snap = snap else { return completion(.failure(.noSuchUser))}
             if snap.count > 1{
@@ -203,7 +224,7 @@ class UserController {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-                self.presentationDelegate?.err("error")
+                self.presentationDelegate?.errOut("error")
             }
             else {
                 //User created successfully
@@ -223,6 +244,4 @@ class UserController {
             completion(user)
         }
     }
-}// End of class
-
-// This File has the code from the ham intercession freidn requests
+}

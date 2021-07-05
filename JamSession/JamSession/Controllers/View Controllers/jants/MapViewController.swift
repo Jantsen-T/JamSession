@@ -29,31 +29,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         mapView.showsUserLocation = true
         mapView.delegate = self
-        
     }//end of View Did Load
     
     //MARK: - Actions
     
     @IBAction func getDirectionsTapped(_ sender: Any) {
         getAddress()
-        
     }
     
     
     //MARK: - Functions
-    
-    
     private let locationButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(askToOpenMap), for: .touchUpInside)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         return button
     }()
-    
     
     func setButton() -> Bool {
         view.addSubview(locationButton)
@@ -65,7 +58,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         locationButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40).isActive = true
         locationButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         locationButton.widthAnchor.constraint(equalToConstant: 280).isActive = true
-        
         return true
     }
     @objc func askToOpenMap() {
@@ -94,7 +86,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         mapView.showsUserLocation = true
         mapView.setRegion(MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)), animated: true)
-        
         resolveLocationName(with: location) { [weak self] locationName in
             self?.title = locationName
         }
@@ -109,20 +100,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 completion(nil)
                 return
             }
-            
             print(placemarks)
             self.mapJamSesh(destinationCord: location.coordinate, in: self, sourceView: self.locationButton)
-            
             var name = ""
-            
             if let locality = placemarks.locality {
                 name += locality
             }
-            
             if let adminRegion = placemarks.administrativeArea {
                 name += ", \(adminRegion)"
             }
-            
             completion(name)
         }
     }//End of func
@@ -132,21 +118,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapJamSesh(destinationCord: CLLocationCoordinate2D, in viewController: UIViewController, sourceView: UIView) {
         
         let sourceCoordinate = (locationManager.location?.coordinate)!
-        
         let sourcePlaceMark = MKPlacemark(coordinate: sourceCoordinate)
         let destPlaceMark = MKPlacemark(coordinate: destinationCord)
-        
         let sourceItem = MKMapItem(placemark: sourcePlaceMark)
         let destItem = MKMapItem(placemark: destPlaceMark)
-        
         let destinationRequest = MKDirections.Request()
         destinationRequest.source = sourceItem
         destinationRequest.destination = destItem
         destinationRequest.transportType = .automobile
-        
         let pin = MKPointAnnotation()
         pin.coordinate = destPlaceMark.coordinate
-        
         let directions = MKDirections(request: destinationRequest)
         directions.calculate { (response, error) in
             guard let response = response else {
@@ -164,7 +145,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         //alert controller for the Open in Maps button
         let alertController = UIAlertController(title: "Open Route in Maps", message: "Would you like to open this route in Maps?", preferredStyle: .actionSheet)
-        
         alertController.addAction(UIAlertAction(title: "Apple Maps", style: .default, handler: { _ in
             //the alertController needs to be in this func so that it can take in destinationCord
             // destinationCord is the address that the user inputed into the system and now is being put into Maps
@@ -173,11 +153,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             mapItem.name = "Jam Sesh Location"
             mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
         }))
-        
         alertController.popoverPresentationController?.sourceRect = sourceView.bounds
         alertController.popoverPresentationController?.sourceView = sourceView
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
         viewController.present(alertController, animated: true, completion: nil)
         
     }//End of func

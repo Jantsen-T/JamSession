@@ -7,21 +7,34 @@
 //
 
 import UIKit
-class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
     //MARK: outlets
-    @IBOutlet weak var tableVieww: UITableView!
+    @IBOutlet weak var friendsTableView: UITableView!
     @IBOutlet weak var usernameField: UITextField!
-    static var shared: FriendViewController?
+    static var sharedInstance: FriendViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableVieww.delegate = self
-        tableVieww.dataSource = self
-        FriendViewController.shared = self
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        friendsTableView.addSubview(refreshControl)
+        keyboardDissapear()
+        self.usernameField.delegate = self
+        friendsTableView.delegate = self
+        friendsTableView.dataSource = self
+        FriendViewController.sharedInstance = self
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        friendsTableView.reloadData()
+    }
+    @objc func refresh(_ sender: AnyObject){
+        friendsTableView.reloadData()
+        sender.endRefreshing()
+    }
+    
     @IBAction func addUserButtonPressed(_ sender: Any) {
         guard let current = UserController.sharedInstance.currentUser else {
-            
-            
             return}
         guard let un = usernameField.text, !un.isEmpty else {
             return}
@@ -35,9 +48,12 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     switch result{
                     case .success(let user):
                         UserController.sharedInstance.sendFriendRequest(originatingUser: current, receivingUser: user)
-                    case .failure(let err):
                         DispatchQueue.main.async {
-                            self.presentErrorToUser(localizedError: err)
+                            self.showToast(message: "Friend Request Sent")
+                        }
+                    case .failure(let error):
+                        DispatchQueue.main.async {
+                            self.presentErrorToUser(localizedError: error)
                         }
                     }
                 }
@@ -61,25 +77,30 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     switch result{
                     case .success(let user):
                         cell.user = user
-                    case .failure(let err):
-                        print(err)
+                    case .failure(let error):
+                        print(error)
                     }
                 }
             }
+            cell.sender = self
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
-            guard let user = UserController.sharedInstance.currentUser else { return cell}
+            guard let cuser = UserController.sharedInstance.currentUser else {
+                return cell}
             if UserController.sharedInstance.currentUser!.friendRequests.indices.contains(indexPath.row){
-                UserController.sharedInstance.grabUserFromUsername(username: user.friendRequests[indexPath.row].initialUser){result in
+                UserController.sharedInstance.grabUserFromUuid(uuid: cuser.friendRequests[indexPath.row].initialUser){result in
                     switch result{
                     case .success(let user):
                         cell.user = user
-                    case .failure(let err):
-                        print(err)
+                        cell.buttonContainingProfilePic.setImage(user.profilePic, for: .normal)
+                        cell.usernameLabel.text = user.username
+                    case .failure(let error):
+                        print(error)
                     }
                 }
             }
+            cell.sender = self
             return cell
         }
         
@@ -88,35 +109,37 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section==0{
-            return "frends"
-        }else{return "incoming requests"}
+            return "Friends"
+        }else{return "Incoming requests"}
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let cell = self.friendsTableView.cellForRow(at: indexPath) as? FriendCell else {
+            return nil}
         if indexPath.section==0{
             let unfriendAction = UIContextualAction(style: .normal, title: "unfriend") { action, view, handler in
                 print("unfriend")
-                let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
+                let str = cell.usernameLabel.text
                 if let str = str{
                     UserController.sharedInstance.grabUserFromUsername(username: str) { result in
                         switch result{
                         case .success(let user):
                             UserController.sharedInstance.unfriendUser(user: user)
-                        case .failure(let err):
-                            print("err "+err.localizedDescription)
+                        case .failure(let error):
+                            print("err "+error.localizedDescription)
                         }
                     }
                 }
                 
             }
             let blockAction = UIContextualAction(style: .destructive, title: "block") { action, view, handler in
-                let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
+                let str = cell.user?.uuid
                 if let str = str{
                     UserController.sharedInstance.grabUserFromUsername(username: str) { result in
                         switch result{
                         case .success(let user):
                             UserController.sharedInstance.blockUser(user: user)
-                        case .failure(let err):
-                            print("err "+err.localizedDescription)
+                        case .failure(let error):
+                            print("err "+error.localizedDescription)
                         }
                     }
                 }
@@ -124,28 +147,28 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return UISwipeActionsConfiguration(actions: [unfriendAction, blockAction])
         }else{
             let unfriendAction = UIContextualAction(style: .normal, title: "ignore") { action, view, handler in
-                let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
+                let str = cell.user?.uuid
                 if let str = str{
                     UserController.sharedInstance.grabUserFromUuid(uuid: str) { result in
                         switch result{
                         case .success(let user):
                             guard let cu = UserController.sharedInstance.currentUser else { return}
                             UserController.sharedInstance.ignoreFriendRequest(origin: user, catcher: cu)
-                        case .failure(let err):
-                            print("err "+err.localizedDescription)
+                        case .failure(let error):
+                            print("err "+error.localizedDescription)
                         }
                     }
                 }
             }
             let blockAction = UIContextualAction(style: .destructive, title: "block") { action, view, handler in
-                let str = self.tableVieww.cellForRow(at: indexPath)?.textLabel?.text
+                let str = cell.usernameLabel.text
                 if let str = str{
                     UserController.sharedInstance.grabUserFromUuid(uuid: str) { result in
                         switch result{
                         case .success(let user):
                             UserController.sharedInstance.unfriendUser(user: user)
-                        case .failure(let err):
-                            print("err "+err.localizedDescription)
+                        case .failure(let error):
+                            print("err "+error.localizedDescription)
                         }
                     }
                 }
@@ -166,14 +189,14 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         UserController.sharedInstance.grabUserFromUuid(uuid: un) { res in
             switch res{
-            case .success(let userr):
-                UserController.sharedInstance.acceptFriendRequest(originatingUser: userr, receivingUser: UserController.sharedInstance.currentUser!)
+            case .success(let user):
+                UserController.sharedInstance.acceptFriendRequest(originatingUser: user, receivingUser: UserController.sharedInstance.currentUser!)
                 DispatchQueue.main.async {
-                    self.tableVieww.reloadData()
+                    self.friendsTableView.reloadData()
                 }
-            case .failure(let err):
+            case .failure(let error):
                 DispatchQueue.main.async {
-                    self.presentErrorToUser(localizedError: err)
+                    self.presentErrorToUser(localizedError: error)
                 }
             }
         }
@@ -188,4 +211,16 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return user.friendRequests.count
         }
     }
-}
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func keyboardDissapear() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+   
+}// End of class
+

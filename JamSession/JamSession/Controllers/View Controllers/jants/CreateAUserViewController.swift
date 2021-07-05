@@ -4,12 +4,15 @@
 //
 //  Created by Jantsen Tanner on 6/28/21.
 //
+//hello this is Tanner
 
 import UIKit
 import CoreLocation
 
-class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+    //MARK: - Outlets
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var instrumentTextField: UITextField!
@@ -18,9 +21,24 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet weak var imageButton: UIButton!
     var pickerData: [String] = []
     let imagePicker = UIImagePickerController()
+    
+    //MARK: - Outlets
     override func viewDidLoad() {
         super.viewDidLoad()
+        //popViewAndKyboard()
         kyboardDissapear()
+        bioTextView.text = "Let others know about your musical background"
+        bioTextView.textColor = UIColor.lightGray
+        // creates the toolbar in the keybaord with the done button
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+        toolBar.items = [flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+        usernameTextField.inputAccessoryView = toolBar
+        locationTextField.inputAccessoryView = toolBar
+        instrumentTextField.inputAccessoryView = toolBar
+        bioTextView.inputAccessoryView = toolBar
         self.usernameTextField.delegate = self
         self.locationTextField.delegate = self
         self.instrumentTextField.delegate = self
@@ -50,7 +68,7 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
     }
     
-    
+    //MARK: - Functions
     
     @IBAction func createProfileTapped(_ sender: Any) {
         let selectedIndex = experienceLevelPicker.selectedRow(inComponent: 0)
@@ -81,7 +99,15 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
             return
         }
         UserController.sharedInstance.makeUserInDB(username: username, uuid: uuid, location: location, bio: bio, instrument: instruments, experience: expString, pfp: pfp) { user in
+            UserController.sharedInstance.currentUser = user
             UserController.sharedInstance.saveUser(user: user)
+        }
+        
+        let sb = UIStoryboard(name: "borp", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "tabbar")
+        vc.modalPresentationStyle = .fullScreen
+        DispatchQueue.main.async {
+            self.present(vc, animated: true, completion: nil)
         }
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -121,6 +147,17 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         
     }
+    
+    func popViewAndKyboard() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAUserViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAUserViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -137,8 +174,6 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
     func kyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
-        
-
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -147,5 +182,35 @@ class CreateUserViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         picker.dismiss(animated: true, completion: nil)
     }
-  
+    
+    @objc func dismissMyKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc func didTapDone() {
+        usernameTextField.resignFirstResponder()
+        instrumentTextField.resignFirstResponder()
+        locationTextField.resignFirstResponder()
+        bioTextView.resignFirstResponder()
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0{
+            self.view.frame.origin.y = 0
+        }
+    }
+    //Jantsen these colors can be changed
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if bioTextView.textColor == UIColor.lightGray {
+            bioTextView.text = nil
+            bioTextView.textColor = UIColor.black
+        }
+    }
 }// End of class
