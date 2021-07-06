@@ -45,8 +45,8 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         experienceLevelPicker.reloadAllComponents()
         imageButton.addTarget(self, action: #selector(setImage), for: .touchUpInside)
         imageButton.imageView?.contentMode = .scaleAspectFit
-        saveButton.layer.cornerRadius = 20
-        signOutButton.layer.cornerRadius = 20
+        saveButton.layer.cornerRadius = 10
+        signOutButton.layer.cornerRadius = 10
         imageButton.layer.cornerRadius = 55
         //do this last
         guard let user = UserController.sharedInstance.currentUser else {
