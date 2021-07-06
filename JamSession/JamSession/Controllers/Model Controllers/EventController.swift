@@ -19,7 +19,7 @@ class EventController{
         var events: [Event] = []
         for i in self.documents.indices{
             guard let data = documents[i].data() else {
-                return}
+                return completionn([]) }
             Event.fromFireObj(data) { result in
                 switch result{
                 case .success(let event):
@@ -31,9 +31,7 @@ class EventController{
                     print(error)
                 }
             }
-            
         }
-        
     }
     func fetchDocuments(term: String, completion: @escaping(Bool)->Void){
         let eventBase = db.collection("Events")

@@ -22,8 +22,12 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         toolBar.sizeToFit()
         searchBar.inputAccessoryView = toolBar
         getThings(searchText: "") {
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getThings(searchText: ""){}
     }
     
     //MARK: tavle biew data source
