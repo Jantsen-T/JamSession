@@ -26,7 +26,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //friendsTableView.reloadData()
+        friendsTableView.reloadData()
     }
     @objc func refresh(_ sender: AnyObject){
         friendsTableView.reloadData()
@@ -50,6 +50,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         UserController.sharedInstance.sendFriendRequest(originatingUser: current, receivingUser: user)
                         DispatchQueue.main.async {
                             self.showToast(message: "Friend Request Sent")
+                            self.usernameField.text = ""
                         }
                     case .failure(let error):
                         DispatchQueue.main.async {
@@ -215,7 +216,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return true
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 85
     }
     func keyboardDissapear() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
