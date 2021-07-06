@@ -7,25 +7,33 @@
 
 import UIKit
 
-class TextField: UITextField {
-
+class MainTextField: UITextField {
     
-        override class func awakeFromNib() {
+
+        override func awakeFromNib() {
             super.awakeFromNib()
+            setTextField()
             
         }
         
-        func setupTextField() {
+        func setTextField() {
             self.addCornerRadius()
             self.addAccentBorder()
+            updateFontTo(font: FontNames.bodoniSmallCaps)
+            self.backgroundColor = .white
+            self.layer.masksToBounds = true
             
         }
         
         func setPlaceHolderText() {
             let currentPlaceHolder = self.placeholder
-            self.attributedPlaceholder = NSAttributedString(string: currentPlaceHolder ?? "", attributes: [NSAttributedString.Key.foregroundColor : Colors.lighterGray, NSAttributedString.Key.font: UIFont(name: FontNames.verdanaBold, size: 16)!
+            self.attributedPlaceholder = NSAttributedString(string: currentPlaceHolder ?? "", attributes: [NSAttributedString.Key.foregroundColor : Colors.lighterGray, NSAttributedString.Key.font: UIFont(name: FontNames.bodoniSmallCaps, size: 16)!
             ])
         }
+    func updateFontTo(font: String) {
+        guard let size = self.font?.pointSize else {return}
+        self.font = UIFont(name: font, size: size)
+    }
         
     }// End of class
 

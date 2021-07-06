@@ -20,6 +20,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     @IBOutlet weak var instrumentsUsedTextField: UITextField!
     @IBOutlet weak var eventDetailsTextView: UITextView!
     
+    @IBOutlet weak var saveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.eventDetailsTextView.delegate = self
         eventDetailsTextView.text = "Tell us about your Jam Session!"
         eventDetailsTextView.textColor = UIColor.lightGray
+        saveButton.layer.cornerRadius = 10
         kyboardDissapear()
         eventLocationTextField.userStoppedTypingHandler = {
             self.userStoppedTyping()

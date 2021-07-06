@@ -28,6 +28,7 @@
 		03412B272681282900B045A4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03412B262681282900B045A4 /* ChatViewController.swift */; };
 		039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B8301267BE1D500AA86D9 /* ErrorExtensions.swift */; };
 		5E2BBCA9763C3B8758693AB6 /* Pods_JamSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */; };
+		C03AB3A22694C31B00923850 /* MainLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03AB3A12694C31B00923850 /* MainLabel.swift */; };
 		C0825B682680FAD6004C099C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B672680FAD6004C099C /* LoginController.swift */; };
 		C0825B6E2680FF88004C099C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0825B6D2680FF88004C099C /* MapViewController.swift */; };
 		C0839D192679439000FF1369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0839D182679439000FF1369 /* AppDelegate.swift */; };
@@ -74,6 +75,7 @@
 		8A2C77DD8C10D359B1E7CABA /* Pods_JamSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9329E72305D2502E8773DA8F /* Pods-JamSession.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.debug.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.debug.xcconfig"; sourceTree = "<group>"; };
 		B7BE5C5E5FF3D09208A8D825 /* Pods-JamSession.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSession.release.xcconfig"; path = "Target Support Files/Pods-JamSession/Pods-JamSession.release.xcconfig"; sourceTree = "<group>"; };
+		C03AB3A12694C31B00923850 /* MainLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLabel.swift; sourceTree = "<group>"; };
 		C0825B672680FAD6004C099C /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C0825B6D2680FF88004C099C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C0839D152679439000FF1369 /* JamSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +209,14 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		C03AB3A02694C30100923850 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				C03AB3A12694C31B00923850 /* MainLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
 		C0839D0C2679439000FF1369 = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +332,7 @@
 		C0D0A921268BDBA400B3EAD1 /* Custom Elements */ = {
 			isa = PBXGroup;
 			children = (
+				C03AB3A02694C30100923850 /* Label */,
 				C0D0A927268BE16D00B3EAD1 /* Buttons */,
 				C0D0A926268BE15F00B3EAD1 /* TextFields */,
 			);
@@ -492,6 +503,7 @@
 				0340211F26864F890093B135 /* FriendsListVC.swift in Sources */,
 				0340212F2689EA9C0093B135 /* CreateEventViewController.swift in Sources */,
 				039B8302267BE1D500AA86D9 /* ErrorExtensions.swift in Sources */,
+				C03AB3A22694C31B00923850 /* MainLabel.swift in Sources */,
 				03412B1A26810ECE00B045A4 /* LocationManager.swift in Sources */,
 				C0876896268A378B0042C8EC /* CreateAUserViewController.swift in Sources */,
 				03412B182680F27400B045A4 /* Event.swift in Sources */,

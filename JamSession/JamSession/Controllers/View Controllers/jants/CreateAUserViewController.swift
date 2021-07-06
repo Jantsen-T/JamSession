@@ -43,8 +43,10 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
         self.locationTextField.delegate = self
         self.instrumentTextField.delegate = self
         self.bioTextView.delegate = self
+        imageButton.imageView?.addCornerRadius(50)
         
         imageButton.imageView?.contentMode = .scaleAspectFit
+        
         imagePicker.delegate = self
         pickerData = ["Beginner", "Intermediate", "Advanced", "Expert"]
         experienceLevelPicker.dataSource = self
