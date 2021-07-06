@@ -12,6 +12,7 @@ import Firebase
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Outlets
     static var successfulUUID: String?
+    @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -35,6 +36,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         emailTextField.inputAccessoryView = toolBar
         passwordTextField.inputAccessoryView = toolBar
         confirmPasswordTextField.inputAccessoryView = toolBar
+        createButton.layer.cornerRadius = 20
+        emailTextField.layer.cornerRadius = 20
+        passwordTextField.layer.cornerRadius = 20
+        confirmPasswordTextField.layer.cornerRadius = 20
+        
+        
     }
     //MARK: - Functions
     @objc private func didTapDone() {
@@ -130,7 +137,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 self.confirmPasswordTextField.alpha = 0
                 self.confirmPasswordTextField.isHidden = true
                 self.signUpButton.setTitleColor(.gray, for: .normal)
-                self.loginButton.setTitleColor(.blue, for: .normal)
+                self.loginButton.setTitleColor(Colors.blue, for: .normal)
                 self.createButton.setTitle("Log In", for: .normal)
             }
         }
@@ -141,7 +148,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             UIView.animate(withDuration: 0.25) {
                 self.confirmPasswordTextField.alpha = 1
                 self.confirmPasswordTextField.isHidden = false
-                self.signUpButton.setTitleColor(.blue, for: .normal)
+                self.signUpButton.setTitleColor(Colors.blue, for: .normal)
                 self.loginButton.setTitleColor(.gray, for: .normal)
                 self.createButton.setTitle("Create Account", for: .normal)
             }

@@ -30,6 +30,11 @@ struct Colors {
     static let vegasGold = UIColor(red: 185/255, green: 164/255, blue: 76/255, alpha: 1)
     static let darkOliveGreen = UIColor(red: 86/255, green: 110/255, blue: 61/255, alpha: 1)
     static let indigoDye = UIColor(red: 12/255, green: 71/255, blue: 103/255, alpha: 1)
+    
+    static let greenText = UIColor(red: 57/255, green: 109/255, blue: 86/255, alpha: 1)
+    static let red = UIColor(red: 153/255, green: 70/255, blue: 52/255, alpha: 1)
+    static let blue = UIColor(red: 78/255, green: 176/255, blue: 222/255, alpha: 1)
+    
 }
 
 
@@ -40,6 +45,7 @@ struct FontNames {
     static let georgia = "Georgia"
     static let georgiaItalic = "Georgia-Italic"
     static let georgiaBold = "Georgia-Bold"
+    static let bodoniSmallCaps = "BodoniSvtyTwoSCITCTT-Book"
     
 
 }
@@ -50,8 +56,9 @@ extension UIView {
     }
     
     // Jantsen we can change this color
-    func addAccentBorder(width: CGFloat = 1, color: UIColor = Colors.lighterGray) {
+    func addAccentBorder(width: CGFloat = 5, color: UIColor = Colors.red) {
         self.layer.borderWidth = width
         self.layer.borderColor = color.cgColor
     }
+   
 }
