@@ -83,13 +83,20 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="usrenmea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVN-37-8E4">
-                                                    <rect key="frame" x="108" y="36" width="75.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="108" y="28.5" width="85" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="57d-Wh-k2T"/>
+                                                        <constraint firstAttribute="width" constant="85" id="yp6-kl-iV7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuZ-zy-XKF">
-                                                    <rect key="frame" x="336" y="11" width="26" height="70"/>
+                                                    <rect key="frame" x="307" y="11" width="55" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="55" id="Lh0-iG-Tjg"/>
+                                                    </constraints>
                                                     <state key="normal">
                                                         <imageReference key="image" image="person.badge.plus" catalog="system" symbolScale="large"/>
                                                     </state>
@@ -98,9 +105,14 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKe-wk-shu">
-                                                    <rect key="frame" x="300.5" y="11" width="27.5" height="70"/>
+                                                    <rect key="frame" x="237" y="11" width="55" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="55" id="Fud-0s-AkR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal">
                                                         <imageReference key="image" image="ellipsis.bubble" catalog="system" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="messageButtonSelect:" destination="YcC-RW-eiB" eventType="touchUpInside" id="32t-er-b5D"/>
@@ -119,7 +131,7 @@
                                                 <constraint firstItem="LuZ-zy-XKF" firstAttribute="top" secondItem="CnD-R4-qgS" secondAttribute="topMargin" id="k7c-f6-U1w"/>
                                                 <constraint firstItem="XPX-eJ-e8t" firstAttribute="leading" secondItem="CnD-R4-qgS" secondAttribute="leading" id="kQF-2h-N8D"/>
                                                 <constraint firstItem="XPX-eJ-e8t" firstAttribute="top" secondItem="CnD-R4-qgS" secondAttribute="top" id="rgY-6K-lP9"/>
-                                                <constraint firstItem="LuZ-zy-XKF" firstAttribute="leading" secondItem="hKe-wk-shu" secondAttribute="trailing" constant="8" id="u1h-yR-MVe"/>
+                                                <constraint firstItem="LuZ-zy-XKF" firstAttribute="leading" secondItem="hKe-wk-shu" secondAttribute="trailing" constant="15" id="u1h-yR-MVe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -422,10 +434,10 @@
             </objects>
             <point key="canvasLocation" x="394" y="214"/>
         </scene>
-        <!--Fwens-->
+        <!--Friends-->
         <scene sceneID="bmN-P6-haa">
             <objects>
-                <viewController id="LbM-Ym-75g" userLabel="Fwens" customClass="FriendViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LbM-Ym-75g" customClass="FriendViewController" customModule="JamSession" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G4k-Mc-SPw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -438,18 +450,21 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yBH-Nb-6b2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="5" y="0.0" width="404" height="44"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LKG-Bb-hjF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="386" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBA-P2-b5h">
-                                                    <rect key="frame" x="394" y="0.0" width="20" height="44"/>
+                                                    <rect key="frame" x="354" y="0.0" width="50" height="44"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="Zth-or-FW5"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Zth-or-FW5"/>
                                                     </constraints>
+                                                    <state key="normal">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="33" scale="default"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="addUserButtonPressed:" destination="LbM-Ym-75g" eventType="touchUpInside" id="E8k-Rm-v5l"/>
                                                     </connections>
@@ -459,10 +474,10 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="yBH-Nb-6b2" secondAttribute="trailing" id="JSB-u6-zUv"/>
+                                        <constraint firstAttribute="trailing" secondItem="yBH-Nb-6b2" secondAttribute="trailing" constant="5" id="JSB-u6-zUv"/>
                                         <constraint firstAttribute="bottom" secondItem="yBH-Nb-6b2" secondAttribute="bottom" id="XXa-Xo-8vd"/>
                                         <constraint firstItem="yBH-Nb-6b2" firstAttribute="top" secondItem="swe-GK-1aX" secondAttribute="top" id="iBW-me-IQq"/>
-                                        <constraint firstItem="yBH-Nb-6b2" firstAttribute="leading" secondItem="swe-GK-1aX" secondAttribute="leading" id="jMs-Hy-Op0"/>
+                                        <constraint firstItem="yBH-Nb-6b2" firstAttribute="leading" secondItem="swe-GK-1aX" secondAttribute="leading" constant="5" id="jMs-Hy-Op0"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -473,8 +488,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVb-0Y-wZd">
-                                                    <rect key="frame" x="358.5" y="30.5" width="27.5" height="24.5"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVb-0Y-wZd">
+                                                    <rect key="frame" x="341" y="25" width="45" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="45" id="Bu4-4l-iax"/>
+                                                        <constraint firstAttribute="height" constant="35" id="ZZy-Q9-S0K"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                                     <state key="normal">
                                                         <imageReference key="image" image="message" catalog="system" symbolScale="large"/>
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -488,15 +508,16 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="vCR-OW-6SA" secondAttribute="height" multiplier="1:1" id="0wv-Pn-bd6"/>
                                                     </constraints>
-                                                    <state key="normal" image="oompa"/>
+                                                    <state key="normal" image="blank"/>
                                                     <connections>
                                                         <action selector="pfpButtonTapped:" destination="Cu8-Nz-oJ4" eventType="touchUpInside" id="QF7-Yi-NXT"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="usrenmea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEZ-z9-XKC">
-                                                    <rect key="frame" x="8" y="85" width="75.5" height="12"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEZ-z9-XKC">
+                                                    <rect key="frame" x="8" y="82" width="90" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="12" id="9a9-M9-WL4"/>
+                                                        <constraint firstAttribute="height" constant="15" id="9a9-M9-WL4"/>
+                                                        <constraint firstAttribute="width" constant="90" id="Tf5-4x-A5S"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -504,7 +525,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wEZ-z9-XKC" firstAttribute="top" secondItem="vCR-OW-6SA" secondAttribute="bottom" constant="8" id="1hb-ED-5MP"/>
+                                                <constraint firstItem="wEZ-z9-XKC" firstAttribute="top" secondItem="vCR-OW-6SA" secondAttribute="bottom" constant="5" id="1hb-ED-5MP"/>
                                                 <constraint firstItem="vCR-OW-6SA" firstAttribute="top" secondItem="ToY-QE-Zq0" secondAttribute="top" constant="8" id="33o-wZ-v3c"/>
                                                 <constraint firstItem="ZVb-0Y-wZd" firstAttribute="centerY" secondItem="vCR-OW-6SA" secondAttribute="centerY" id="MdQ-XZ-Lfn"/>
                                                 <constraint firstItem="wEZ-z9-XKC" firstAttribute="bottom" secondItem="ToY-QE-Zq0" secondAttribute="bottom" constant="-8" id="ZCp-MT-8tq"/>
@@ -562,7 +583,7 @@
                                                         <color key="tintColor" name="Red"/>
                                                         <color key="textColor" name="blue"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NoD-hq-ihg" customClass="SearchTextField" customModule="SearchTextField">
                                                         <rect key="frame" x="0.0" y="42" width="404" height="34"/>
@@ -709,11 +730,11 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="281" translatesAutoresizingMaskIntoConstraints="NO" id="1Fl-B1-iWO">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="245" translatesAutoresizingMaskIntoConstraints="NO" id="1Fl-B1-iWO">
                                                 <rect key="frame" x="5" y="68.5" width="404" height="34"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3W4-Gk-42k">
-                                                        <rect key="frame" x="0.0" y="0.0" width="49" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="85" height="34"/>
                                                         <color key="backgroundColor" name="greenText"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                         <state key="normal" title="SAVE">
@@ -820,6 +841,8 @@
                         <outlet property="instrumentTextField" destination="7yz-TG-MJ7" id="C7x-Jo-NzG"/>
                         <outlet property="locationTextField" destination="bsq-cn-5Xe" id="gUE-CX-dSQ"/>
                         <outlet property="profilePicImageView" destination="PaK-L2-5WU" id="weS-gV-8Yc"/>
+                        <outlet property="saveButton" destination="3W4-Gk-42k" id="eye-D1-v1E"/>
+                        <outlet property="signOutButton" destination="vfr-k5-2ST" id="c2K-jg-ViR"/>
                         <outlet property="usernameTextField" destination="wjK-rt-VTU" id="tdu-iR-Wd0"/>
                     </connections>
                 </viewController>
@@ -961,6 +984,7 @@
                     <size key="freeformSize" width="414" height="1100"/>
                     <connections>
                         <outlet property="bioTextView" destination="fZj-r9-wQJ" id="rOR-hR-rXa"/>
+                        <outlet property="createProfileButton" destination="ffk-0y-P34" id="foo-tb-lWO"/>
                         <outlet property="experienceLevelPicker" destination="ibA-0U-Srp" id="nLs-Uy-7Xa"/>
                         <outlet property="imageButton" destination="nxB-lz-ubg" id="c2H-Lp-Exj"/>
                         <outlet property="instrumentTextField" destination="2oW-6R-FRU" id="uSb-xz-bIx"/>
@@ -981,7 +1005,6 @@
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="message" catalog="system" width="128" height="113"/>
-        <image name="oompa" width="494" height="412"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.2" catalog="system" width="128" height="81"/>

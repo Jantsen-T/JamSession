@@ -84,12 +84,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            LoginController.sharedInstance.createUser(email: email, password: password) { result in
-                if let error = error {
-                    self.presentErrorToUser(localizedError: error)
-                }
-                
-            }
+//            LoginController.sharedInstance.createUser(email: email, password: password) { result in
+//                if let error = error {
+//                    self.presentErrorToUser(localizedError: error)
+//                }
+//            }
             UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
                 self.showToast(message: "create successful")
                 SignUpViewController.successfulUUID = uid
@@ -100,7 +99,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     self.present(vc, animated: true, completion: nil)
                 }
             }
-
         }
         else if confirmPasswordTextField.isHidden {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -130,7 +128,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             presentErrorToUser(localizedError: "passwords must match")
         }
     }
-    //Jantsen we can change these colors
+    // we can change these colors
     func toggleTologin() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.25) {
@@ -142,7 +140,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    //Jantsen we an change these colors
+    // we an change these colors
     func toggleToSignUp() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.25) {
