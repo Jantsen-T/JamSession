@@ -79,21 +79,20 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             
             LoginController.sharedInstance.createUser(email: email, password: password) { result in
                 if let error = error {
-                print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-                    self.presentErrorToUser(localizedError: "email already in use")
+                    self.presentErrorToUser(localizedError: error)
                 }
                 
             }
-//            UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
-//                self.showToast(message: "create successful")
-//                SignUpViewController.successfulUUID = uid
-//                let sb = UIStoryboard(name: "borp", bundle: nil)
-//                let vc = sb.instantiateViewController(identifier: "createUser")
-//                vc.modalPresentationStyle = .fullScreen
-//                DispatchQueue.main.async {
-//                    self.present(vc, animated: true, completion: nil)
-//                }
-//            }
+            UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
+                self.showToast(message: "create successful")
+                SignUpViewController.successfulUUID = uid
+                let sb = UIStoryboard(name: "borp", bundle: nil)
+                let vc = sb.instantiateViewController(identifier: "createUser")
+                vc.modalPresentationStyle = .fullScreen
+                DispatchQueue.main.async {
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
 
         }
         else if confirmPasswordTextField.isHidden {
