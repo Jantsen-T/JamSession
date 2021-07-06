@@ -465,56 +465,51 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" rowHeight="206" id="Cu8-Nz-oJ4" customClass="FriendCell" customModule="JamSession" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="68.5" width="414" height="206"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" rowHeight="105" id="Cu8-Nz-oJ4" customClass="FriendCell" customModule="JamSession" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="68.5" width="414" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cu8-Nz-oJ4" id="ToY-QE-Zq0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="206"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2gn-wf-rZQ">
-                                                    <rect key="frame" x="8" y="0.0" width="398" height="198"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-i0-b00">
-                                                            <rect key="frame" x="0.0" y="10" width="150" height="178.5"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-OW-6SA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" secondItem="vCR-OW-6SA" secondAttribute="height" multiplier="1:1" id="0wv-Pn-bd6"/>
-                                                                        <constraint firstAttribute="width" constant="150" id="ozH-2q-74v"/>
-                                                                    </constraints>
-                                                                    <state key="normal" image="oompa"/>
-                                                                    <connections>
-                                                                        <action selector="pfpButtonTapped:" destination="Cu8-Nz-oJ4" eventType="touchUpInside" id="QF7-Yi-NXT"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="usrenmea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEZ-z9-XKC">
-                                                                    <rect key="frame" x="0.0" y="158" width="150" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVb-0Y-wZd">
-                                                            <rect key="frame" x="158" y="87" width="240" height="24.5"/>
-                                                            <state key="normal">
-                                                                <imageReference key="image" image="message" catalog="system" symbolScale="large"/>
-                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="messageTapped:" destination="Cu8-Nz-oJ4" eventType="touchUpInside" id="jPy-tb-11F"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVb-0Y-wZd">
+                                                    <rect key="frame" x="358.5" y="30.5" width="27.5" height="24.5"/>
+                                                    <state key="normal">
+                                                        <imageReference key="image" image="message" catalog="system" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="messageTapped:" destination="Cu8-Nz-oJ4" eventType="touchUpInside" id="jPy-tb-11F"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-OW-6SA">
+                                                    <rect key="frame" x="8" y="8" width="69" height="69"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="vCR-OW-6SA" secondAttribute="height" multiplier="1:1" id="0wv-Pn-bd6"/>
+                                                    </constraints>
+                                                    <state key="normal" image="oompa"/>
+                                                    <connections>
+                                                        <action selector="pfpButtonTapped:" destination="Cu8-Nz-oJ4" eventType="touchUpInside" id="QF7-Yi-NXT"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="usrenmea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEZ-z9-XKC">
+                                                    <rect key="frame" x="8" y="85" width="75.5" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="9a9-M9-WL4"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="2gn-wf-rZQ" secondAttribute="trailing" constant="8" id="PB4-jb-Nnw"/>
-                                                <constraint firstItem="2gn-wf-rZQ" firstAttribute="top" secondItem="ToY-QE-Zq0" secondAttribute="top" id="QXa-Ml-DRu"/>
-                                                <constraint firstAttribute="bottom" secondItem="2gn-wf-rZQ" secondAttribute="bottom" constant="8" id="bpq-XX-UbQ"/>
-                                                <constraint firstItem="2gn-wf-rZQ" firstAttribute="leading" secondItem="ToY-QE-Zq0" secondAttribute="leading" constant="8" id="g8y-fO-1Yl"/>
+                                                <constraint firstItem="wEZ-z9-XKC" firstAttribute="top" secondItem="vCR-OW-6SA" secondAttribute="bottom" constant="8" id="1hb-ED-5MP"/>
+                                                <constraint firstItem="vCR-OW-6SA" firstAttribute="top" secondItem="ToY-QE-Zq0" secondAttribute="top" constant="8" id="33o-wZ-v3c"/>
+                                                <constraint firstItem="ZVb-0Y-wZd" firstAttribute="centerY" secondItem="vCR-OW-6SA" secondAttribute="centerY" id="MdQ-XZ-Lfn"/>
+                                                <constraint firstItem="wEZ-z9-XKC" firstAttribute="bottom" secondItem="ToY-QE-Zq0" secondAttribute="bottom" constant="-8" id="ZCp-MT-8tq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ZVb-0Y-wZd" secondAttribute="trailing" constant="8" id="ZJZ-ke-9tH"/>
+                                                <constraint firstItem="wEZ-z9-XKC" firstAttribute="leading" secondItem="ToY-QE-Zq0" secondAttribute="leading" constant="8" id="ebi-4n-XXq"/>
+                                                <constraint firstItem="vCR-OW-6SA" firstAttribute="leading" secondItem="ToY-QE-Zq0" secondAttribute="leading" constant="8" id="tMO-C2-Xgy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

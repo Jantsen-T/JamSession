@@ -51,6 +51,21 @@ class EventController{
             }
         }
     }
+    func fetchDocuments(completion: @escaping(Bool)->Void){
+        let eventBase = db.collection("Events")
+        eventBase.getDocuments { snap, err in
+            DispatchQueue.main.async {
+                if let _ = err{
+                    return completion(false)
+                }
+                if let snap = snap{
+                    self.documents = snap.documents
+                    return completion(true)
+                }
+                return completion(false)
+            }
+        }
+    }
     func getAllEventsMatching(term: String, completion: @escaping(Result<[Event], FireError>)->Void){
         let eventBase = db.collection("Events")
         let query = eventBase.whereField("title", isEqualTo: term)
