@@ -19,6 +19,7 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var experienceLevelPicker: UIPickerView!
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var createProfileButton: UIButton!
     var pickerData: [String] = []
     let imagePicker = UIImagePickerController()
     
@@ -43,7 +44,8 @@ class CreateAUserViewController: UIViewController, UIPickerViewDataSource, UIPic
         self.locationTextField.delegate = self
         self.instrumentTextField.delegate = self
         self.bioTextView.delegate = self
-        imageButton.imageView?.addCornerRadius(50)
+        createProfileButton.layer.cornerRadius = 20
+    
         
         imageButton.imageView?.contentMode = .scaleAspectFit
         

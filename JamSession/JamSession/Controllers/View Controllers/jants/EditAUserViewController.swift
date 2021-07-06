@@ -18,6 +18,10 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var experienceLevelPicker: UIPickerView!
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var signOutButton: UIButton!
+    
+    
     var pickerData: [String] = []
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
@@ -41,7 +45,9 @@ class EditAUserViewController: UIViewController, UIPickerViewDataSource, UIPicke
         experienceLevelPicker.reloadAllComponents()
         imageButton.addTarget(self, action: #selector(setImage), for: .touchUpInside)
         imageButton.imageView?.contentMode = .scaleAspectFit
-        
+        saveButton.layer.cornerRadius = 20
+        signOutButton.layer.cornerRadius = 20
+        imageButton.layer.cornerRadius = 55
         //do this last
         guard let user = UserController.sharedInstance.currentUser else {
             return}
