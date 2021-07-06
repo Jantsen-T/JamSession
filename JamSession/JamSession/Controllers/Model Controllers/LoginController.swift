@@ -19,4 +19,22 @@ class LoginController{
                 return completion(.failure(.noSuchUser))}
             return completion(.success(result.user.uid))        }
     }
-}
+    
+    func createUser(email: String, password: String, completion: @escaping(Result<String, ManErr>)-> Void){
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                
+            }
+            else {
+                guard let result = result else { return }
+                let uid = result.user.uid
+                return completion(.success(uid))
+                
+            }
+        }
+    }
+        
+    
+}// End of class
+

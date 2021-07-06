@@ -73,22 +73,29 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 //showError(error)
                 presentErrorToUser(localizedError: error)
             }
-            else {
-                //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
-                let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
-                    self.showToast(message: "create successful")
-                    SignUpViewController.successfulUUID = uid
-                    let sb = UIStoryboard(name: "borp", bundle: nil)
-                    let vc = sb.instantiateViewController(identifier: "createUser")
-                    vc.modalPresentationStyle = .fullScreen
-                    DispatchQueue.main.async {
-                        self.present(vc, animated: true, completion: nil)
-                    }
+            //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            LoginController.sharedInstance.createUser(email: email, password: password) { result in
+                if let error = error {
+                    self.presentErrorToUser(localizedError: error)
+                }
+                
+            }
+            UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
+                self.showToast(message: "create successful")
+                SignUpViewController.successfulUUID = uid
+                let sb = UIStoryboard(name: "borp", bundle: nil)
+                let vc = sb.instantiateViewController(identifier: "createUser")
+                vc.modalPresentationStyle = .fullScreen
+                DispatchQueue.main.async {
+                    self.present(vc, animated: true, completion: nil)
                 }
             }
-        }else if confirmPasswordTextField.text == "" {
+
+        }
+        else if confirmPasswordTextField.isHidden {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             LoginController.sharedInstance.loginUser(email: email, password: password) { result in
@@ -108,7 +115,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                 case .failure(_):
-                    self.presentErrorToUser(localizedError: "Incorect Username or Password")
+                    self.presentErrorToUser(localizedError: "Incorect Email or Password")
                 }
             }
         }
