@@ -26,7 +26,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        friendsTableView.reloadData()
+        //friendsTableView.reloadData()
     }
     @objc func refresh(_ sender: AnyObject){
         friendsTableView.reloadData()
@@ -129,7 +129,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         }
                     }
                 }
-                
             }
             let blockAction = UIContextualAction(style: .destructive, title: "block") { action, view, handler in
                 let str = cell.user?.uuid
