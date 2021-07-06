@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EZq-JY-T9a">
-                                <rect key="frame" x="40" y="355" width="310" height="122"/>
+                                <rect key="frame" x="40" y="351.33333333333331" width="310" height="122"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pbP-eM-YUH" customClass="TextField">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="34"/>
@@ -45,7 +45,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qG-72-q8k">
-                                <rect key="frame" x="100" y="532" width="190" height="50"/>
+                                <rect key="frame" x="100" y="528.33333333333337" width="190" height="50"/>
                                 <color key="backgroundColor" name="greenText"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Whi-B6-5Cg"/>
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bck-xU-e9m">
-                                <rect key="frame" x="40" y="297" width="310" height="33"/>
+                                <rect key="frame" x="40" y="293.33333333333331" width="310" height="33"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uS0-Ng-fmH">
                                         <rect key="frame" x="0.0" y="0.0" width="151" height="33"/>
@@ -79,9 +79,9 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JAM SESH!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsf-rC-zPd">
-                                <rect key="frame" x="19" y="113" width="352.33333333333331" height="94"/>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="78"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JAM SESH!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsf-rC-zPd">
+                                <rect key="frame" x="0.0" y="113" width="390" height="90.333333333333314"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="75"/>
                                 <color key="textColor" name="greenText"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -91,6 +91,7 @@
                         <constraints>
                             <constraint firstItem="EZq-JY-T9a" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="40" id="4Ln-ay-FbW"/>
                             <constraint firstItem="Bck-xU-e9m" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="40" id="6lu-DK-O4U"/>
+                            <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="Qsf-rC-zPd" secondAttribute="trailing" id="Ecd-bd-69Q"/>
                             <constraint firstItem="1qG-72-q8k" firstAttribute="top" secondItem="EZq-JY-T9a" secondAttribute="bottom" constant="55" id="InG-4g-9PC"/>
                             <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="EZq-JY-T9a" secondAttribute="trailing" constant="40" id="KqY-L3-dJK"/>
                             <constraint firstItem="EZq-JY-T9a" firstAttribute="top" secondItem="Bck-xU-e9m" secondAttribute="bottom" constant="25" id="Vfc-hZ-uWi"/>
@@ -100,6 +101,7 @@
                             <constraint firstItem="1qG-72-q8k" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="100" id="eVg-oO-W9g"/>
                             <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="Bck-xU-e9m" secondAttribute="trailing" constant="40" id="iYj-wS-OS4"/>
                             <constraint firstItem="Qsf-rC-zPd" firstAttribute="centerX" secondItem="NEh-Wh-GXb" secondAttribute="centerX" id="lN9-3v-qbX"/>
+                            <constraint firstItem="Qsf-rC-zPd" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" id="yDO-WZ-wAl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9IJ-wp-z0O"/>
