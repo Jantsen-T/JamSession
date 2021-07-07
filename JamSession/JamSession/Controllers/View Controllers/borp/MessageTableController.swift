@@ -17,31 +17,61 @@ class MessageTableController: UITableViewController {
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tableView.reloadData()
+    }
     @objc func refresh(_ sender: AnyObject){
         tableView.reloadData()
         sender.endRefreshing()
     }
-    @IBAction func plusPressed(_ sender: Any) {
-        let vc = UIAlertController(title: "new message", message: nil, preferredStyle: .alert)
-        vc.addTextField(configurationHandler: nil)
-        let action = UIAlertAction(title: "OK", style: .default) { _ in
-            guard let text = vc.textFields![0].text, !(text.isEmpty) else { return}
-            UserController.sharedInstance.grabUserFromUsername(username: text) { r in
-                switch r{
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let currentUser = UserController.sharedInstance.currentUser else {return}
+            
+            let chat = ChatsController.sharedInstance.chats[indexPath.row]
+            UserController.sharedInstance.grabUserFromUuid(uuid: chat.users[1]) { result in
+                switch result {
                 case .success(let user):
-                    print(user.uuid)
-                    ChatsController.sharedInstance.createNewChatWith(user: user)
+                    ChatsController.sharedInstance.deleteChatsBetween(user1: currentUser, user2: user)
                     DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                        tableView.reloadData()
                     }
-                case .failure(let error):
-                    print(error)
+                case .failure(_):
+                    break
                 }
             }
+            
         }
-        vc.addAction(action)
-        present(vc, animated: true, completion: nil)
     }
+    
+//    @IBAction func plusPressed(_ sender: Any) {
+//        let vc = UIAlertController(title: "new message", message: nil, preferredStyle: .alert)
+//        vc.addTextField(configurationHandler: nil)
+//        let action = UIAlertAction(title: "OK", style: .default) { _ in
+//            guard let text = vc.textFields![0].text, !(text.isEmpty) else { return}
+//            UserController.sharedInstance.grabUserFromUsername(username: text) { r in
+//                switch r{
+//                case .success(let user):
+//                    print(user.uuid)
+//                    ChatsController.sharedInstance.createNewChatWith(user: user)
+//                    DispatchQueue.main.async {
+//                        self.tableView.reloadData()
+//                    }
+//                case .failure(let error):
+//                    print(error)
+//                }
+//            }
+//        }
+//        vc.addAction(action)
+//        present(vc, animated: true, completion: nil)
+//    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -89,6 +119,7 @@ class MessageTableController: UITableViewController {
             }
         }
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return ChatsController.sharedInstance.chats.count

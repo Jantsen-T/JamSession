@@ -85,12 +85,17 @@
                                 <color key="textColor" name="greenText"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="VCh-Uf-H37">
+                                <rect key="frame" x="0.0" y="203.33333333333334" width="390" height="90.000000000000028"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NEh-Wh-GXb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="EZq-JY-T9a" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="40" id="4Ln-ay-FbW"/>
+                            <constraint firstItem="Bck-xU-e9m" firstAttribute="top" secondItem="VCh-Uf-H37" secondAttribute="bottom" id="6YZ-te-Fi0"/>
                             <constraint firstItem="Bck-xU-e9m" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="40" id="6lu-DK-O4U"/>
+                            <constraint firstItem="VCh-Uf-H37" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" id="96h-lI-F7T"/>
                             <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="Qsf-rC-zPd" secondAttribute="trailing" id="Ecd-bd-69Q"/>
                             <constraint firstItem="1qG-72-q8k" firstAttribute="top" secondItem="EZq-JY-T9a" secondAttribute="bottom" constant="55" id="InG-4g-9PC"/>
                             <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="EZq-JY-T9a" secondAttribute="trailing" constant="40" id="KqY-L3-dJK"/>
@@ -101,11 +106,14 @@
                             <constraint firstItem="1qG-72-q8k" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" constant="100" id="eVg-oO-W9g"/>
                             <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="Bck-xU-e9m" secondAttribute="trailing" constant="40" id="iYj-wS-OS4"/>
                             <constraint firstItem="Qsf-rC-zPd" firstAttribute="centerX" secondItem="NEh-Wh-GXb" secondAttribute="centerX" id="lN9-3v-qbX"/>
+                            <constraint firstItem="VCh-Uf-H37" firstAttribute="top" secondItem="Qsf-rC-zPd" secondAttribute="bottom" id="mov-js-djE"/>
                             <constraint firstItem="Qsf-rC-zPd" firstAttribute="leading" secondItem="NEh-Wh-GXb" secondAttribute="leading" id="yDO-WZ-wAl"/>
+                            <constraint firstItem="NEh-Wh-GXb" firstAttribute="trailing" secondItem="VCh-Uf-H37" secondAttribute="trailing" id="yGC-P6-C7k"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9IJ-wp-z0O"/>
                     <connections>
+                        <outlet property="activitySpinner" destination="VCh-Uf-H37" id="J0u-o1-g5d"/>
                         <outlet property="confirmPasswordTextField" destination="BAN-BQ-Thz" id="ivc-z4-w2h"/>
                         <outlet property="createButton" destination="1qG-72-q8k" id="czR-5j-5eO"/>
                         <outlet property="emailTextField" destination="pbP-eM-YUH" id="SGE-kp-MXX"/>

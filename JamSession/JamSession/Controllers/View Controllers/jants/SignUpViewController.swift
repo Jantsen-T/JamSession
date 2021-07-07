@@ -19,6 +19,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,22 +74,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createButtonTapped(_ sender: Any) {
+        self.activitySpinner.startAnimating()
         if confirmPasswordTextField.text == passwordTextField.text {
             let error = validateFields()
             if let error = error {
                 // there is something wrong with the fields, show error message
                 //showError(error)
-                presentErrorToUser(localizedError: error)
+                DispatchQueue.main.async {
+                    self.activitySpinner.stopAnimating()
+                    self.presentErrorToUser(localizedError: error)
+                }
+                
             }
             //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-//            LoginController.sharedInstance.createUser(email: email, password: password) { result in
-//                if let error = error {
-//                    self.presentErrorToUser(localizedError: error)
-//                }
-//            }
+        
             UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
                 self.showToast(message: "create successful")
                 SignUpViewController.successfulUUID = uid
@@ -96,6 +97,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 let vc = sb.instantiateViewController(identifier: "createUser")
                 vc.modalPresentationStyle = .fullScreen
                 DispatchQueue.main.async {
+                    self.activitySpinner.stopAnimating()
                     self.present(vc, animated: true, completion: nil)
                 }
             }
@@ -106,26 +108,40 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             LoginController.sharedInstance.loginUser(email: email, password: password) { result in
                 switch result {
                 case .success(let userUuid):
+                    
                     UserController.sharedInstance.grabUserFromUuid(uuid: userUuid) { result in
                         switch result {
                         case .success(let user):
+                            
                             UserController.sharedInstance.currentUser = user
                             let sb = UIStoryboard(name: "borp", bundle: nil)
                             let vc = sb.instantiateViewController(identifier: "tabbar")
                             vc.modalPresentationStyle = .fullScreen
-                            //vc.modalTransitionStyle = .partialCurl
-                            self.present(vc, animated: true, completion: nil)
+                            DispatchQueue.main.async {
+                                self.activitySpinner.stopAnimating()
+                                self.present(vc, animated: true, completion: nil)
+                            }
+                            
                         case .failure(let error):
-                            self.presentErrorToUser(localizedError: error)
+                            DispatchQueue.main.async {
+                                self.activitySpinner.stopAnimating()
+                                self.presentErrorToUser(localizedError: error)
+                            }
                         }
                     }
                 case .failure(_):
-                    self.presentErrorToUser(localizedError: "Incorect Email or Password")
+                    DispatchQueue.main.async {
+                        self.activitySpinner.stopAnimating()
+                        self.presentErrorToUser(localizedError: "Incorect Email or Password")
+                    }
                 }
             }
         }
         else {
-            presentErrorToUser(localizedError: "passwords must match")
+            DispatchQueue.main.async {
+                self.activitySpinner.stopAnimating()
+                self.presentErrorToUser(localizedError: "passwords must match")
+            }
         }
     }
     // we can change these colors
