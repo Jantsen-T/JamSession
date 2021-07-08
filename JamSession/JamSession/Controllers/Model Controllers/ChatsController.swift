@@ -34,6 +34,7 @@ class ChatsController{
         }
     }
     func getNumberofChats(){
+//        self.chats = []
         guard let user = UserController.sharedInstance.currentUser else { return}
         let db = Firestore.firestore().collection("Chats").whereField("users", arrayContains: user.uuid)
         db.getDocuments{ (chatQuerySnap, error) in
@@ -47,7 +48,9 @@ class ChatsController{
                     self.chats.append(chat)
                 }
             }
+            MessageTableController.sharedInstance?.tableView.reloadData()
         }
+        
     }
     func deleteChatsBetween(user1: User, user2: User){
         let db = Firestore.firestore().collection("Chats").whereField("users", arrayContains: user1.uuid)

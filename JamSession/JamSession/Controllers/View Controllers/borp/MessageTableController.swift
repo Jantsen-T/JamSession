@@ -11,6 +11,7 @@ class MessageTableController: UITableViewController {
     static var sharedInstance: MessageTableController?
     override func viewDidLoad() {
         super.viewDidLoad()
+       // ChatsController.sharedInstance.getNumberofChats()
         MessageTableController.sharedInstance = self
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -32,22 +33,40 @@ class MessageTableController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        
         if editingStyle == .delete {
             guard let currentUser = UserController.sharedInstance.currentUser else {return}
             
             let chat = ChatsController.sharedInstance.chats[indexPath.row]
-            UserController.sharedInstance.grabUserFromUuid(uuid: chat.users[1]) { result in
-                switch result {
-                case .success(let user):
-                    ChatsController.sharedInstance.deleteChatsBetween(user1: currentUser, user2: user)
-                    DispatchQueue.main.async {
-                        tableView.reloadData()
+            let isFirst = currentUser.uuid == chat.users[0]
+            if isFirst {
+                UserController.sharedInstance.grabUserFromUuid(uuid: chat.users[1]) { result in
+                    switch result {
+                    case .success(let user):
+                        ChatsController.sharedInstance.deleteChatsBetween(user1: currentUser, user2: user)
+                        DispatchQueue.main.async {
+                            
+                            //ChatsController.sharedInstance.getNumberofChats()
+                        }
+                    case .failure(_):
+                        break
                     }
-                case .failure(_):
-                    break
                 }
             }
-            
+            else {
+                UserController.sharedInstance.grabUserFromUuid(uuid: chat.users[0]) { result in
+                    switch result {
+                    case .success(let user):
+                        ChatsController.sharedInstance.deleteChatsBetween(user1: user, user2: currentUser)
+                        DispatchQueue.main.async {
+                           // ChatsController.sharedInstance.getNumberofChats()
+                        }
+                    case .failure(_):
+                        break
+                    }
+                }
+            }
         }
     }
     
@@ -121,7 +140,7 @@ class MessageTableController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return ChatsController.sharedInstance.chats.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

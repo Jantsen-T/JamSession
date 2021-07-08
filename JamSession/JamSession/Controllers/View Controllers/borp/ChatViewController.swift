@@ -74,7 +74,9 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
         }
     }
     func currentSender() -> SenderType {
-        return ChatUser(senderId: UserController.sharedInstance.currentUser!.uuid, displayName: (UserController.sharedInstance.currentUser!.username))
+        
+        guard let currentUser = UserController.sharedInstance.currentUser else {return ChatUser(senderId: "", displayName: "")}
+        return ChatUser(senderId: currentUser.uuid, displayName: (UserController.sharedInstance.currentUser!.username))
         // return Sender(id: Auth.auth().currentUser!.uid, displayName: Auth.auth().currentUser?.displayName ?? "Name not found")
     }
     //This return the MessageType which we have defined to be text in Messages.swift
