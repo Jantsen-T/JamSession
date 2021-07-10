@@ -143,6 +143,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 self.presentErrorToUser(localizedError: "passwords must match")
             }
         }
+        self.activitySpinner.stopAnimating()
     }
     // we can change these colors
     func toggleTologin() {
