@@ -5,12 +5,12 @@
         "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0xDE",
-          "green" : "0xB0",
-          "red" : "0x4E"
+          "blue" : "0.871",
+          "green" : "0.690",
+          "red" : "0.306"
         }
       },
-      "idiom" : "universal"
+      "idiom" : "iphone"
     },
     {
       "appearances" : [
@@ -28,7 +28,7 @@
           "red" : "1.000"
         }
       },
-      "idiom" : "universal"
+      "idiom" : "iphone"
     }
   ],
   "info" : {

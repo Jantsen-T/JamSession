@@ -730,14 +730,14 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="245" translatesAutoresizingMaskIntoConstraints="NO" id="1Fl-B1-iWO">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="223" translatesAutoresizingMaskIntoConstraints="NO" id="1Fl-B1-iWO">
                                                 <rect key="frame" x="5" y="68.5" width="404" height="34"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3W4-Gk-42k">
-                                                        <rect key="frame" x="0.0" y="0.0" width="85" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="90.5" height="34"/>
                                                         <color key="backgroundColor" name="greenText"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                        <state key="normal" title="SAVE">
+                                                        <state key="normal" title="Save">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -745,7 +745,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfr-k5-2ST">
-                                                        <rect key="frame" x="330" y="0.0" width="74" height="34"/>
+                                                        <rect key="frame" x="313.5" y="0.0" width="90.5" height="34"/>
                                                         <color key="backgroundColor" name="Red"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                         <state key="normal" title="Sign Out">
