@@ -108,6 +108,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             LoginController.sharedInstance.loginUser(email: email, password: password) { result in
                 switch result {
                 case .success(let userUuid):
+                    self.activitySpinner.stopAnimating()
                     
                     UserController.sharedInstance.grabUserFromUuid(uuid: userUuid) { result in
                         switch result {
