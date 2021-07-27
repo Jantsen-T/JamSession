@@ -111,7 +111,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
             self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
         })
     }
-    //MARK: chatty functions that i have NO CLUE about
+    //MARK: Chat Functions
     
     func loadChat() {
         //Fetch all the chats which has current user in it
