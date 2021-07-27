@@ -73,30 +73,84 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         toggleTologin()
     }
     
+    
+    //THIS ENTIRE FUNCTION NEEDS TO BE REWRRITTEN AND FIXED.
     @IBAction func createButtonTapped(_ sender: Any) {
+//        self.activitySpinner.startAnimating()
+//        let email = emailTextField.text!
+//        let password = passwordTextField.text!
+//
+//
+//        if confirmPasswordTextField.isHidden == true {
+//            LoginController.sharedInstance.loginUser(email: email, password: password) { result in
+//                DispatchQueue.main.async {
+//                    switch result {
+//
+//                    case .success(let userUuid):
+//                        UserController.sharedInstance.grabUserFromUuid(uuid: userUuid) { secondResult in
+//                            DispatchQueue.main.async {
+//                                switch secondResult {
+//                                case .success(let user):
+//
+//                                    UserController.sharedInstance.currentUser = user
+//                                    let sb = UIStoryboard(name: "borp", bundle: nil)
+//                                    let vc = sb.instantiateViewController(identifier: "tabbar")
+//                                    vc.modalPresentationStyle = .fullScreen
+//
+//                                    self.activitySpinner.stopAnimating()
+//                                case .failure(let error):
+//                                    self.presentErrorToUser(localizedError: error)
+//                                    print ("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+//                                    self.activitySpinner.stopAnimating()
+//                                }
+//                            }
+//                        }
+//                        self.activitySpinner.stopAnimating()
+//                    case .failure(_):
+//                        self.presentErrorToUser(localizedError: "Incorrect Email or Password")
+//                        self.activitySpinner.stopAnimating()
+//                    }
+//                }
+//            }
+//        } else if confirmPasswordTextField.text == passwordTextField.text{
+//            let error = validateFields()
+//            if let error = error {
+//                DispatchQueue.main.async {
+//                    self.activitySpinner.stopAnimating()
+//                    self.presentErrorToUser(localizedError: error)
+//
+//                }
+//            }
+//            UserController.sharedInstance.createAuthUser(email: email, password: password) { uid in
+//                self.showToast(message: "crate ")
+//            }
+//
+//        }
         self.activitySpinner.startAnimating()
         if confirmPasswordTextField.text == passwordTextField.text {
             let error = validateFields()
-            if let error = error {
+            guard error == nil else {
                 // there is something wrong with the fields, show error message
                 //showError(error)
                 DispatchQueue.main.async {
                     self.activitySpinner.stopAnimating()
-                    self.presentErrorToUser(localizedError: error)
+                    self.presentErrorToUser(localizedError: error!)
                 }
-                
+                return
             }
+            
             //create cleaned version of the data (strip out all white spaces from the fields) so we don't save white spaces and new lines in our database.
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+
             UserController.sharedInstance.createAuthUser(email: email, password: password){ uid in
-                self.showToast(message: "create successful")
-                SignUpViewController.successfulUUID = uid
-                let sb = UIStoryboard(name: "borp", bundle: nil)
-                let vc = sb.instantiateViewController(identifier: "createUser")
-                vc.modalPresentationStyle = .fullScreen
                 DispatchQueue.main.async {
+                    self.showToast(message: "create successful")
+                    SignUpViewController.successfulUUID = uid
+                    let sb = UIStoryboard(name: "borp", bundle: nil)
+                    let vc = sb.instantiateViewController(identifier: "createUser")
+                    vc.modalPresentationStyle = .fullScreen
+                    
                     self.activitySpinner.stopAnimating()
                     self.present(vc, animated: true, completion: nil)
                 }
@@ -108,12 +162,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             LoginController.sharedInstance.loginUser(email: email, password: password) { result in
                 switch result {
                 case .success(let userUuid):
-                    self.activitySpinner.stopAnimating()
-                    
                     UserController.sharedInstance.grabUserFromUuid(uuid: userUuid) { result in
                         switch result {
                         case .success(let user):
-                            
                             UserController.sharedInstance.currentUser = user
                             let sb = UIStoryboard(name: "borp", bundle: nil)
                             let vc = sb.instantiateViewController(identifier: "tabbar")
@@ -122,11 +173,24 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                 self.activitySpinner.stopAnimating()
                                 self.present(vc, animated: true, completion: nil)
                             }
-                            
+
                         case .failure(let error):
-                            DispatchQueue.main.async {
-                                self.activitySpinner.stopAnimating()
-                                self.presentErrorToUser(localizedError: error)
+                            switch error {
+                            case .noSuchUser:
+                                SignUpViewController.successfulUUID = userUuid
+                                let sb = UIStoryboard(name: "borp", bundle: nil)
+                                let vc = sb.instantiateViewController(identifier: "createUser")
+                                vc.modalPresentationStyle = .fullScreen
+                                
+                                DispatchQueue.main.async {
+                                    self.activitySpinner.stopAnimating()
+                                    self.present(vc, animated: true, completion: nil)
+                                }
+                            case .cannotlogin, .firebaseError(_), .tooManySameUsername:
+                                DispatchQueue.main.async {
+                                    self.activitySpinner.stopAnimating()
+                                    self.presentErrorToUser(localizedError: error)
+                                }
                             }
                         }
                     }
@@ -139,12 +203,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             }
         }
         else {
-            DispatchQueue.main.async {
-                self.activitySpinner.stopAnimating()
-                self.presentErrorToUser(localizedError: "passwords must match")
-            }
+            self.activitySpinner.stopAnimating()
+            self.presentErrorToUser(localizedError: "passwords must match")
         }
-        self.activitySpinner.stopAnimating()
     }
     // we can change these colors
     func toggleTologin() {

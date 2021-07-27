@@ -8,7 +8,7 @@
 import UIKit
 
 class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
-    //MARK: vars n outlest n shtuff
+    //MARK: Outlets
     var pulledEvents: [Event] = []
     @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class SearchEventsViewController: UITableViewController, UISearchBarDelegate {
         getThings(searchText: ""){}
     }
     
-    //MARK: tavle biew data source
+    //MARK: table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
